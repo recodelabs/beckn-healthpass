@@ -1,0 +1,1083 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HealthPass on Beckn</title>
+<meta name="description" content="Why HealthPass, a patient-owned health record in WhatsApp, is stronger on an open beckn health network. Worked examples: a lab test and a prescription.">
+<meta property="og:title" content="HealthPass on Beckn">
+<meta property="og:description" content="Why HealthPass, a patient-owned health record in WhatsApp, is stronger on an open beckn health network. Worked examples: a lab test and a prescription.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
+<style>
+/* Layout: one reading column (~40rem) with figures that widen to ~52rem; diagrams reuse the flow animations' node boxes and message colours. */
+:root {
+  --paper: #F7F7F9;
+  --surface: #FFFFFF;
+  --ink: #1D1B2C;
+  --muted: #5E5C70;
+  --rule: #E3E2EB;
+  --accent: #4A40A8;
+  --line: #C4C3CF;
+  --good: #0F6E56;
+  --bad: #A32D2D;
+
+  /* node ramps, matching the original animations */
+  --pu-fill: #EEEDFE; --pu-stroke: #534AB7; --pu-text: #3C3489;
+  --te-fill: #E1F5EE; --te-stroke: #0F6E56; --te-text: #085041;
+  --co-fill: #FAECE7; --co-stroke: #993C1D; --co-text: #712B13;
+  --gr-fill: #F1EFE8; --gr-stroke: #5F5E5A; --gr-text: #444441;
+
+  /* message kinds: beckn, FHIR/SMART, chat, registry */
+  --b-fill: #FAEEDA; --b-stroke: #BA7517; --b-text: #633806; --b-dot: #EF9F27;
+  --f-fill: #E6F1FB; --f-stroke: #185FA5; --f-text: #0C447C; --f-dot: #378ADD;
+  --c-fill: #EEEDFE; --c-stroke: #534AB7; --c-text: #3C3489; --c-dot: #7F77DD;
+  --r-fill: #F1EFE8; --r-stroke: #5F5E5A; --r-text: #444441; --r-dot: #888780;
+
+  --font-display: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --font-body: "Public Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --measure: 40rem;
+  --wide: 52rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #15141C; --surface: #1D1C27; --ink: #ECEBF3; --muted: #A4A2B6; --rule: #2F2E3C;
+    --accent: #AFA9EC; --line: #4B4A5A; --good: #5DCAA5; --bad: #F09595;
+    --pu-fill: #26215C; --pu-stroke: #8F88E3; --pu-text: #DAD7FA;
+    --te-fill: #0A3A31; --te-stroke: #2BB088; --te-text: #A9E6D2;
+    --co-fill: #4A1B0C; --co-stroke: #E06B42; --co-text: #F7CDBE;
+    --gr-fill: #2C2C2A; --gr-stroke: #9A998F; --gr-text: #DAD8CE;
+    --b-fill: #412402; --b-stroke: #EF9F27; --b-text: #FAC775; --b-dot: #EF9F27;
+    --f-fill: #042C53; --f-stroke: #4A97E4; --f-text: #C2DCF6; --f-dot: #4A97E4;
+    --c-fill: #26215C; --c-stroke: #8F88E3; --c-text: #DAD7FA; --c-dot: #8F88E3;
+    --r-fill: #2C2C2A; --r-stroke: #9A998F; --r-text: #DAD8CE; --r-dot: #9A998F;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #15141C; --surface: #1D1C27; --ink: #ECEBF3; --muted: #A4A2B6; --rule: #2F2E3C;
+  --accent: #AFA9EC; --line: #4B4A5A; --good: #5DCAA5; --bad: #F09595;
+  --pu-fill: #26215C; --pu-stroke: #8F88E3; --pu-text: #DAD7FA;
+  --te-fill: #0A3A31; --te-stroke: #2BB088; --te-text: #A9E6D2;
+  --co-fill: #4A1B0C; --co-stroke: #E06B42; --co-text: #F7CDBE;
+  --gr-fill: #2C2C2A; --gr-stroke: #9A998F; --gr-text: #DAD8CE;
+  --b-fill: #412402; --b-stroke: #EF9F27; --b-text: #FAC775; --b-dot: #EF9F27;
+  --f-fill: #042C53; --f-stroke: #4A97E4; --f-text: #C2DCF6; --f-dot: #4A97E4;
+  --c-fill: #26215C; --c-stroke: #8F88E3; --c-text: #DAD7FA; --c-dot: #8F88E3;
+  --r-fill: #2C2C2A; --r-stroke: #9A998F; --r-text: #DAD8CE; --r-dot: #9A998F;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-inline: 20px;
+  padding-block: 0 64px;
+  -webkit-font-smoothing: antialiased;
+}
+main { max-width: var(--wide); margin-inline: auto; }
+.col { max-width: var(--measure); }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; color: var(--ink); }
+h1 { font-size: clamp(2rem, 4.6vw, 2.9rem); line-height: 1.12; letter-spacing: -0.01em; margin: 0 0 20px; }
+h2 { font-size: 1.75rem; line-height: 1.2; margin: 0 0 14px; }
+h3 { font-size: 1.2rem; line-height: 1.3; margin: 32px 0 10px; }
+p { margin: 0 0 14px; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+code, .mono { font-family: var(--font-mono); font-size: 0.86em; }
+sup.src { font-size: 0.68em; line-height: 0; margin-left: 1px; }
+sup.src a { text-decoration: none; font-family: var(--font-mono); }
+.muted { color: var(--muted); }
+.eyebrow { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+/* header */
+header.top { max-width: var(--wide); margin-inline: auto; padding-block: 56px 28px; }
+header.top .lede { font-size: 1.15rem; color: var(--muted); max-width: var(--measure); }
+nav.toc { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.9rem; }
+nav.toc a { color: var(--muted); text-decoration: none; }
+nav.toc a:hover { color: var(--accent); }
+nav.toc span { font-family: var(--font-mono); color: var(--line); margin-right: 6px; }
+
+section { padding-block: 44px; border-top: 1px solid var(--rule); }
+section > .num { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; display: block; margin-bottom: 6px; }
+
+/* limits list */
+.limits { list-style: none; padding: 0; margin: 18px 0; display: grid; gap: 12px; }
+.limits li { padding-left: 16px; border-left: 2px solid var(--co-stroke); }
+.limits strong { display: block; }
+.limits.points li { border-left-color: var(--accent); }
+.limits.fixes li { border-left-color: var(--good); }
+header.top h2 { margin-top: 40px; }
+
+/* opening story: three small panels */
+.story { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 24px 0 8px; }
+.story .panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; }
+.story h4 { margin: 0 0 10px; font-family: var(--font-mono); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 500; }
+.story svg { display: block; width: 100%; height: auto; }
+.story p { margin: 10px 0 0; font-size: 0.9rem; }
+@media (max-width: 760px) { .story { grid-template-columns: 1fr; } .story svg { max-width: 380px; margin-inline: auto; } }
+.c-b rect { fill: var(--b-fill); stroke: var(--b-stroke); } .c-b .th { fill: var(--b-text); } .c-b .ts { fill: var(--b-stroke); }
+
+/* timeline */
+.timeline { list-style: none; padding: 0; margin: 26px 0 8px; display: grid; gap: 0; }
+.timeline li { display: grid; grid-template-columns: 4.2rem 1fr minmax(0, 15rem); gap: 6px 22px; padding-block: 14px; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.timeline li:first-child { border-top: 1px solid var(--rule); }
+.timeline .yr { font-family: var(--font-mono); font-size: 0.9rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.timeline .rail { font-weight: 600; }
+.timeline .what { display: block; color: var(--muted); font-size: 0.93rem; }
+.timeline .fig { font-family: var(--font-display); font-size: 1.12rem; line-height: 1.35; font-variant-numeric: tabular-nums; }
+.tag { display: inline-block; font-family: var(--font-mono); font-size: 0.7rem; padding: 1px 7px; border-radius: 99px; margin-left: 6px; vertical-align: 2px; border: 1px solid; }
+.tag.beckn { background: var(--b-fill); color: var(--b-text); border-color: var(--b-stroke); }
+.tag.health { background: var(--f-fill); color: var(--f-text); border-color: var(--f-stroke); }
+@media (max-width: 640px) {
+  .timeline li { grid-template-columns: 3.4rem 1fr; }
+  .timeline .fig { grid-column: 2; }
+}
+.recipe { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 26px 0 18px; }
+.recipe div { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; font-size: 0.95rem; }
+.recipe b { display: block; font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 4px; }
+@media (max-width: 640px) { .recipe { grid-template-columns: 1fr; } }
+
+/* diagrams */
+figure { margin: 26px 0; }
+.diagram { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 16px; }
+.diagram svg { display: block; width: 100%; max-width: 760px; height: auto; margin-inline: auto; }
+figcaption { font-size: 0.88rem; color: var(--muted); margin-top: 10px; }
+svg text { font-family: var(--font-body); }
+.nd rect { stroke-width: 0.75; transition: stroke-width .2s; }
+.nd.hot rect { stroke-width: 2.2; }
+.nd .th { font-size: 14px; font-weight: 600; }
+.nd .ts { font-size: 12px; }
+.c-pu rect { fill: var(--pu-fill); stroke: var(--pu-stroke); } .c-pu .th { fill: var(--pu-text); } .c-pu .ts { fill: var(--pu-stroke); }
+.c-te rect { fill: var(--te-fill); stroke: var(--te-stroke); } .c-te .th { fill: var(--te-text); } .c-te .ts { fill: var(--te-stroke); }
+.c-co rect { fill: var(--co-fill); stroke: var(--co-stroke); } .c-co .th { fill: var(--co-text); } .c-co .ts { fill: var(--co-stroke); }
+.c-gr rect { fill: var(--gr-fill); stroke: var(--gr-stroke); } .c-gr .th { fill: var(--gr-text); } .c-gr .ts { fill: var(--gr-stroke); }
+.wire { stroke: var(--line); stroke-width: 0.75; stroke-dasharray: 4 4; fill: none; }
+.ln-b { stroke: var(--b-dot); } .ln-f { stroke: var(--f-dot); } .ln-c { stroke: var(--c-dot); } .ln-r { stroke: var(--r-dot); }
+.lbl { font-family: var(--font-mono); font-size: 11px; paint-order: stroke; stroke: var(--surface); stroke-width: 5px; stroke-linejoin: round; }
+.lbl.b { fill: var(--b-text); } .lbl.f { fill: var(--f-text); } .lbl.c { fill: var(--c-text); } .lbl.r { fill: var(--r-text); }
+.lbl.good { fill: var(--good); } .lbl.bad { fill: var(--bad); }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.82rem; color: var(--muted); margin: 10px 0 0; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+.sw.b { background: var(--b-dot); } .sw.f { background: var(--f-dot); } .sw.c { background: var(--c-dot); } .sw.r { background: var(--r-dot); } .sw.n { background: transparent; border: 1.5px solid var(--muted); }
+
+.lifecycle { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 6px; align-items: center; }
+.lifecycle .grp { display: flex; flex-direction: column; gap: 4px; }
+.lifecycle .grp small { font-size: 0.72rem; color: var(--muted); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; }
+.lifecycle .chips { display: flex; gap: 4px; flex-wrap: wrap; }
+.chip { font-family: var(--font-mono); font-size: 0.8rem; background: var(--b-fill); color: var(--b-text); border: 1px solid var(--b-stroke); border-radius: 6px; padding: 2px 8px; }
+.lifecycle .arrow { color: var(--muted); margin-top: 16px; }
+
+.roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+.roles div { border-left: 2px solid var(--pu-stroke); padding-left: 14px; font-size: 0.95rem; }
+.roles b { display: block; }
+@media (max-width: 640px) { .roles { grid-template-columns: 1fr; } }
+
+/* flow player */
+.player { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 0 16px 16px; margin-top: 22px; }
+.tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--rule); margin: 0 -16px 14px; padding: 0 12px; overflow-x: auto; }
+.tabs button { font: inherit; font-size: 0.95rem; background: none; border: 0; border-bottom: 2px solid transparent; color: var(--muted); padding: 12px 12px 10px; cursor: pointer; white-space: nowrap; }
+.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); font-weight: 600; }
+.flow-intro { font-size: 0.95rem; color: var(--muted); margin: 0 0 6px; }
+.player svg { display: block; width: 100%; max-width: 760px; height: auto; margin-inline: auto; }
+#pk rect { stroke-width: 0.75; }
+.pkt { font-family: var(--font-mono); font-size: 11px; }
+.controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 12px 0 8px; }
+.controls button.ctl { font: inherit; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 6px; background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 7px; padding: 6px 11px; cursor: pointer; }
+.controls button.ctl:hover { border-color: var(--muted); }
+.controls svg { width: 16px; height: 16px; }
+.dots { display: inline-flex; gap: 2px; margin-left: 6px; }
+.dots button { width: 22px; height: 22px; border: 0; background: none; padding: 0; cursor: pointer; display: grid; place-items: center; }
+.dots button::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+.dots button[aria-current="step"]::before { background: var(--ink); }
+.caption { min-height: 4.6em; font-size: 0.97rem; }
+.caption b { font-weight: 600; }
+.caption span { color: var(--muted); }
+ol.log { list-style: none; margin: 6px 0 0; padding: 6px 0 0; border-top: 1px solid var(--rule); min-height: 110px; font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+ol.log li { padding: 2px 0; white-space: pre-wrap; }
+.note { font-size: 0.82rem; color: var(--muted); margin-top: 10px; }
+
+/* ABDM section */
+.blocks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 22px 0; }
+.blocks div { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; font-size: 0.93rem; }
+.blocks b { display: block; font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 4px; }
+.blocks .fig { display: block; margin-top: 8px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+@media (max-width: 640px) { .blocks { grid-template-columns: 1fr; } }
+ol.steps { list-style: none; counter-reset: st; padding: 0; margin: 18px 0; display: grid; gap: 16px; }
+ol.steps li { counter-increment: st; display: grid; grid-template-columns: 2rem 1fr; gap: 0 12px; }
+ol.steps li::before { content: counter(st); font-family: var(--font-mono); font-size: 0.85rem; color: var(--te-text); background: var(--te-fill); border: 1px solid var(--te-stroke); border-radius: 50%; width: 1.7rem; height: 1.7rem; display: grid; place-items: center; grid-row: span 2; }
+ol.steps b { display: block; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 18px 0; }
+.pair div { border-left: 2px solid var(--good); padding-left: 14px; font-size: 0.95rem; }
+.pair div.cost { border-left-color: var(--co-stroke); }
+.pair b { display: block; margin-bottom: 4px; }
+.pair ul { margin: 0; padding-left: 18px; }
+@media (max-width: 640px) { .pair { grid-template-columns: 1fr; } }
+
+/* tables */
+.tbl { overflow-x: auto; margin: 22px 0; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; min-width: 620px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--rule); }
+tr:last-child td { border-bottom: 0; }
+thead th { font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 500; background: var(--paper); }
+tbody th { font-weight: 600; white-space: nowrap; }
+td.hl { background: color-mix(in srgb, var(--pu-fill) 55%, transparent); }
+
+/* problems grid */
+.problems { margin: 22px 0; display: grid; gap: 0; }
+.problems .row { display: grid; grid-template-columns: minmax(0, 13rem) 1fr 1fr; gap: 6px 22px; padding-block: 14px; border-bottom: 1px solid var(--rule); }
+.problems .row:first-child { border-top: 1px solid var(--rule); }
+.problems .head { font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); padding-block: 8px; }
+.problems b { font-family: var(--font-display); font-size: 1.05rem; }
+.problems .today { color: var(--muted); font-size: 0.95rem; }
+.problems .net { font-size: 0.95rem; }
+.problems .lab { display: none; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+@media (max-width: 700px) {
+  .problems .row { grid-template-columns: 1fr; }
+  .problems .head { display: none; }
+  .problems .lab { display: block; }
+}
+
+/* today vs network */
+.versus { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 22px 0; }
+.versus .panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; }
+.versus h4 { margin: 0 0 8px; font-family: var(--font-mono); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 500; }
+.versus svg { display: block; width: 100%; height: auto; }
+.versus ul { margin: 10px 0 0; padding-left: 18px; font-size: 0.9rem; }
+.versus .panel.today ul { color: var(--muted); }
+@media (max-width: 700px) { .versus { grid-template-columns: 1fr; } }
+
+/* who does what */
+.who { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 16px 0; }
+.who div { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; font-size: 0.93rem; }
+.who b { display: block; font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 6px; }
+.who ul { margin: 0; padding-left: 18px; }
+.who .us { border-color: var(--pu-stroke); background: var(--pu-fill); color: var(--pu-text); }
+.who .us b { color: var(--pu-text); }
+@media (max-width: 700px) { .who { grid-template-columns: 1fr; } }
+
+ul.plain, ol.plain { padding-left: 20px; margin: 10px 0 16px; }
+ul.plain li, ol.plain li { margin-bottom: 8px; }
+.risks { list-style: none; padding: 0; margin: 18px 0; display: grid; gap: 14px; }
+.risks li { padding-left: 16px; border-left: 2px solid var(--line); }
+.risks strong { display: block; }
+
+footer.sources { max-width: var(--wide); margin-inline: auto; border-top: 1px solid var(--rule); padding-top: 28px; }
+footer.sources ol { font-size: 0.8rem; color: var(--muted); padding-left: 24px; display: grid; gap: 5px; }
+footer.sources li { overflow-wrap: anywhere; }
+footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
+
+@media (prefers-reduced-motion: reduce) {
+  .nd rect, ol.log li { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="eyebrow">HealthPass · beckn protocol · October 2026</div>
+  <h1>HealthPass gives every patient a record. Beckn connects that record to every clinic, lab and pharmacy.</h1>
+  <p class="lede">HealthPass is a health record that belongs to the patient and opens inside WhatsApp. Beckn is an open protocol that lets clinics, labs, pharmacies and patient apps find each other, agree on a service and send each other results, with no single company or ministry in the middle. This site explains why HealthPass is stronger on a beckn network than on its own, using two everyday examples: a lab test and a prescription.</p>
+
+  <div class="col">
+    <h2>One patient, four places</h2>
+    <p>Take Wanjiru, a 34-year-old in Nairobi being treated for high blood pressure. Over a year she sees two clinics, has blood tests at a lab and collects medicine from a pharmacy. Her history ends up in four places that don’t talk to each other: one clinic’s computer system, the other clinic’s paper file, a lab result sent to her by SMS, and a photo of a prescription on her phone. Each new provider starts from nothing. Tests get repeated, and no one has the full list of what she takes.</p>
+  </div>
+
+  <div class="story">
+    <div class="panel">
+      <h4>Today</h4>
+      <svg viewBox="0 0 300 232" role="img" aria-labelledby="st1-t">
+        <title id="st1-t">Four providers each hold a piece of the record, and none are connected</title>
+        <line class="wire" x1="105" y1="92" x2="62" y2="54"/>
+        <line class="wire" x1="195" y1="92" x2="238" y2="54"/>
+        <line class="wire" x1="105" y1="140" x2="62" y2="178"/>
+        <line class="wire" x1="195" y1="140" x2="238" y2="178"/>
+        <g class="nd c-pu"><rect x="75" y="92" width="150" height="48" rx="8"/><text class="th" x="150" y="112" text-anchor="middle">Wanjiru</text><text class="ts" x="150" y="129" text-anchor="middle">paper and phone photos</text></g>
+        <g class="nd c-gr"><rect x="2" y="6" width="124" height="48" rx="8"/><text class="th" x="64" y="26" text-anchor="middle">Clinic A</text><text class="ts" x="64" y="43" text-anchor="middle">its own system</text></g>
+        <g class="nd c-gr"><rect x="174" y="6" width="124" height="48" rx="8"/><text class="th" x="236" y="26" text-anchor="middle">Clinic B</text><text class="ts" x="236" y="43" text-anchor="middle">a paper file</text></g>
+        <g class="nd c-gr"><rect x="2" y="178" width="124" height="48" rx="8"/><text class="th" x="64" y="198" text-anchor="middle">Lab</text><text class="ts" x="64" y="215" text-anchor="middle">result by SMS</text></g>
+        <g class="nd c-gr"><rect x="174" y="178" width="124" height="48" rx="8"/><text class="th" x="236" y="198" text-anchor="middle">Pharmacy</text><text class="ts" x="236" y="215" text-anchor="middle">prescription photo</text></g>
+      </svg>
+      <p>No shared record. Each provider keeps its own piece, and Wanjiru carries the rest on paper and on her phone.</p>
+    </div>
+    <div class="panel">
+      <h4>With HealthPass</h4>
+      <svg viewBox="0 0 300 232" role="img" aria-labelledby="st2-t">
+        <title id="st2-t">HealthPass holds one record but is connected to only one provider</title>
+        <line class="ln-f" x1="105" y1="92" x2="62" y2="54" fill="none" stroke-width="1.5"/>
+        <line class="wire" x1="195" y1="92" x2="238" y2="54"/>
+        <line class="wire" x1="105" y1="140" x2="62" y2="178"/>
+        <line class="wire" x1="195" y1="140" x2="238" y2="178"/>
+        <g class="nd c-pu"><rect x="75" y="92" width="150" height="48" rx="8"/><text class="th" x="150" y="112" text-anchor="middle">HealthPass</text><text class="ts" x="150" y="129" text-anchor="middle">her record in WhatsApp</text></g>
+        <g class="nd c-co"><rect x="2" y="6" width="124" height="48" rx="8"/><text class="th" x="64" y="26" text-anchor="middle">Clinic A</text><text class="ts" x="64" y="43" text-anchor="middle">connected</text></g>
+        <g class="nd c-gr"><rect x="174" y="6" width="124" height="48" rx="8"/><text class="th" x="236" y="26" text-anchor="middle">Clinic B</text><text class="ts" x="236" y="43" text-anchor="middle">not connected</text></g>
+        <g class="nd c-gr"><rect x="2" y="178" width="124" height="48" rx="8"/><text class="th" x="64" y="198" text-anchor="middle">Lab</text><text class="ts" x="64" y="215" text-anchor="middle">not connected</text></g>
+        <g class="nd c-gr"><rect x="174" y="178" width="124" height="48" rx="8"/><text class="th" x="236" y="198" text-anchor="middle">Pharmacy</text><text class="ts" x="236" y="215" text-anchor="middle">not connected</text></g>
+      </svg>
+      <p>One record that Wanjiru owns, opened in WhatsApp. It fills in only where HealthPass has built a connection to that provider’s system.</p>
+    </div>
+    <div class="panel">
+      <h4>HealthPass on a beckn network</h4>
+      <svg viewBox="0 0 300 232" role="img" aria-labelledby="st3-t">
+        <title id="st3-t">HealthPass, a registry and every provider connect through one network</title>
+        <line class="ln-b" x1="77" y1="54" x2="77" y2="92" fill="none" stroke-width="1.5"/>
+        <line class="ln-b" x1="232" y1="54" x2="232" y2="92" fill="none" stroke-width="1.5"/>
+        <line class="ln-b" x1="49" y1="140" x2="49" y2="178" fill="none" stroke-width="1.5"/>
+        <line class="ln-b" x1="150" y1="140" x2="150" y2="178" fill="none" stroke-width="1.5"/>
+        <line class="ln-b" x1="251" y1="140" x2="251" y2="178" fill="none" stroke-width="1.5"/>
+        <g class="nd c-pu"><rect x="2" y="6" width="150" height="48" rx="8"/><text class="th" x="77" y="26" text-anchor="middle">HealthPass</text><text class="ts" x="77" y="43" text-anchor="middle">her record in WhatsApp</text></g>
+        <g class="nd c-gr"><rect x="166" y="6" width="132" height="48" rx="8"/><text class="th" x="232" y="26" text-anchor="middle">Registry</text><text class="ts" x="232" y="43" text-anchor="middle">who is licensed</text></g>
+        <g class="nd c-b"><rect x="2" y="92" width="296" height="48" rx="24"/><text class="th" x="150" y="112" text-anchor="middle">beckn network</text><text class="ts" x="150" y="129" text-anchor="middle">signed messages</text></g>
+        <g class="nd c-co"><rect x="2" y="178" width="94" height="48" rx="8"/><text class="th" x="49" y="198" text-anchor="middle">Clinic</text><text class="ts" x="49" y="215" text-anchor="middle">any clinic</text></g>
+        <g class="nd c-co"><rect x="103" y="178" width="94" height="48" rx="8"/><text class="th" x="150" y="198" text-anchor="middle">Lab</text><text class="ts" x="150" y="215" text-anchor="middle">any lab</text></g>
+        <g class="nd c-co"><rect x="204" y="178" width="94" height="48" rx="8"/><text class="th" x="251" y="198" text-anchor="middle">Pharmacy</text><text class="ts" x="251" y="215" text-anchor="middle">any pharmacy</text></g>
+      </svg>
+      <p>Each provider connects once, to the network, and is listed in a shared registry. Results and prescriptions come back to her record from any of them.</p>
+    </div>
+  </div>
+
+  <div class="col">
+    <h2>The case in four points</h2>
+    <ul class="limits points">
+      <li><strong>HealthPass makes the record the patient’s.</strong> It holds her health summary in the international standard format, opens in an app she already uses, and logs everyone who looks at it.</li>
+      <li><strong>On its own, it has to connect to providers one at a time.</strong> Each clinic, lab and pharmacy system needs its own link, and HealthPass has no way to check that a provider is licensed.</li>
+      <li><strong>Beckn replaces those one-off links with a network.</strong> A provider joins once, is listed in a shared registry and signs every message, so any patient app can find it, order from it and trust its results.</li>
+      <li><strong>The model is proven at national scale.</strong> India runs payments (UPI) and online commerce (ONDC, which is built on beckn) this way: a public body runs the shared rails and many companies compete to build the apps people use. Our opportunity is to write the health rules for such a network and run HealthPass on it.</li>
+    </ul>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <a href="#today"><span>01</span>HealthPass today</a>
+    <a href="#pattern"><span>02</span>The pattern that scaled</a>
+    <a href="#beckn"><span>03</span>Beckn in one diagram</a>
+    <a href="#flows"><span>04</span>Three flows, one protocol</a>
+    <a href="#india"><span>05</span>How India did it</a>
+    <a href="#why"><span>06</span>Why a network</a>
+    <a href="#opportunity"><span>07</span>The opportunity</a>
+    <a href="#risks"><span>08</span>Risks</a>
+  </nav>
+</header>
+
+<main>
+
+<section id="today">
+  <span class="num">01</span>
+  <div class="col">
+    <h2>HealthPass today</h2>
+    <p>HealthPass gives each patient a personal health record that they control. It has three parts.</p>
+    <ul class="limits points">
+      <li><strong>The record.</strong> A private, secure store for one patient’s health data. It uses FHIR, the international standard that modern clinic, lab and pharmacy systems already use to exchange health data. At its core is the International Patient Summary (IPS), a standard short summary of the patient: allergies, conditions, medicines, vaccinations and recent results.</li>
+      <li><strong>WhatsApp as the way in.</strong> The patient opens the record from a link in WhatsApp, as a secure page inside the chat. There is no app to download, and it works on the phones people already have.</li>
+      <li><strong>An access log.</strong> Every time someone opens the record, HealthPass logs who it was and when.</li>
+    </ul>
+
+    <h3>How a nurse sees the record today</h3>
+    <ol class="steps">
+      <li><b>Wanjiru shows a QR code.</b>She opens HealthPass in WhatsApp and shows the nurse the QR code on her screen.</li>
+      <li><b>She gives the nurse a one-time PIN.</b>She receives a short PIN in WhatsApp that works once. It shows she agreed to share her record for this visit.</li>
+      <li><b>The nurse enters their own access code.</b>HealthPass sends each health worker an access code over WhatsApp. The code expires after a few hours, so an old one can’t be reused.</li>
+      <li><b>The nurse reads the summary and adds the visit.</b>The access is written to the log.</li>
+    </ol>
+
+    <h3>Where it gets stuck on its own</h3>
+    <ul class="limits">
+      <li><strong>It can’t tell who is a real health worker.</strong> The access code proves that someone got a code from HealthPass. It doesn’t prove they are a licensed nurse at a real clinic, because HealthPass has no shared list of licensed providers to check against. Sending and typing codes also adds a step to every visit.</li>
+      <li><strong>Every clinic, lab and pharmacy has to be connected one by one.</strong> For results to arrive by themselves, HealthPass has to build a link to each provider’s software. A country has hundreds of these systems, so this is slow and costly, and it starts again in every new country.</li>
+      <li><strong>So most care never reaches the record.</strong> When Wanjiru has a blood test at a lab HealthPass isn’t connected to, the result reaches her on paper or by SMS. Her record doesn’t change unless someone types it in.</li>
+    </ul>
+
+    <h3>What beckn changes</h3>
+    <ul class="limits fixes">
+      <li><strong>A shared register of who is licensed.</strong> Clinics, labs, pharmacies and health workers are listed in a registry with a digital key, and every message they send is signed with that key. HealthPass checks the signature instead of handing out codes.</li>
+      <li><strong>Connect once.</strong> A lab connects its system to the network once. From then on, any patient app on the network can order tests from it, HealthPass included.</li>
+      <li><strong>Records fill in as care happens.</strong> When a lab or pharmacy completes an order placed over the network, the result goes back to the patient’s record as part of the same exchange.</li>
+    </ul>
+    <p>FHIR is the format of the record. Beckn is the set of rules for how independent organisations find each other, agree on a service and trust each other’s messages. The next section shows where this model has already worked at national scale.</p>
+  </div>
+</section>
+
+<section id="pattern">
+  <span class="num">02</span>
+  <div class="col">
+    <h2>The pattern that scaled</h2>
+    <p>Over fifteen years India built a series of shared digital rails. Each followed the same recipe and each reached national scale. Two of them, ONDC and Namma Yatri, run on beckn.</p>
+  </div>
+  <ol class="timeline" aria-label="Digital public infrastructure timeline">
+    <li><span class="yr">2010</span><span><span class="rail">Aadhaar</span><span class="what">Digital identity</span></span><span class="fig">1.45 billion numbers issued<sup class="src"><a href="#s1">1</a></sup></span></li>
+    <li><span class="yr">2016</span><span><span class="rail">UPI</span><span class="what">Payments between any app and any bank</span></span><span class="fig">24 billion transactions in Sept 2026; 741 banks live<sup class="src"><a href="#s2">2</a>,<a href="#s3">3</a></sup></span></li>
+    <li><span class="yr">2021</span><span><span class="rail">Account Aggregator</span><span class="what">Consent-based sharing of financial data</span></span><span class="fig">338 million accounts linked; 566 million consents fulfilled<sup class="src"><a href="#s4">4</a></sup></span></li>
+    <li><span class="yr">2021</span><span><span class="rail">ABDM</span><span class="tag health">health</span><span class="what">Federated health records with no central server</span></span><span class="fig">978 million health IDs; 1.2 billion records linked<sup class="src"><a href="#s7">7</a></sup></span></li>
+    <li><span class="yr">2021</span><span><span class="rail">ONDC</span><span class="tag beckn">beckn</span><span class="what">Open commerce: any buyer app, any seller</span></span><span class="fig">500 million transactions by July 2026<sup class="src"><a href="#s5">5</a></sup></span></li>
+    <li><span class="yr">2022</span><span><span class="rail">Namma Yatri</span><span class="tag beckn">beckn</span><span class="what">Open ride-hailing with no commission</span></span><span class="fig">150 million trips<sup class="src"><a href="#s6">6</a></sup></span></li>
+  </ol>
+  <div class="recipe">
+    <div><b>Shared rails</b>The state provides the thin common layer: identity, registries, a protocol and the rules.</div>
+    <div><b>Market apps</b>Companies build the apps people actually use, and compete on them.</div>
+    <div><b>Mandatory interoperability</b>Every app works with every provider, so no app owns the users and no provider integrates twice.</div>
+  </div>
+  <div class="col">
+    <p>The model has travelled. The G20 endorsed a framework for digital public infrastructure in 2023<sup class="src"><a href="#s8">8</a></sup>, and MOSIP, an open-source identity platform, is in national rollout in Uganda and eight other African countries<sup class="src"><a href="#s9">9</a></sup>.</p>
+  </div>
+</section>
+
+<section id="beckn">
+  <span class="num">03</span>
+  <div class="col">
+    <h2>Beckn in one diagram</h2>
+    <p>Beckn is an open protocol that lets independent apps and providers find each other, agree on a service, and track it to completion. Any app on the network can transact with any provider without a bilateral integration and without a platform in the middle.</p>
+  </div>
+  <figure>
+    <div class="diagram">
+      <svg viewBox="0 0 680 350" role="img" aria-labelledby="roles-t roles-d">
+        <title id="roles-t">The roles on a beckn health network</title>
+        <desc id="roles-d">The patient talks to HealthPass over WhatsApp. HealthPass searches a discovery service, which indexes signed provider catalogues. HealthPass and the provider exchange beckn messages for the transaction and FHIR requests for the data. A registry holds verified identities and keys.</desc>
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+        </defs>
+        <g fill="none" stroke-width="1.5">
+          <line class="ln-c" x1="120" y1="78" x2="120" y2="148" marker-start="url(#ah)" marker-end="url(#ah)"/>
+          <line class="ln-b" x1="192" y1="148" x2="268" y2="80" marker-end="url(#ah)"/>
+          <line class="ln-b" x1="488" y1="148" x2="412" y2="80" marker-end="url(#ah)"/>
+          <line class="ln-b" x1="202" y1="170" x2="478" y2="170" marker-start="url(#ah)" marker-end="url(#ah)"/>
+          <line class="ln-f" x1="202" y1="188" x2="478" y2="188" marker-start="url(#ah)" marker-end="url(#ah)"/>
+          <line class="ln-r" x1="340" y1="80" x2="340" y2="278" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+          <line class="ln-r" x1="520" y1="208" x2="410" y2="278" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+        </g>
+        <g class="nd c-pu"><rect x="40" y="20" width="160" height="56" rx="8"/><text class="th" x="120" y="42" text-anchor="middle">Patient</text><text class="ts" x="120" y="60" text-anchor="middle">WhatsApp</text></g>
+        <g class="nd c-te"><rect x="260" y="20" width="160" height="56" rx="8"/><text class="th" x="340" y="42" text-anchor="middle">Discovery service</text><text class="ts" x="340" y="60" text-anchor="middle">Indexes signed catalogues</text></g>
+        <g class="nd c-pu"><rect x="40" y="150" width="160" height="56" rx="8"/><text class="th" x="120" y="172" text-anchor="middle">HealthPass</text><text class="ts" x="120" y="190" text-anchor="middle">Consumer node + FHIR vault</text></g>
+        <g class="nd c-co"><rect x="480" y="150" width="160" height="56" rx="8"/><text class="th" x="560" y="172" text-anchor="middle">Provider</text><text class="ts" x="560" y="190" text-anchor="middle">Clinic, lab or pharmacy</text></g>
+        <g class="nd c-gr"><rect x="260" y="280" width="160" height="56" rx="8"/><text class="th" x="340" y="302" text-anchor="middle">Registry</text><text class="ts" x="340" y="320" text-anchor="middle">Verified identities + keys</text></g>
+        <text class="lbl c" x="112" y="117" text-anchor="end">chat</text>
+        <text class="lbl b" x="236" y="128">discover</text>
+        <text class="lbl b" x="456" y="108">publish catalogue</text>
+        <text class="lbl b" x="340" y="161" text-anchor="middle">beckn: select · init · confirm · status</text>
+        <text class="lbl f" x="340" y="204" text-anchor="middle">FHIR + SMART: read and write records</text>
+        <text class="lbl r" x="348" y="252">verify keys</text>
+        <text class="lbl r" x="474" y="262">look up</text>
+      </svg>
+    </div>
+    <div class="legend" aria-hidden="true"><span><i class="sw b"></i>Beckn</span><span><i class="sw f"></i>FHIR / SMART</span><span><i class="sw c"></i>Chat</span><span><i class="sw r"></i>Registry</span></div>
+  </figure>
+  <div class="col">
+    <p><strong>Beckn carries the transaction.</strong> Every message is signed by its sender, and the receiver answers with a counter-signed receipt, so both sides can prove who asked for what and when. <strong>FHIR and SMART on FHIR carry the clinical data.</strong> Patient data never travels inside a beckn message.</p>
+    <div class="lifecycle" aria-label="Beckn transaction lifecycle">
+      <div class="grp"><small>Discovery</small><div class="chips"><span class="chip">discover</span></div></div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="grp"><small>Contracting</small><div class="chips"><span class="chip">select</span><span class="chip">init</span><span class="chip">confirm</span></div></div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="grp"><small>Fulfilment</small><div class="chips"><span class="chip">status</span><span class="chip">track</span><span class="chip">cancel</span></div></div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="grp"><small>After</small><div class="chips"><span class="chip">rate</span><span class="chip">support</span></div></div>
+    </div>
+    <p class="muted" style="font-size:0.92rem">Each call is answered asynchronously by a matching callback, such as <code>on_select</code> or <code>on_confirm</code>. In beckn v2 (May 2026), providers host their own signed catalogues and discovery services crawl them, so no central gateway sits in the path<sup class="src"><a href="#s18">18</a></sup>.</p>
+    <h3>Wallet and app: HealthPass plays two roles</h3>
+    <p>HealthPass is two things that are easy to blur together. On the network they are separate roles, and they can be switched separately.</p>
+    <div class="roles">
+      <div><b>The wallet: where the record is kept</b>The patient's FHIR record and International Patient Summary. Providers read from it and write back to it with SMART tokens, scoped by a FHIR Consent the patient approved. In the diagrams this is the "vault".</div>
+      <div><b>The app: what the patient talks to</b>The WhatsApp interface and agent that searches, books, orders and shows the record. In beckn terms it is the consumer node.</div>
+    </div>
+    <p>India's payments system works the same way. Your bank holds your money; that's the wallet. PhonePe or Google Pay is the app you pay with, and it holds no money. Because the two are separate, you can change apps and still pay the same shops the next day.</p>
+    <p>A patient on the network can switch in two ways:</p>
+    <ul class="plain">
+      <li><strong>Keep the wallet, change the app.</strong> Another app reads and writes the same HealthPass record through SMART on FHIR, with the patient's consent. The data doesn't move, much like using a different email program on the same mailbox.</li>
+      <li><strong>Move the wallet.</strong> The patient exports their full FHIR record and IPS to another wallet. Kenya's Digital Health Act already calls for "shareable and portable personal health records"<sup class="src"><a href="#s11">11</a></sup>.</li>
+    </ul>
+    <p>Either way the patient keeps their identity, which comes from the national client registry rather than an app account. They also keep their providers, who join the network rather than any one app. HealthPass offers both roles, built so they can be separated. That is what makes "no lock-in" believable to governments and funders, and it lets other apps build on HealthPass wallets later.</p>
+  </div>
+</section>
+
+<section id="flows">
+  <span class="num">04</span>
+  <div class="col">
+    <h2>Three flows, one protocol</h2>
+    <p>The same protocol carries a lab test, a prescription and an appointment. Step through each one with the arrows, or pick a step from the dots.</p>
+  </div>
+  <div class="player" id="player">
+    <div class="tabs" role="tablist" aria-label="Flows">
+      <button role="tab" id="tab-lab" aria-controls="flow-panel" aria-selected="true" data-flow="lab">Lab test</button>
+      <button role="tab" id="tab-rx" aria-controls="flow-panel" aria-selected="false" data-flow="rx">Prescription</button>
+      <button role="tab" id="tab-appt" aria-controls="flow-panel" aria-selected="false" data-flow="appt">Appointment</button>
+    </div>
+    <div id="flow-panel" role="tabpanel" aria-labelledby="tab-lab">
+      <p class="flow-intro"></p>
+      <svg class="flow-svg" viewBox="0 0 680 350" role="img" aria-labelledby="flow-t">
+        <title id="flow-t">Flow diagram</title>
+      </svg>
+      <div class="legend" aria-hidden="true"><span><i class="sw b"></i>Beckn</span><span><i class="sw f"></i>FHIR / SMART</span><span><i class="sw c"></i>Chat</span><span><i class="sw r"></i>Registry</span><span><i class="sw n"></i>Internal step</span></div>
+      <div class="controls">
+        <button class="ctl prev" aria-label="Previous step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+        <button class="ctl replay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8.1 8.1 0 0 0-15.5-2M4 5v4h4M4 13a8.1 8.1 0 0 0 15.5 2M20 19v-4h-4"/></svg>Replay</button>
+        <button class="ctl next" aria-label="Next step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 18l6-6-6-6"/></svg></button>
+        <span class="dots"></span>
+      </div>
+      <p class="caption" aria-live="polite"><b class="ct"></b> <span class="cd"></span></p>
+      <ol class="log" aria-label="Messages in this step"></ol>
+    </div>
+  </div>
+  <p class="note">Tumaini Clinic, Afya Lab and Neema Pharmacy are fictional. Prices are illustrative.</p>
+
+  <h3>The same seven steps</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Step</th><th>Lab test</th><th>Prescription</th><th>Appointment</th></tr></thead>
+      <tbody>
+        <tr><th>Anonymous search <code>discover</code></th><td>Labs offering HbA1c within 5 km</td><td>Pharmacies that deliver within 5 km</td><td>Antenatal clinics within 5 km</td></tr>
+        <tr><th>Live offer <code>select</code></th><td>Price, collection slots</td><td>Stock, price, generic option</td><td>Open slots</td></tr>
+        <tr><th>Minimal identity <code>init</code></th><td>Slot, address, order reference</td><td>Address, prescription reference</td><td>Name, phone, insurance</td></tr>
+        <tr><th>Contract and Consent <code>confirm</code></th><td>Access to this one order</td><td>Access to this one prescription</td><td>IPS summary for 7 days</td></tr>
+        <tr><th>SMART fetch</th><td>ServiceRequest</td><td>MedicationRequest, then registry check</td><td>IPS bundle</td></tr>
+        <tr><th>Updates <code>on_status</code></th><td>Collector arriving, sample in lab</td><td>Rider on the way, delivered</td><td>Reminder the day before</td></tr>
+        <tr><th>Write-back to the record</th><td>DiagnosticReport</td><td>MedicationDispense; prescription marked completed</td><td>Visit summary</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col"><p>A provider that implements these steps once can serve every patient app on the network, for every service it offers.</p></div>
+</section>
+
+<section id="india">
+  <span class="num">05</span>
+  <div class="col">
+    <h2>How India did it: ABDM</h2>
+    <p>India's Ayushman Bharat Digital Mission (ABDM), launched in September 2021, is the largest working example of shared health records built as public infrastructure. It has no central record store. Records stay with the hospital, clinic or lab that created them, and move only when the patient approves<sup class="src"><a href="#s14">14</a></sup>.</p>
+  </div>
+  <div class="blocks">
+    <div><b>ABHA number</b>A 14-digit health ID. People create it by verifying with an Aadhaar or mobile one-time code, and it's voluntary. It holds no health data; records from different providers are linked to it<sup class="src"><a href="#s24">24</a></sup>.<span class="fig">978 million created, Sept 2026<sup class="src"><a href="#s7">7</a></sup></span></div>
+    <div><b>ABHA address</b>A readable handle such as <code>priya@abdm</code>. Patients use it to sign in to health-record apps and to approve requests for their records<sup class="src"><a href="#s24">24</a></sup>.</div>
+    <div><b>Registries</b>A Health Facility Registry and a Healthcare Professionals Registry, so every party on the network can check who it is dealing with.<span class="fig">533,000 facilities · 985,000 professionals, July 2026<sup class="src"><a href="#s22">22</a></sup></span></div>
+    <div><b>Consent manager</b>Passes requests between providers and records what the patient approved. It never sees the clinical data<sup class="src"><a href="#s21">21</a>,<a href="#s28">28</a></sup>.</div>
+  </div>
+
+  <div class="player" id="abdm-player">
+    <div role="tabpanel" aria-label="ABDM record sharing walkthrough" style="padding-top:14px">
+      <p class="flow-intro"></p>
+      <svg class="flow-svg" viewBox="0 0 680 350" role="img" aria-labelledby="abdm-t">
+        <title id="abdm-t">ABDM record sharing</title>
+      </svg>
+      <div class="legend" aria-hidden="true"><span><i class="sw r"></i>Consent and routing</span><span><i class="sw f"></i>FHIR data</span><span><i class="sw c"></i>Patient app</span><span><i class="sw n"></i>Internal step</span></div>
+      <div class="controls">
+        <button class="ctl prev" aria-label="Previous step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+        <button class="ctl replay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8.1 8.1 0 0 0-15.5-2M4 5v4h4M4 13a8.1 8.1 0 0 0 15.5 2M20 19v-4h-4"/></svg>Replay</button>
+        <button class="ctl next" aria-label="Next step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 18l6-6-6-6"/></svg></button>
+        <span class="dots"></span>
+      </div>
+      <p class="caption" aria-live="polite"><b class="ct"></b> <span class="cd"></span></p>
+      <ol class="log" aria-label="Messages in this step"></ol>
+    </div>
+  </div>
+
+  <div class="col">
+    <h3>Where the data lives</h3>
+    <p>Every hospital, clinic and lab keeps its own records in its own software. To join, that software must be certified for ABDM, so it can link visits to an ABHA and answer requests for records. Nothing is copied to a national database. The network only knows <em>where</em> records are, not <em>what</em> they say.</p>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Party</th><th>What it holds</th><th>What it never holds</th></tr></thead>
+      <tbody>
+        <tr><th>Hospital, clinic or lab</th><td>The clinical records, in its own system</td><td></td></tr>
+        <tr><th>Consent manager</th><td>An index of which providers hold records for each ABHA address, and every consent the patient has given</td><td>Clinical data</td></tr>
+        <tr><th>ABDM gateway</th><td>Nothing lasting. It routes messages and checks that senders are registered.</td><td>Clinical data</td></tr>
+        <tr><th>Requesting provider</th><td>A copy of what the patient approved, until the consent expires</td><td>Anything outside the consent</td></tr>
+        <tr><th>Patient's app</th><td>Their ABHA address, their consents, and optionally their own copy of their records</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col">
+    <h3>How one exchange works</h3>
+    <ol class="steps">
+      <li><b>Records get linked to the ABHA.</b>This happens in one of two ways. The hospital links a visit when it happens, often after the patient scans a QR code at the registration desk<sup class="src"><a href="#s23">23</a></sup>. Or the patient finds older records from their app: they pick the hospital, the hospital matches them by name, age and phone number, and they confirm with a one-time code<sup class="src"><a href="#s29">29</a></sup>. Either way, the consent manager learns that this hospital has records for this ABHA address. It doesn't learn what they say.</li>
+      <li><b>A provider asks.</b>The requesting clinic sends a consent request to the consent manager with the patient's ABHA address. It states the purpose, the record types (prescriptions, lab reports, discharge summaries and so on), the date range, and how long it wants to keep the data.</li>
+      <li><b>The patient approves.</b>In their app, the patient sees the request and can narrow it to particular hospitals, visits or record types. The consent manager then issues a signed consent artefact for each hospital involved. It lists exactly what may be shared and when the permission ends<sup class="src"><a href="#s26">26</a></sup>.</li>
+      <li><b>The requester asks the hospital for the data.</b>The request quotes the consent artefact. It also carries a fresh one-time encryption key and an address where the hospital should send the data<sup class="src"><a href="#s26">26</a></sup>.</li>
+      <li><b>The hospital checks and sends.</b>It verifies the consent's signature, scope and expiry, and pulls the approved records from its own system. It converts them into FHIR bundles using India's national profiles<sup class="src"><a href="#s25">25</a></sup>, encrypts them with the requester's one-time key, and pushes them straight to the requester. It then tells the consent manager the transfer happened, for the audit trail. The gateway and the consent manager never see the content.</li>
+      <li><b>The requester uses the data, then deletes it.</b>It decrypts the records and shows them to the clinician. Each consent carries an expiry date, after which the requester must delete or anonymise the data<sup class="src"><a href="#s27">27</a></sup>.</li>
+    </ol>
+  </div>
+  <div class="pair">
+    <div><b>What this design gets right</b><ul><li>No central database to breach or to own</li><li>Providers keep control of their own records</li><li>The patient approves every share, and every share is logged</li></ul></div>
+    <div class="cost"><b>What it costs</b><ul><li>The hospital's system has to be online and certified when a request arrives</li><li>Every request waits on the patient, and most patients don't act</li><li>No one holds a complete history unless someone keeps a copy</li></ul></div>
+  </div>
+
+  <div class="col">
+    <h3>Three milestones</h3>
+    <p>India tracks adoption in three stages. The first two are at scale. The third, where a patient has to approve a request, is the weak point<sup class="src"><a href="#s16">16</a></sup>.</p>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Milestone</th><th>What it covers</th><th>Where it stands</th></tr></thead>
+      <tbody>
+        <tr><th>M1</th><td>Creating and verifying ABHA IDs</td><td>978 million IDs (Sept 2026)<sup class="src"><a href="#s7">7</a></sup></td></tr>
+        <tr><th>M2</th><td>Providers linking records to ABHA and sharing them</td><td>1.2 billion records linked (Sept 2026)<sup class="src"><a href="#s7">7</a></sup></td></tr>
+        <tr><th>M3</th><td>Providers requesting and receiving records with consent</td><td>"Extremely low" use (July 2026)<sup class="src"><a href="#s16">16</a></sup></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col">
+    <h3>Two layers, the same split as this proposal</h3>
+    <p>ABDM moves records with consent, using FHIR. A separate network, UHI, is built on beckn and handles finding and booking services: doctors, ambulances, blood banks<sup class="src"><a href="#s14">14</a>,<a href="#s20">20</a></sup>. India kept records and services apart, which is the same split this page proposes for Kenya.</p>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Role</th><th>India</th><th>Kenya</th></tr></thead>
+      <tbody>
+        <tr><th>Patient ID</th><td>ABHA number and address</td><td>Client registry ID (national ID, SHA number and others)<sup class="src"><a href="#s12">12</a></sup></td></tr>
+        <tr><th>Provider registries</th><td>Facility and professional registries (HFR, HPR)</td><td>Facility registry and health-worker registry</td></tr>
+        <tr><th>Where records live</th><td>With each provider; nothing central</td><td>Copied to a national Shared Health Record, in FHIR</td></tr>
+        <tr><th>Consent</th><td>Consent manager, per request</td><td>Consent token tied to a single visit</td></tr>
+        <tr><th>Patient's app</th><td>Government ABHA app or private health-record apps</td><td class="hl">HealthPass, on WhatsApp</td></tr>
+        <tr><th>Services layer</th><td>UHI, on beckn</td><td class="hl">The proposed network</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col">
+    <h3>What HealthPass takes from this</h3>
+    <ul class="plain">
+      <li><strong>Use the public rails; don't rebuild them.</strong> IDs and registries are public goods. In Kenya, HealthPass should use the client, facility and health-worker registries the Digital Health Agency already runs.</li>
+      <li><strong>The approval step needs an app people already open.</strong> ABDM's weakest milestone is the one where the patient has to act. HealthPass lives in WhatsApp.</li>
+      <li><strong>Keep the patient's own copy.</strong> In ABDM terms, HealthPass is a health-record app that stores the patient's copy as records are created. That gives the patient the complete history the federated model leaves out, and an IPS they can show at any clinic, including one that isn't connected to the exchange.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="why">
+  <span class="num">06</span>
+  <div class="col">
+    <h2>Why a network</h2>
+    <p>The prescription shows the difference most clearly.</p>
+  </div>
+  <div class="versus">
+    <div class="panel today">
+      <h4>Today</h4>
+      <svg viewBox="0 0 320 236" role="img" aria-labelledby="vt-t">
+        <title id="vt-t">A photographed prescription is filled at two pharmacies</title>
+        <defs><marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <g class="nd c-gr"><rect x="70" y="10" width="180" height="56" rx="8"/><text class="th" x="160" y="32" text-anchor="middle">Prescription photo</text><text class="ts" x="160" y="50" text-anchor="middle">forwarded on WhatsApp</text></g>
+        <g fill="none" stroke-width="1.5" stroke-dasharray="4 4"><line class="ln-r" x1="120" y1="68" x2="80" y2="164" marker-end="url(#ah2)"/><line class="ln-r" x1="200" y1="68" x2="240" y2="164" marker-end="url(#ah2)"/></g>
+        <text class="lbl r" x="92" y="118" text-anchor="end">copy 1</text>
+        <text class="lbl r" x="228" y="118">copy 2</text>
+        <g class="nd c-co"><rect x="8" y="166" width="140" height="56" rx="8"/><text class="th" x="78" y="188" text-anchor="middle">Pharmacy A</text><text class="ts" x="78" y="206" text-anchor="middle">dispensed</text></g>
+        <g class="nd c-co"><rect x="172" y="166" width="140" height="56" rx="8"/><text class="th" x="242" y="188" text-anchor="middle">Pharmacy B</text><text class="ts" x="242" y="206" text-anchor="middle">dispensed again</text></g>
+      </svg>
+      <ul>
+        <li>A photo can be edited, and nothing shows who wrote it.</li>
+        <li>The same prescription can be filled twice.</li>
+        <li>The prescriber never learns what was actually given.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h4>On the network</h4>
+      <svg viewBox="0 0 320 236" role="img" aria-labelledby="vn-t">
+        <title id="vn-t">A signed prescription is verified and redeemed once</title>
+        <defs><marker id="ah3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <g class="nd c-pu"><rect x="70" y="10" width="180" height="56" rx="8"/><text class="th" x="160" y="32" text-anchor="middle">HealthPass</text><text class="ts" x="160" y="50" text-anchor="middle">signed MedicationRequest</text></g>
+        <g fill="none" stroke-width="1.5"><line class="ln-f" x1="120" y1="68" x2="80" y2="164" marker-end="url(#ah3)"/><line class="ln-f" x1="200" y1="68" x2="240" y2="164" stroke-dasharray="4 4" marker-end="url(#ah3)"/></g>
+        <text class="lbl good" x="92" y="112" text-anchor="end">verified,</text>
+        <text class="lbl good" x="92" y="126" text-anchor="end">redeemed</text>
+        <text class="lbl bad" x="228" y="112">refused:</text>
+        <text class="lbl bad" x="228" y="126">already used</text>
+        <g class="nd c-co"><rect x="8" y="166" width="140" height="56" rx="8"/><text class="th" x="78" y="188" text-anchor="middle">Pharmacy A</text><text class="ts" x="78" y="206" text-anchor="middle">MedicationDispense</text></g>
+        <g class="nd c-co"><rect x="172" y="166" width="140" height="56" rx="8"/><text class="th" x="242" y="188" text-anchor="middle">Pharmacy B</text><text class="ts" x="242" y="206" text-anchor="middle">nothing to fill</text></g>
+      </svg>
+      <ul>
+        <li>The signature and the prescriber's licence are checked against the registry.</li>
+        <li>Dispensing marks the prescription completed, so it can't be filled twice.</li>
+        <li>The dispense record, including any generic substitute, goes back to the prescriber.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col"><h3>What beckn solves</h3></div>
+  <div class="problems">
+    <div class="row head" aria-hidden="true"><span>Problem</span><span>HealthPass today</span><span>On the network</span></div>
+    <div class="row"><b>Finding care without a gatekeeper</b><div class="today"><span class="lab">Today</span>HealthPass can only offer the providers it has integrated.</div><div class="net"><span class="lab">On the network</span>Providers publish signed catalogues, discovery services index them, and no one owns the listings.</div></div>
+    <div class="row"><b>Integrate once</b><div class="today"><span class="lab">Today</span>One integration per provider, per country.</div><div class="net"><span class="lab">On the network</span>A lab joins the network once and reaches every patient app.</div></div>
+    <div class="row"><b>Trust between strangers</b><div class="today"><span class="lab">Today</span>A one-time PIN from the patient and a short-lived access code for the provider. Neither shows that the provider is licensed.</div><div class="net"><span class="lab">On the network</span>Registry-listed keys and signed messages, with counter-signed receipts on both sides.</div></div>
+    <div class="row"><b>One lifecycle for every service</b><div class="today"><span class="lab">Today</span>Booking, lab orders and pharmacy are each built separately.</div><div class="net"><span class="lab">On the network</span>The same seven steps carry all three, and any new service.</div></div>
+    <div class="row"><b>Consent tied to a transaction</b><div class="today"><span class="lab">Today</span>The QR code and PIN open the whole record for the visit.</div><div class="net"><span class="lab">On the network</span>Access covers one order for a set time, through a FHIR Consent linked to the beckn contract.</div></div>
+    <div class="row"><b>Records build up as care happens</b><div class="today"><span class="lab">Today</span>Data arrives only where an integration exists.</div><div class="net"><span class="lab">On the network</span>Every completed transaction writes its result back to the patient's record.</div></div>
+    <div class="row"><b>A safe surface for AI agents</b><div class="today"><span class="lab">Today</span>An agent acting for a patient would have to scrape provider websites.</div><div class="net"><span class="lab">On the network</span>It acts on typed catalogues and signed contracts, and every step leaves an audit trail.</div></div>
+  </div>
+
+  <div class="col"><h3>Three ways to build it</h3></div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th></th><th>Government central record</th><th>Private platform</th><th>Open network</th></tr></thead>
+      <tbody>
+        <tr><th>Who builds it</th><td>The state, usually through one vendor</td><td>One company</td><td class="hl">The state builds the rails; many companies build apps</td></tr>
+        <tr><th>Who controls the patient relationship</th><td>The state's system</td><td>The platform: account, history and providers all sit inside it</td><td class="hl">No single app. Patients keep their ID and record, and can change app or wallet without losing their providers</td></tr>
+        <tr><th>Adding a provider</th><td>A separate integration to the central system</td><td>On the platform's terms and fees</td><td class="hl">Join once</td></tr>
+        <tr><th>Booking, ordering, fulfilment</th><td>Usually not covered</td><td>Yes, inside the platform</td><td class="hl">Yes, across all participants</td></tr>
+        <tr><th>Typical failure</th><td>Slow, single vendor, single point of failure</td><td>Lock-in and rising fees</td><td class="hl">Needs governance, and an app patients already use</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col">
+    <p class="muted" style="font-size:0.95rem">Being able to switch doesn't mean people will. On UPI, two apps handle about 79% of payments<sup class="src"><a href="#s10">10</a></sup>. Those apps win by being better, though, and they can't hold people's money or the shops hostage, so leaving stays cheap. The same holds for health only if network rules require every wallet to export the record in standard form. That rule is part of the government's job.</p>
+  </div>
+</section>
+
+<section id="opportunity">
+  <span class="num">07</span>
+  <div class="col">
+    <h2>The opportunity</h2>
+    <h3>Kenya already has the public rails</h3>
+    <p>The Digital Health Act 2023 calls for "shareable and portable personal health records" (s.6(d))<sup class="src"><a href="#s11">11</a></sup>. The Digital Health Agency runs client, health-worker and facility registries and a FHIR-based Shared Health Record<sup class="src"><a href="#s12">12</a></sup>. Kenya's FHIR guides already cover e-prescriptions, with each dispense recorded against its prescription, as well as lab orders and patient summaries<sup class="src"><a href="#s13">13</a>,<a href="#s19">19</a></sup>.</p>
+    <p>What's missing is the services layer on top: a common way for patient apps, clinics, labs and pharmacies to transact. A beckn network adds that layer, and HealthPass is a patient app on it. HealthPass works alongside the national health information exchange rather than replacing it.</p>
+
+    <h3>Who does what</h3>
+  </div>
+  <div class="who">
+    <div><b>Government</b><ul><li>Registries for patients, facilities and health workers</li><li>Network rules and certification</li><li>The health information exchange and data governance</li></ul></div>
+    <div><b>Private sector</b><ul><li>Patient apps</li><li>Clinics, labs and pharmacies</li><li>Discovery services</li></ul></div>
+    <div class="us"><b>HealthPass team</b><ul><li>The beckn health domain pack, aligned with FHIR and Kenya's guides</li><li>FHIR-to-beckn adapters for providers</li><li>HealthPass as the reference patient app</li><li>A pilot</li></ul></div>
+  </div>
+  <div class="col">
+    <h3>Why it is a business</h3>
+    <ul class="plain">
+      <li><strong>Distribution.</strong> Every provider on the network is reachable without a sales and integration project for each one.</li>
+      <li><strong>Revenue.</strong> Completed transactions (bookings, lab orders, filled prescriptions) can earn fees. A record on its own is hard to charge for.</li>
+      <li><strong>Position.</strong> The team that writes the health domain pack and runs the reference app shapes how the standard works.</li>
+      <li><strong>Precedent.</strong> Moving Tech built Namma Yatri, a commercial app on an open beckn network, to 150 million trips<sup class="src"><a href="#s6">6</a></sup>. On UPI, two apps handle about 79% of all payments<sup class="src"><a href="#s10">10</a></sup>. Open networks still produce large winners.</li>
+      <li><strong>Blended funding.</strong> DPI funders and governments can pay for the public parts (the domain pack, open adapters, registry integration) while HealthPass earns commercial revenue.</li>
+    </ul>
+    <h3>What gets built first</h3>
+    <ol class="plain">
+      <li>A draft health domain pack covering lab orders, prescriptions and appointments.</li>
+      <li>FHIR-to-beckn adapters, so providers on existing FHIR systems can join without rebuilding.</li>
+      <li>A Kenya pilot with one clinic network, one lab and a few pharmacies.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="risks">
+  <span class="num">08</span>
+  <div class="col">
+    <h2>Risks</h2>
+    <ul class="risks">
+      <li><strong>Health networks have been slow.</strong> India's health network on beckn, UHI, was first proposed in 2021 and formally launched in June 2026, with five services live<sup class="src"><a href="#s14">14</a>,<a href="#s20">20</a></sup>. It routes through a central government gateway and has published no usage figures. Beckn v2 removes the need for a central gateway.</li>
+      <li><strong>Subsidies don't create demand.</strong> ONDC retail orders fell from 6.5 million to 4.6 million a month after incentives were cut, while mobility, where a zero-commission app served real demand, grew to 56% of transactions<sup class="src"><a href="#s15">15</a></sup>.</li>
+      <li><strong>Patient approval is the hard step.</strong> In India's ABDM, consent-based sharing of records between facilities remains very low because the patient-approval loop is hard to close<sup class="src"><a href="#s16">16</a></sup>. An app patients already use, on WhatsApp, is the part that's missing. That's where HealthPass fits.</li>
+      <li><strong>Competitors can join the same network.</strong> The advantage has to come from WhatsApp reach, the patient agent, and being first.</li>
+      <li><strong>The domain pack doesn't exist yet.</strong> We found no published mapping between beckn and FHIR for health. Writing one is real work.</li>
+      <li><strong>Regulation.</strong> Kenya's Digital Health Agency is custodian of health data under s.22 of the Act, so HealthPass operates under its rules. The Act itself is under appeal; the Court of Appeal stayed the High Court ruling against it in September 2024<sup class="src"><a href="#s17">17</a></sup>.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="sources">
+  <h2 style="font-size:1.2rem">Sources</h2>
+  <ol>
+    <li id="s1">UIDAI Aadhaar enrolment dashboard, updated 28 Sep 2026. <a href="https://uidai.gov.in/en/aadhaar-dashboard/enrollment-dashboard">uidai.gov.in</a></li>
+    <li id="s2">NPCI data for Sep 2026: 24.07 billion UPI transactions. Outlook Money, 2 Oct 2026. <a href="https://www.outlookmoney.com/banking/upi-processes-2407-billion-transactions-worth-rs-2937-lakh-crore-in-september">outlookmoney.com</a></li>
+    <li id="s3">741 banks live on UPI, July 2026. Fintech BizNews. <a href="https://fintechbiznews.com/fintech-digital-payment-/741-banks-are-live-on-upi-network">fintechbiznews.com</a></li>
+    <li id="s4">Sahamati Account Aggregator dashboard, as of 31 Aug 2026. <a href="https://sahamati.org.in/aa-dashboard/">sahamati.org.in</a></li>
+    <li id="s5">ONDC crosses 500 million transactions, July 2026 (DPIIT). Cross-Border Magazine, 7 Aug 2026. <a href="https://cross-border-magazine.com/ondc-500-million-transactions-india/">cross-border-magazine.com</a></li>
+    <li id="s6">Moving Tech (Namma Yatri): 150 million trips. BeBeez, 26 Mar 2026. <a href="https://bebeez.eu/2026/03/26/dutch-firm-automicle-acquired-by-indias-moving-tech-to-roll-out-zero-commission-open-mobility-platforms-across-europe/">bebeez.eu</a></li>
+    <li id="s7">ABDM: 97.8 crore ABHA IDs and 121 crore records linked. GKToday on Arogya Manthan, 25 Sep 2026. <a href="https://www.gktoday.in/arogya-manthan-2026-marks-eight-years-of-ab-pm-jay-and-five-years-of-abdm/">gktoday.in</a></li>
+    <li id="s8">G20 Framework for Systems of Digital Public Infrastructure, 2023. <a href="https://www.g20.utoronto.ca/2023/G20_Digital_Economy_Outcome_Document%20_and_Chair's_Summary_19082023.pdf">g20.utoronto.ca</a></li>
+    <li id="s9">MOSIP Rewind 2025: national rollouts incl. Uganda, Ethiopia, Nigeria and others. <a href="https://www.mosip.io/pdf/MOSIP-Rewind-2025.pdf">mosip.io</a></li>
+    <li id="s10">PhonePe and Google Pay hold about 79% of UPI volume, May 2026. ThePrint, 30 Sep 2026. <a href="https://theprint.in/opinion/upi-is-ruled-by-2-foreign-owned-apps-the-fix-has-been-on-hold-for-6-years/3057456/">theprint.in</a></li>
+    <li id="s11">Kenya Digital Health Act No. 15 of 2023. <a href="https://www.pck.go.ke/sites/default/files/PCK/Resouces/The%20Digital%20Health%20Act%2C%202023.pdf">pck.go.ke</a></li>
+    <li id="s12">Kenya Digital Health Agency HIE documentation: Shared Health Record and registries, Sep 2026. <a href="https://hie-docs.dha.go.ke/docs/sharedHealthRecord/gettingStarted/intro">hie-docs.dha.go.ke</a></li>
+    <li id="s13">Kenya ePrescription FHIR Implementation Guide v0.1.0, Sep 2026. <a href="https://build.fhir.org/ig/IntelliSOFT-Consulting/Kenya-ePrescription-IG/background.html">build.fhir.org</a></li>
+    <li id="s14">PIB backgrounder on UHI and ABDM, 6 Jul 2026. <a href="https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/jul/doc202676912801.pdf">pib.gov.in</a></li>
+    <li id="s15">"Has the ONDC experiment failed?" Finshots, 5 May 2025. <a href="https://finshots.in/archive/has-the-ondc-experiment-failed-nrai-rapido-t-koshy-swiggy-zomato-food-delivery/">finshots.in</a></li>
+    <li id="s16">Kommuru and Agarwal, "From infrastructure to impact", HMPI, 9 Jul 2026. <a href="https://hmpi.org/2026/07/09/from-infrastructure-to-impact-operationalizing-indias-ayushman-bharat-digital-mission/">hmpi.org</a></li>
+    <li id="s17">Court of Appeal stays High Court ruling on Kenya's health Acts, Sep 2024. Mondaq. <a href="https://www.mondaq.com/trials-appeals-compensation/1599800/court-of-appeal-greenlights-operationalisation-of-shif">mondaq.com</a></li>
+    <li id="s18">Beckn Protocol v2, Networks for Humanity documentation. <a href="https://docs.nfh.global/nfh-fabric/open-standards/beckn-protocol">docs.nfh.global</a></li>
+    <li id="s19">Kenya Core FHIR Implementation Guide and domain guides (lab orders, patient summary, referral), Sep 2026. <a href="https://build.fhir.org/ig/IntelliSOFT-Consulting/Kenya-core-FHIR-IG/">build.fhir.org</a></li>
+    <li id="s20">UHI core specification, "an adaptation of Beckn core version 0.9.3". NHA on GitHub. <a href="https://github.com/NHA-ABDM/UHI/blob/main/specification/core.yml">github.com</a></li>
+    <li id="s21">ABDM, Health Information Exchange and Consent Manager (HIE-CM). <a href="https://abdm.gov.in:8081/uploads/ABDM_HIE_CM_ea5d4c0559.pdf">abdm.gov.in</a></li>
+    <li id="s22">ABDM 3rd Mission Steering Group: 5.33 lakh facilities on HFR, 9.85 lakh professionals on HPR, 10 Jul 2026. Daily Pioneer. <a href="https://www.dailypioneer.com/news/ayushman-bharat-digital-mission-now-one-of-worlds-largest-health-ecosystems">dailypioneer.com</a></li>
+    <li id="s23">ABHA-based Scan &amp; Share service. Vikaspedia (Government of India). <a href="https://en.vikaspedia.in/viewcontent/health/health-care-innovations/ayushman-bharat-digital-mission-health-care-innovations-1/abha-based-scan-share-service?lgn=en">vikaspedia.in</a></li>
+    <li id="s24">How to create an ABHA number and ABHA address. DT Next explainer. <a href="https://www.dtnext.in/explainer/how-to-apply-for-an-abha-card-to-manage-your-digital-health-records-a-step-by-step-guide">dtnext.in</a></li>
+    <li id="s25">ABDM FHIR Implementation Guide v6.5.0 (FHIR R4), NRCeS, May 2025. <a href="https://nrces.in/ndhm/fhir/r4/index.html">nrces.in</a></li>
+    <li id="s26">"Building an ABDM HIU from scratch: M3 flow reference architecture". Nirmitee (implementer blog, secondary). <a href="https://nirmitee.io/blog/building-abdm-hiu-from-scratch-m3-flow-reference-architecture/">nirmitee.io</a></li>
+    <li id="s27">"dataEraseAt for HIU", ABDM developer forum. <a href="https://devforum.abdm.gov.in/t/dataeraseat-for-hiu/3453">devforum.abdm.gov.in</a></li>
+    <li id="s28">"The ABDM's decentralized and patient-centric consent management architecture". SFLC.in, 18 Jan 2024. <a href="https://sflc.in/?p=8723">sflc.in</a></li>
+    <li id="s29">"Building an ABDM HIP from scratch: M2 flow reference architecture". Nirmitee (implementer blog, secondary). <a href="https://nirmitee.io/blog/building-abdm-hip-from-scratch-m2-flow-reference-architecture/">nirmitee.io</a></li>
+  </ol>
+  <p class="note">Prepared October 2026. Figures carry the date of the source; Indian figures in crore are converted to millions and billions.</p>
+</footer>
+
+<script>
+(function () {
+  const FLOWS = {
+    lab: {
+      intro: 'A clinic orders an HbA1c test. The patient books a lab with home collection through HealthPass, and the result comes back to their record.',
+      nodes: {
+        pt: { x: 40, y: 20, c: 'pu', t: 'Patient', s: 'WhatsApp' },
+        ds: { x: 260, y: 20, c: 'te', t: 'Discovery service', s: 'Indexes lab catalogues' },
+        hp: { x: 40, y: 150, c: 'pu', t: 'HealthPass', s: 'Consumer node + vault' },
+        pr: { x: 480, y: 150, c: 'co', t: 'Afya Lab', s: 'Provider node' },
+        cl: { x: 260, y: 280, c: 'gr', t: 'Tumaini Clinic', s: 'Ordering clinic' }
+      },
+      lines: [[120,76,120,150],[190,150,270,76],[200,178,480,178],[160,206,275,280]],
+      edges: { 'pt>hp':[[112,76],[112,150]], 'hp>pt':[[128,150],[128,76]], 'hp>ds':[[190,150],[270,76]], 'ds>hp':[[270,76],[190,150]], 'hp>pr':[[200,172],[480,172]], 'pr>hp':[[480,186],[200,186]], 'cl>hp':[[275,280],[160,206]], 'hp>cl':[[160,206],[275,280]] },
+      steps: [
+        { t: '1. The order lives in the record.', d: 'The clinician writes a FHIR ServiceRequest for HbA1c into the patient’s HealthPass, using write access from the visit. It isn’t addressed to any particular lab.', h: [['cl>hp','FHIR write: ServiceRequest','f'], ['hp>pt','new lab order: HbA1c','c']] },
+        { t: '2. Find a lab.', d: 'HealthPass searches by test and location. Lab catalogues list tests offered, sites, home collection and insurance accepted. The search is anonymous.', h: [['pt>hp','where can I get this done?','c'], ['hp>ds','discover: HbA1c, 5 km, SHA','b'], ['ds>hp','on_discover: 4 labs','b'], ['hp>pt','options + home collection','c']] },
+        { t: '3. Price and collection slots (select).', d: 'Live prices and collector availability come straight from the lab, because they change too fast for the index.', h: [['hp>pr','select: HbA1c, home collection','b'], ['pr>hp','on_select: KES 1,800, slots','b']] },
+        { t: '4. Book, and share the order (init, confirm).', d: 'The patient approves the booking and the lab’s access to this order. The contract references the ServiceRequest, so the lab is fulfilling a real clinical order.', h: [['hp>pr','init: slot, address, order ref','b'], ['pr>hp','on_init: terms','b'], ['hp>pt','book + share order with lab?','c'], ['pt>hp','yes','c'], ['hp>pr','confirm','b'], ['pr>hp','on_confirm: contract','b']] },
+        { t: '5. The lab reads the order.', d: 'Using the Consent, the lab fetches the ServiceRequest over SMART, including any notes the clinician attached, such as fasting status.', h: [['pr>hp','SMART GET ServiceRequest','f'], ['hp>pr','order details','f']] },
+        { t: '6. Collection and processing.', d: 'Progress arrives as on_track and on_status callbacks, such as the collector on the way or the sample received. HealthPass passes the useful ones to the patient.', h: [['pr>hp','on_track: collector 15 min','b'], ['hp>pt','collector arriving','c'], ['pr>hp','on_status: sample in lab','b']] },
+        { t: '7. The result goes to the record, then the clinician.', d: 'The lab writes a DiagnosticReport and Observations into HealthPass. The ordering clinic, already authorised for this order, is notified and pulls the result. The patient sees it too.', h: [['pr>hp','FHIR write: DiagnosticReport','f'], ['pr>hp','on_status: completed','b'], ['hp>pt','result ready: HbA1c 7.9%','c'], ['hp>cl','notify ordering clinic','f'], ['cl>hp','SMART GET result','f']] }
+      ]
+    },
+    rx: {
+      intro: 'A signed prescription is stored in HealthPass and filled at a pharmacy found on the network. Redemption is recorded so it can’t be filled twice.',
+      nodes: {
+        pt: { x: 40, y: 20, c: 'pu', t: 'Patient', s: 'WhatsApp' },
+        ds: { x: 260, y: 20, c: 'te', t: 'Discovery service', s: 'Indexes pharmacies' },
+        hp: { x: 40, y: 150, c: 'pu', t: 'HealthPass', s: 'Consumer node + vault' },
+        pr: { x: 480, y: 150, c: 'co', t: 'Neema Pharmacy', s: 'Provider node' },
+        cl: { x: 260, y: 280, c: 'co', t: 'Prescriber', s: 'Doctor, Tumaini Clinic' },
+        reg: { x: 480, y: 280, c: 'gr', t: 'Registry', s: 'Licensed prescribers' }
+      },
+      lines: [[120,76,120,150],[190,150,270,76],[200,178,480,178],[160,206,275,280],[560,206,560,280]],
+      edges: { 'pt>hp':[[112,76],[112,150]], 'hp>pt':[[128,150],[128,76]], 'hp>ds':[[190,150],[270,76]], 'ds>hp':[[270,76],[190,150]], 'hp>pr':[[200,172],[480,172]], 'pr>hp':[[480,186],[200,186]], 'cl>hp':[[275,280],[160,206]], 'hp>cl':[[160,206],[275,280]], 'pr>reg':[[552,206],[552,280]], 'reg>pr':[[568,280],[568,206]] },
+      steps: [
+        { t: '1. The prescriber writes and signs the prescription.', d: 'After the consultation, the doctor writes a MedicationRequest in the clinic’s system and signs it with their registry-listed key. It is saved to the patient’s HealthPass using write access from the visit, so anyone can later check that it came from a licensed prescriber and wasn’t altered.', h: [['cl','write + sign MedicationRequest'], ['cl>hp','FHIR write: signed MedicationRequest','f'], ['hp>pt','new prescription: amoxicillin','c']] },
+        { t: '2. Find a pharmacy.', d: 'Pharmacy catalogues carry locations, hours, delivery radius and insurance. Stock levels stay out of the catalogue because they change hourly.', h: [['pt>hp','fill this, delivery please','c'], ['hp>ds','discover: pharmacy, delivers, 5 km','b'], ['ds>hp','on_discover: 5 pharmacies','b']] },
+        { t: '3. Stock, price, substitutes (select).', d: 'HealthPass asks a few pharmacies in parallel. Each answers with live stock and price, and may offer a generic where substitution rules allow it.', h: [['hp>pr','select: amoxicillin 500mg x21','b'], ['pr>hp','on_select: generic, KES 450','b'], ['hp>pt','best: generic, delivered today','c']] },
+        { t: '4. Book and share (init, confirm).', d: 'The patient approves the order and the pharmacy’s access to this one prescription, not the whole record.', h: [['hp>pr','init: delivery address, Rx ref','b'], ['pr>hp','on_init: terms, payment','b'], ['pt>hp','approve','c'], ['hp>pr','confirm','b'], ['pr>hp','on_confirm: contract','b']] },
+        { t: '5. The pharmacy verifies the prescription.', d: 'It fetches the MedicationRequest, then checks the signature and the prescriber’s licence against the registry. A forged or edited prescription fails here.', h: [['pr>hp','SMART GET MedicationRequest','f'], ['hp>pr','signed prescription','f'], ['pr>reg','verify prescriber key + licence','r'], ['reg>pr','valid, licensed','r']] },
+        { t: '6. Redeem, so it can’t be filled twice.', d: 'Before dispensing, the pharmacy records a MedicationDispense and HealthPass marks the prescription completed in the same step. A second pharmacy trying to fill it would see it has already been used.', h: [['pr>hp','FHIR write: MedicationDispense','f'], ['hp','mark MedicationRequest completed'], ['hp>pr','redeemed, ok to dispense','f']] },
+        { t: '7. Delivery and follow-up.', d: 'Tracking arrives through on_track. The dispense record lets the prescriber see what was actually given, including any substitution.', h: [['pr>hp','on_track: rider 20 min','b'], ['hp>pt','delivery on the way','c'], ['pr>hp','on_status: delivered','b'], ['hp>cl','notify: dispensed (generic)','f']] }
+      ]
+    },
+    appt: {
+      intro: 'A patient books an antenatal visit through HealthPass and shares their patient summary with the clinic before the visit.',
+      nodes: {
+        pt: { x: 40, y: 20, c: 'pu', t: 'Patient', s: 'WhatsApp' },
+        ds: { x: 260, y: 20, c: 'te', t: 'Discovery service', s: 'Run by the network' },
+        hp: { x: 40, y: 150, c: 'pu', t: 'HealthPass', s: 'Consumer node + vault' },
+        cl: { x: 480, y: 150, c: 'co', t: 'Tumaini Clinic', s: 'Provider node' },
+        reg: { x: 260, y: 280, c: 'gr', t: 'Registry', s: 'Verified facilities' }
+      },
+      lines: [[120,76,120,150],[190,150,270,76],[410,76,490,150],[200,178,480,178],[520,206,405,280],[340,76,340,280]],
+      edges: { 'pt>hp':[[112,76],[112,150]], 'hp>pt':[[128,150],[128,76]], 'hp>ds':[[190,150],[270,76]], 'ds>hp':[[270,76],[190,150]], 'ds>cl':[[410,76],[490,150]], 'cl>ds':[[490,150],[410,76]], 'hp>cl':[[200,172],[480,172]], 'cl>hp':[[480,186],[200,186]], 'cl>reg':[[520,206],[405,280]], 'ds>reg':[[340,76],[340,280]], 'reg>ds':[[340,280],[340,76]] },
+      steps: [
+        { t: '1. Clinics publish services, not slots.', d: 'The catalogue holds slow-changing facts: services, locations, hours, insurance accepted. Live availability changes too fast for a crawled index, so it comes later, at select.', h: [['cl','sign + host service catalogue'], ['ds>reg','resolve verified clinics','r'], ['ds>cl','crawl catalogue','b'], ['cl>ds','signed catalogue','b'], ['ds','verify + index']] },
+        { t: '2. The patient asks, anonymously.', d: 'The patient writes in plain language. HealthPass turns that into a location-filtered discover request. No patient identity leaves HealthPass at this stage.', h: [['pt>hp','antenatal visit near me tomorrow','c'], ['hp>ds','discover: antenatal, 5 km','b'], ['ds>hp','on_discover: 3 clinics','b'], ['hp>pt','pick a clinic','c']] },
+        { t: '3. Live slots (select).', d: 'HealthPass asks the chosen clinic directly. The clinic’s adapter queries its scheduling system (FHIR Slot) and returns what’s open now, still with no patient identity.', h: [['pt>hp','Tumaini Clinic','c'], ['hp>cl','select: antenatal, tomorrow','b'], ['cl','query FHIR Slots'], ['cl>hp','on_select: 9:00, 10:30, 14:00','b']] },
+        { t: '4. Terms and a records request (init).', d: 'Only now does HealthPass send minimal identity and coverage. The clinic replies with terms, its cancellation policy, and which records it would like before the visit.', h: [['hp>cl','init: 10:30, name, phone, SHA','b'], ['cl>hp','on_init: terms + wants IPS','b']] },
+        { t: '5. One approval covers both.', d: 'The patient confirms the booking and, separately, whether to share records, and can narrow what is shared. HealthPass writes a FHIR Consent tied to this appointment.', h: [['hp>pt','book 10:30? share summary?','c'], ['pt>hp','yes, but not mental health','c'], ['hp','write Consent (scoped, 7 days)']] },
+        { t: '6. The appointment is a contract (confirm).', d: 'The on_confirm contract maps to a FHIR Appointment at the clinic. It references the Consent, which tells the clinic it may now fetch records.', h: [['hp>cl','confirm (signed)','b'], ['cl>hp','ack + counter-signature','b'], ['cl','book FHIR Appointment'], ['cl>hp','on_confirm: contract + Consent','b']] },
+        { t: '7. Pre-visit preparation and reminders.', d: 'The clinic pulls the approved summary over SMART using its registry key. Reminders and check-in arrive as on_status callbacks, passed on to WhatsApp.', h: [['cl>hp','SMART token, then GET IPS','f'], ['hp>cl','IPS bundle (scoped)','f'], ['cl>hp','on_status: reminder, 10:30','b'], ['hp>pt','reminder: tomorrow 10:30','c']] },
+        { t: '8. After the visit, the record grows.', d: 'The clinic writes the visit summary back to HealthPass with write access the patient granted. The patient can rate the visit, and the record is richer for the next booking.', h: [['cl>hp','on_status: completed','b'], ['cl>hp','FHIR write: visit summary','f'], ['hp>pt','summary added, rate visit?','c'], ['hp>cl','rate: 5','b']] }
+      ]
+    }
+  };
+
+  const ABDM_FLOWS = {
+    abdm: {
+      title: 'ABDM record sharing',
+      intro: 'Priya shares records from a district hospital with a specialist clinic. The records stay where they were created. The consent manager handles the request and her approval, and the data goes straight from one provider to the other.',
+      nodes: {
+        pt: { x: 40, y: 20, c: 'pu', t: 'Patient', s: 'ABHA or health-record app' },
+        cm: { x: 260, y: 20, c: 'te', t: 'Consent manager', s: 'Sees requests, not data' },
+        gw: { x: 480, y: 20, c: 'gr', t: 'ABDM gateway', s: 'Routes messages' },
+        hip: { x: 40, y: 150, c: 'co', t: 'District hospital', s: 'Holds the record' },
+        hiu: { x: 480, y: 150, c: 'co', t: 'Specialist clinic', s: 'Asks for the record' },
+        reg: { x: 260, y: 280, c: 'gr', t: 'Registries', s: 'ABHA · HFR · HPR' }
+      },
+      lines: [[120,76,120,150],[200,49,260,49],[420,49,480,49],[190,150,270,76],[520,76,520,150],[490,76,200,155],[200,178,480,178],[160,206,275,280],[520,206,405,280]],
+      edges: { 'pt>hip':[[112,76],[112,150]], 'hip>pt':[[128,150],[128,76]], 'pt>cm':[[200,42],[260,42]], 'cm>pt':[[260,56],[200,56]], 'cm>gw':[[420,42],[480,42]], 'gw>cm':[[480,56],[420,56]], 'hip>cm':[[190,150],[270,76]], 'hiu>gw':[[512,150],[512,76]], 'gw>hiu':[[528,76],[528,150]], 'gw>hip':[[490,76],[200,155]], 'hip>hiu':[[200,178],[480,178]], 'hip>reg':[[160,206],[275,280]], 'reg>hip':[[275,280],[160,206]], 'hiu>reg':[[520,206],[405,280]], 'reg>hiu':[[405,280],[520,206]] },
+      steps: [
+        { t: '1. Create an ABHA.', d: 'Priya verifies with an Aadhaar or mobile one-time code and gets a 14-digit ABHA number and an ABHA address, priya@abdm. The ID itself holds no health data.', h: [['pt','verify with Aadhaar or mobile OTP'], ['reg','issue ABHA number + address']] },
+        { t: '2. Register at the hospital.', d: 'At the registration desk she scans the hospital’s QR code and shares her ABHA, which gives her an outpatient token without filling in forms. India calls this Scan & Share.', h: [['pt>hip','scan & share: ABHA','c'], ['hip>reg','check ABHA','r'], ['reg>hip','valid','r']] },
+        { t: '3. The visit is linked, not copied.', d: 'After the visit the hospital keeps the record in its own system and links the visit (a “care context”) to her ABHA. Nothing goes to a central store.', h: [['hip','store record in hospital system'], ['hip>cm','link visit to ABHA','r'], ['cm>pt','new record linked','c']] },
+        { t: '4. Another provider asks.', d: 'A specialist clinic sends a consent request with her ABHA address, stating the purpose, the record types and the date range.', h: [['hiu>gw','consent request: purpose, types, dates','r'], ['gw>cm','forward request','r'], ['cm>pt','approve request?','c']] },
+        { t: '5. The patient approves, or narrows it.', d: 'Priya approves in her app and can limit what is shared. The consent manager issues a signed consent artefact, and the gateway tells both providers.', h: [['pt>cm','approve: prescriptions, 6 months','c'], ['cm>gw','signed consent artefact','r'], ['gw>hiu','consent granted','r'], ['gw>hip','consent + data request','r']] },
+        { t: '6. The data goes direct, encrypted.', d: 'The hospital sends the records straight to the clinic as encrypted FHIR bundles. The consent manager and the gateway never see the clinical data.', h: [['hip>hiu','encrypted FHIR bundles','f'], ['hiu','decrypt + show to doctor']] }
+      ]
+    }
+  };
+
+  const NS = 'http://www.w3.org/2000/svg';
+  const NODE_W = 160, NODE_H = 56, W = 680, H = 350;
+  const reduceMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  function el(name, attrs, parent) {
+    const e = document.createElementNS(NS, name);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function colors(kind) {
+    const cs = getComputedStyle(document.documentElement);
+    const v = n => cs.getPropertyValue('--' + kind + '-' + n).trim();
+    return { fill: v('fill'), stroke: v('stroke'), text: v('text'), dot: v('dot') };
+  }
+
+  function createPlayer(root, flows) {
+    const svg = root.querySelector('.flow-svg');
+    const intro = root.querySelector('.flow-intro');
+    const dots = root.querySelector('.dots');
+    const ct = root.querySelector('.ct');
+    const cd = root.querySelector('.cd');
+    const log = root.querySelector('.log');
+    const panel = root.querySelector('[role="tabpanel"]');
+    const tabs = Array.from(root.querySelectorAll('.tabs [role="tab"]'));
+
+    let flow = null, cur = 0, tok = 0, nodeEls = {}, seen = false;
+    let pk, pkr, pkt, pkc;
+
+    function nodeName(id) { return flow.nodes[id].t; }
+    function hot(id, on) { if (nodeEls[id]) nodeEls[id].classList.toggle('hot', on); }
+
+    function render(key, title) {
+      flow = flows[key];
+      intro.textContent = flow.intro;
+      while (svg.lastChild && svg.lastChild.nodeName !== 'title') svg.removeChild(svg.lastChild);
+      svg.querySelector('title').textContent = title;
+      const wires = el('g', {}, svg);
+      flow.lines.forEach(([x1, y1, x2, y2]) => el('line', { class: 'wire', x1, y1, x2, y2 }, wires));
+      nodeEls = {};
+      for (const id in flow.nodes) {
+        const n = flow.nodes[id];
+        const g = el('g', { class: 'nd c-' + n.c }, svg);
+        el('rect', { x: n.x, y: n.y, width: NODE_W, height: NODE_H, rx: 8 }, g);
+        el('text', { class: 'th', x: n.x + NODE_W / 2, y: n.y + 23, 'text-anchor': 'middle' }, g).textContent = n.t;
+        el('text', { class: 'ts', x: n.x + NODE_W / 2, y: n.y + 41, 'text-anchor': 'middle' }, g).textContent = n.s;
+        nodeEls[id] = g;
+      }
+      // The message packet, as in the original animations: a labelled pill riding just above a dot.
+      pk = el('g', { style: 'opacity:0' }, svg);
+      pkr = el('rect', { x: -40, y: -30, width: 80, height: 20, rx: 4, 'stroke-width': 0.5 }, pk);
+      pkt = el('text', { x: 0, y: -20, 'text-anchor': 'middle', 'dominant-baseline': 'central', class: 'pkt' }, pk);
+      pkc = el('circle', { r: 6 }, pk);
+      dots.innerHTML = '';
+      flow.steps.forEach((s, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Step ' + (i + 1));
+        b.onclick = () => go(i);
+        dots.appendChild(b);
+      });
+      cur = 0;
+      if (seen) run(); else show();
+      if (!seen && reduceMQ.matches) flow.steps[cur].h.forEach(addLine);
+    }
+
+    function show() {
+      const step = flow.steps[cur];
+      pk.style.opacity = 0;
+      Object.keys(flow.nodes).forEach(id => hot(id, false));
+      ct.textContent = step.t; cd.textContent = step.d;
+      [...dots.children].forEach((d, i) => { if (i === cur) d.setAttribute('aria-current', 'step'); else d.removeAttribute('aria-current'); });
+      log.innerHTML = '';
+    }
+
+    function lineText([k, label]) {
+      if (!k.includes('>')) return nodeName(k) + ': ' + label;
+      const [f, t] = k.split('>');
+      return nodeName(f) + ' → ' + nodeName(t) + '   ' + label;
+    }
+    function addLine(h) {
+      const li = document.createElement('li');
+      li.textContent = lineText(h);
+      log.appendChild(li);
+    }
+
+    async function hop(h, my) {
+      const [k, label, kind] = h;
+      addLine(h);
+      if (!k.includes('>')) { hot(k, true); await sleep(1000); hot(k, false); return; }
+      const [a, b] = flow.edges[k];
+      const [f, t] = k.split('>');
+      const c = colors(kind);
+      pkr.setAttribute('fill', c.fill); pkr.setAttribute('stroke', c.stroke); pkt.style.fill = c.text; pkc.setAttribute('fill', c.dot);
+      pkt.textContent = label;
+      const w = pkt.getComputedTextLength() + 16;
+      pkr.setAttribute('width', w); pkr.setAttribute('x', -w / 2);
+      hot(f, true); pk.style.opacity = 1;
+      const dur = 1500, st = performance.now();
+      await new Promise(res => {
+        function fr(now) {
+          if (my !== tok) return res();
+          let p = Math.min(1, (now - st) / dur);
+          p = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+          pk.setAttribute('transform', 'translate(' + (a[0] + (b[0] - a[0]) * p) + ',' + (a[1] + (b[1] - a[1]) * p) + ')');
+          if (p < 1) requestAnimationFrame(fr); else res();
+        }
+        requestAnimationFrame(fr);
+      });
+      hot(f, false); hot(t, true); pk.style.opacity = 0;
+      await sleep(250);
+      hot(t, false);
+    }
+
+    async function run() {
+      const my = ++tok;
+      show();
+      const step = flow.steps[cur];
+      for (const h of step.h) {
+        if (my !== tok) return;
+        await hop(h, my);
+      }
+    }
+
+    function go(i) { cur = (i + flow.steps.length) % flow.steps.length; seen = true; run(); }
+    root.querySelector('.next').onclick = () => go(cur + 1);
+    root.querySelector('.prev').onclick = () => go(cur - 1);
+    root.querySelector('.replay').onclick = () => { seen = true; run(); };
+
+    // Play the current step the first time the diagram scrolls into view, not on page load.
+    // With the reduced-motion setting on, nothing plays by itself; the controls still animate on request.
+    if (reduceMQ.matches) {
+      // wait for the reader to press a control
+    } else if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        if (!seen && entries.some(e => e.isIntersecting)) { seen = true; io.disconnect(); run(); }
+      }, { threshold: 0.5 });
+      io.observe(svg);
+    } else {
+      seen = true;
+    }
+
+    if (!tabs.length) {
+      const key = Object.keys(flows)[0];
+      render(key, flows[key].title);
+      return;
+    }
+    function selectTab(btn) {
+      tabs.forEach(t => { t.setAttribute('aria-selected', String(t === btn)); t.tabIndex = t === btn ? 0 : -1; });
+      panel.setAttribute('aria-labelledby', btn.id);
+      render(btn.dataset.flow, btn.textContent + ' flow');
+    }
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => { seen = true; selectTab(t); });
+      t.addEventListener('keydown', e => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        const n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+        seen = true; n.focus(); selectTab(n);
+      });
+    });
+    selectTab(tabs[0]);
+  }
+
+  createPlayer(document.getElementById('player'), FLOWS);
+  createPlayer(document.getElementById('abdm-player'), ABDM_FLOWS);
+})();
+</script>
+</body>
+</html>
