@@ -124,6 +124,7 @@ header.top h2 { margin-top: 40px; }
 .story svg { display: block; width: 100%; height: auto; }
 .story p { margin: 10px 0 0; font-size: 0.9rem; }
 @media (max-width: 760px) { .story { grid-template-columns: 1fr; } .story svg { max-width: 380px; margin-inline: auto; } }
+.nd.opt rect { stroke-dasharray: 4 3; }
 .c-b rect { fill: var(--b-fill); stroke: var(--b-stroke); } .c-b .th { fill: var(--b-text); } .c-b .ts { fill: var(--b-stroke); }
 
 /* timeline */
@@ -284,10 +285,10 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
 .sitenav .brand { font-family: var(--font-display); font-weight: 600; white-space: nowrap; color: var(--ink); text-decoration: none; padding-block: 12px; }
 .sitenav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
 .sitenav ul::-webkit-scrollbar { display: none; }
-.sitenav a.tab { display: block; white-space: nowrap; font-size: 0.88rem; color: var(--muted); text-decoration: none; padding: 13px 10px 11px; border-bottom: 2px solid transparent; }
+.sitenav a.tab { display: block; white-space: nowrap; font-size: 0.88rem; color: var(--muted); text-decoration: none; padding: 13px 9px 11px; border-bottom: 2px solid transparent; }
 .sitenav a.tab:hover { color: var(--ink); }
 .sitenav a.tab[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); font-weight: 600; }
-@media (max-width: 640px) { .sitenav .brand { display: none; } }
+@media (max-width: 1440px) { .sitenav .brand { display: none; } }
 .page { border-top: 0; }
 section.page { padding-block: 36px 24px; }
 header.top.page { padding-block: 48px 24px; }
@@ -311,13 +312,13 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
     <ul>
       <li><a class="tab" href="#overview">Overview</a></li>
       <li><a class="tab" href="#today">HealthPass today</a></li>
-      <li><a class="tab" href="#pattern">The pattern</a></li>
-      <li><a class="tab" href="#beckn">Beckn</a></li>
-      <li><a class="tab" href="#flows">Flows</a></li>
-      <li><a class="tab" href="#india">India (ABDM)</a></li>
+      <li><a class="tab" href="#pattern">India’s systems</a></li>
+      <li><a class="tab" href="#beckn">How beckn works</a></li>
+      <li><a class="tab" href="#flows">Examples</a></li>
+      <li><a class="tab" href="#india">India’s health records</a></li>
       <li><a class="tab" href="#why">Why a network</a></li>
       <li><a class="tab" href="#choice">No lock-in</a></li>
-      <li><a class="tab" href="#opportunity">Opportunity</a></li>
+      <li><a class="tab" href="#opportunity">Business model</a></li>
       <li><a class="tab" href="#risks">Risks</a></li>
       <li><a class="tab" href="#sources">Sources</a></li>
     </ul>
@@ -327,32 +328,32 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
 <header class="top page" id="overview" data-title="Overview">
   <div class="eyebrow">HealthPass · beckn protocol · October 2026</div>
   <h1>HealthPass gives every patient a record. Beckn connects that record to every clinic, lab and pharmacy.</h1>
-  <p class="lede">HealthPass is a health record that belongs to the patient and opens inside WhatsApp. Beckn is an open protocol that lets clinics, labs, pharmacies and patient apps find each other, agree on a service and send each other results, with no single company or ministry in the middle. This site explains why HealthPass is stronger on a beckn network than on its own, using two everyday examples: a lab test and a prescription.</p>
+  <p class="lede">HealthPass is a health record that belongs to the patient and opens inside WhatsApp. Beckn is an open, free-to-use set of rules (a protocol) that lets clinics, labs, pharmacies and patient apps find each other, agree on a service and send each other results, with no single company or ministry in the middle. On a beckn network, HealthPass can work with any clinic, lab or pharmacy on the network, not only the ones it has connected to one at a time.</p>
 
   <div class="col">
-    <h2>One patient, four places</h2>
-    <p>Take Wanjiru, a 34-year-old in Nairobi being treated for high blood pressure. Over a year she sees two clinics, has blood tests at a lab and collects medicine from a pharmacy. Her history ends up in four places that don’t talk to each other: one clinic’s computer system, the other clinic’s paper file, a lab result sent to her by SMS, and a photo of a prescription on her phone. Each new provider starts from nothing. Tests get repeated, and no one has the full list of what she takes.</p>
+    <h2>Today a patient’s records are split across the places she visits</h2>
+    <p>Take Thandi, a 34-year-old in Soweto being treated for high blood pressure. Over a year she sees a public clinic and a private doctor, has blood tests at a lab and collects medicine from a pharmacy. Her history ends up in four places that don’t talk to each other: the clinic’s paper file, the doctor’s computer system, a lab result sent to her by SMS, and a photo of a prescription on her phone. Each new provider starts from nothing. Tests get repeated, and no one has the full list of what she takes.</p>
   </div>
 
   <div class="story">
     <div class="panel">
-      <h4>Today</h4>
+      <h4>Today: no shared record</h4>
       <svg viewBox="0 0 300 232" role="img" aria-labelledby="st1-t">
         <title id="st1-t">Four providers each hold a piece of the record, and none are connected</title>
         <line class="wire" x1="105" y1="92" x2="62" y2="54"/>
         <line class="wire" x1="195" y1="92" x2="238" y2="54"/>
         <line class="wire" x1="105" y1="140" x2="62" y2="178"/>
         <line class="wire" x1="195" y1="140" x2="238" y2="178"/>
-        <g class="nd c-pu"><rect x="75" y="92" width="150" height="48" rx="8"/><text class="th" x="150" y="112" text-anchor="middle">Wanjiru</text><text class="ts" x="150" y="129" text-anchor="middle">paper and phone photos</text></g>
-        <g class="nd c-gr"><rect x="2" y="6" width="124" height="48" rx="8"/><text class="th" x="64" y="26" text-anchor="middle">Clinic A</text><text class="ts" x="64" y="43" text-anchor="middle">its own system</text></g>
-        <g class="nd c-gr"><rect x="174" y="6" width="124" height="48" rx="8"/><text class="th" x="236" y="26" text-anchor="middle">Clinic B</text><text class="ts" x="236" y="43" text-anchor="middle">a paper file</text></g>
+        <g class="nd c-pu"><rect x="75" y="92" width="150" height="48" rx="8"/><text class="th" x="150" y="112" text-anchor="middle">Thandi</text><text class="ts" x="150" y="129" text-anchor="middle">paper and phone photos</text></g>
+        <g class="nd c-gr"><rect x="2" y="6" width="124" height="48" rx="8"/><text class="th" x="64" y="26" text-anchor="middle">Clinic</text><text class="ts" x="64" y="43" text-anchor="middle">a paper file</text></g>
+        <g class="nd c-gr"><rect x="174" y="6" width="124" height="48" rx="8"/><text class="th" x="236" y="26" text-anchor="middle">Doctor</text><text class="ts" x="236" y="43" text-anchor="middle">its own system</text></g>
         <g class="nd c-gr"><rect x="2" y="178" width="124" height="48" rx="8"/><text class="th" x="64" y="198" text-anchor="middle">Lab</text><text class="ts" x="64" y="215" text-anchor="middle">result by SMS</text></g>
         <g class="nd c-gr"><rect x="174" y="178" width="124" height="48" rx="8"/><text class="th" x="236" y="198" text-anchor="middle">Pharmacy</text><text class="ts" x="236" y="215" text-anchor="middle">prescription photo</text></g>
       </svg>
-      <p>No shared record. Each provider keeps its own piece, and Wanjiru carries the rest on paper and on her phone.</p>
+      <p>No shared record. Each provider keeps its own piece, and Thandi carries the rest on paper and on her phone.</p>
     </div>
     <div class="panel">
-      <h4>With HealthPass</h4>
+      <h4>HealthPass on its own</h4>
       <svg viewBox="0 0 300 232" role="img" aria-labelledby="st2-t">
         <title id="st2-t">HealthPass holds one record but is connected to only one provider</title>
         <line class="ln-f" x1="105" y1="92" x2="62" y2="54" fill="none" stroke-width="1.5"/>
@@ -360,12 +361,12 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
         <line class="wire" x1="105" y1="140" x2="62" y2="178"/>
         <line class="wire" x1="195" y1="140" x2="238" y2="178"/>
         <g class="nd c-pu"><rect x="75" y="92" width="150" height="48" rx="8"/><text class="th" x="150" y="112" text-anchor="middle">HealthPass</text><text class="ts" x="150" y="129" text-anchor="middle">her record in WhatsApp</text></g>
-        <g class="nd c-co"><rect x="2" y="6" width="124" height="48" rx="8"/><text class="th" x="64" y="26" text-anchor="middle">Clinic A</text><text class="ts" x="64" y="43" text-anchor="middle">connected</text></g>
-        <g class="nd c-gr"><rect x="174" y="6" width="124" height="48" rx="8"/><text class="th" x="236" y="26" text-anchor="middle">Clinic B</text><text class="ts" x="236" y="43" text-anchor="middle">not connected</text></g>
+        <g class="nd c-co"><rect x="2" y="6" width="124" height="48" rx="8"/><text class="th" x="64" y="26" text-anchor="middle">Clinic</text><text class="ts" x="64" y="43" text-anchor="middle">connected</text></g>
+        <g class="nd c-gr"><rect x="174" y="6" width="124" height="48" rx="8"/><text class="th" x="236" y="26" text-anchor="middle">Doctor</text><text class="ts" x="236" y="43" text-anchor="middle">not connected</text></g>
         <g class="nd c-gr"><rect x="2" y="178" width="124" height="48" rx="8"/><text class="th" x="64" y="198" text-anchor="middle">Lab</text><text class="ts" x="64" y="215" text-anchor="middle">not connected</text></g>
         <g class="nd c-gr"><rect x="174" y="178" width="124" height="48" rx="8"/><text class="th" x="236" y="198" text-anchor="middle">Pharmacy</text><text class="ts" x="236" y="215" text-anchor="middle">not connected</text></g>
       </svg>
-      <p>One record that Wanjiru owns, opened in WhatsApp. It fills in only where HealthPass has built a connection to that provider’s system.</p>
+      <p>One record that Thandi owns, opened in WhatsApp. It fills in only where HealthPass has built a connection to that provider’s system.</p>
     </div>
     <div class="panel">
       <h4>HealthPass on a beckn network</h4>
@@ -388,25 +389,25 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
   </div>
 
   <div class="col">
-    <h2>The case in five points</h2>
+    <h2>Key points</h2>
     <ul class="limits points">
-      <li><strong>HealthPass makes the record the patient’s.</strong> It holds her health summary in the international standard format, opens in an app she already uses, and logs everyone who looks at it.</li>
+      <li><strong>HealthPass gives the patient her own record.</strong> It holds her health summary in the international standard format, opens in an app she already uses, and logs everyone who looks at it.</li>
       <li><strong>On its own, it has to connect to providers one at a time.</strong> Each clinic, lab and pharmacy system needs its own link, and HealthPass has no way to check that a provider is licensed.</li>
-      <li><strong>Beckn replaces those one-off links with a network.</strong> A provider joins once, is listed in a shared registry and signs every message, so any patient app can find it, order from it and trust its results.</li>
-      <li><strong>The model is proven at national scale.</strong> India runs payments (UPI) and online commerce (ONDC, which is built on beckn) this way: a public body runs the shared rails and many companies compete to build the apps people use.</li>
-      <li><strong>No lock-in, including to us.</strong> We want to build the network as a public good, with government and donors. Patients can use HealthPass or any other wallet and take their record with them. Our business is helping clinics, labs and pharmacies get onto the network, and offering services through HealthPass.</li>
+      <li><strong>A beckn network replaces those one-by-one connections.</strong> A provider joins the network once, is listed in a shared register, and digitally signs every message. Any patient app can then find it, order from it and trust its results.</li>
+      <li><strong>This approach already works at national scale.</strong> India runs payments (UPI) and online shopping (ONDC, which uses beckn) this way: a public body runs the shared systems, and many companies compete to build the apps people use.</li>
+      <li><strong>Patients aren’t tied to HealthPass.</strong> We want to build the network as a public good, with government and donors. Patients can use HealthPass or any other wallet and take their record with them. Our business is helping clinics, labs and pharmacies get onto the network, and offering services through HealthPass.</li>
     </ul>
   </div>
 
   <nav class="toc" aria-label="Contents">
     <a href="#today"><span>01</span>HealthPass today</a>
-    <a href="#pattern"><span>02</span>The pattern that scaled</a>
-    <a href="#beckn"><span>03</span>Beckn in one diagram</a>
-    <a href="#flows"><span>04</span>Three flows, one protocol</a>
-    <a href="#india"><span>05</span>How India did it</a>
+    <a href="#pattern"><span>02</span>India built national systems this way</a>
+    <a href="#beckn"><span>03</span>How beckn works</a>
+    <a href="#flows"><span>04</span>Lab test, prescription and appointment</a>
+    <a href="#india"><span>05</span>How India shares health records</a>
     <a href="#why"><span>06</span>Why a network</a>
-    <a href="#choice"><span>07</span>Many wallets, one network</a>
-    <a href="#opportunity"><span>08</span>The opportunity</a>
+    <a href="#choice"><span>07</span>Patients aren’t tied to HealthPass</a>
+    <a href="#opportunity"><span>08</span>Our role and business model</a>
     <a href="#risks"><span>09</span>Risks</a>
   </nav>
 </header>
@@ -426,64 +427,64 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
 
     <h3>How a nurse sees the record today</h3>
     <ol class="steps">
-      <li><b>Wanjiru shows a QR code.</b>She opens HealthPass in WhatsApp and shows the nurse the QR code on her screen.</li>
+      <li><b>Thandi shows a QR code.</b>She opens HealthPass in WhatsApp and shows the nurse the QR code on her screen.</li>
       <li><b>She gives the nurse a one-time PIN.</b>She receives a short PIN in WhatsApp that works once. It shows she agreed to share her record for this visit.</li>
       <li><b>The nurse enters their own access code.</b>HealthPass sends each health worker an access code over WhatsApp. The code expires after a few hours, so an old one can’t be reused.</li>
       <li><b>The nurse reads the summary and adds the visit.</b>The access is written to the log.</li>
     </ol>
 
-    <h3>Where it gets stuck on its own</h3>
+    <h3>What HealthPass can’t do on its own</h3>
     <ul class="limits">
       <li><strong>It can’t tell who is a real health worker.</strong> The access code proves that someone got a code from HealthPass. It doesn’t prove they are a licensed nurse at a real clinic, because HealthPass has no shared list of licensed providers to check against. Sending and typing codes also adds a step to every visit.</li>
       <li><strong>Every clinic, lab and pharmacy has to be connected one by one.</strong> For results to arrive by themselves, HealthPass has to build a link to each provider’s software. A country has hundreds of these systems, so this is slow and costly, and it starts again in every new country.</li>
-      <li><strong>So most care never reaches the record.</strong> When Wanjiru has a blood test at a lab HealthPass isn’t connected to, the result reaches her on paper or by SMS. Her record doesn’t change unless someone types it in.</li>
+      <li><strong>So most care never reaches the record.</strong> When Thandi has a blood test at a lab HealthPass isn’t connected to, the result reaches her on paper or by SMS. Her record doesn’t change unless someone types it in.</li>
     </ul>
 
-    <h3>What beckn changes</h3>
+    <h3>What joining a beckn network fixes</h3>
     <ul class="limits fixes">
       <li><strong>A shared register of who is licensed.</strong> Clinics, labs, pharmacies and health workers are listed in a registry with a digital key, and every message they send is signed with that key. HealthPass checks the signature instead of handing out codes.</li>
       <li><strong>Connect once.</strong> A lab connects its system to the network once. From then on, any patient app on the network can order tests from it, HealthPass included.</li>
       <li><strong>Records fill in as care happens.</strong> When a lab or pharmacy completes an order placed over the network, the result goes back to the patient’s record as part of the same exchange.</li>
     </ul>
-    <p>FHIR is the format of the record. Beckn is the set of rules for how independent organisations find each other, agree on a service and trust each other’s messages. The next section shows where this model has already worked at national scale.</p>
+    <p>FHIR is the format of the record. Beckn is the set of rules for how independent organisations find each other, agree on a service and trust each other’s messages.</p>
   </div>
 </section>
 
-<section id="pattern" class="page" data-title="The pattern that scaled">
+<section id="pattern" class="page" data-title="India built national systems this way">
   <span class="num">02</span>
   <div class="col">
-    <h2>The pattern that scaled</h2>
-    <p>Over fifteen years India built a series of shared digital rails. Each followed the same recipe and each reached national scale. Two of them, ONDC and Namma Yatri, run on beckn.</p>
+    <h2>India built national systems this way</h2>
+    <p>Over fifteen years India built a series of shared digital systems that the government provides and any company can build on. They are often called digital public infrastructure (DPI). Each reached national scale. Two of them, ONDC and Namma Yatri, use beckn.</p>
   </div>
-  <ol class="timeline" aria-label="Digital public infrastructure timeline">
-    <li><span class="yr">2010</span><span><span class="rail">Aadhaar</span><span class="what">Digital identity</span></span><span class="fig">1.45 billion numbers issued<sup class="src"><a href="#s1">1</a></sup></span></li>
-    <li><span class="yr">2016</span><span><span class="rail">UPI</span><span class="what">Payments between any app and any bank</span></span><span class="fig">24 billion transactions in Sept 2026; 741 banks live<sup class="src"><a href="#s2">2</a>,<a href="#s3">3</a></sup></span></li>
-    <li><span class="yr">2021</span><span><span class="rail">Account Aggregator</span><span class="what">Consent-based sharing of financial data</span></span><span class="fig">338 million accounts linked; 566 million consents fulfilled<sup class="src"><a href="#s4">4</a></sup></span></li>
-    <li><span class="yr">2021</span><span><span class="rail">ABDM</span><span class="tag health">health</span><span class="what">Federated health records with no central server</span></span><span class="fig">978 million health IDs; 1.2 billion records linked<sup class="src"><a href="#s7">7</a></sup></span></li>
-    <li><span class="yr">2021</span><span><span class="rail">ONDC</span><span class="tag beckn">beckn</span><span class="what">Open commerce: any buyer app, any seller</span></span><span class="fig">500 million transactions by July 2026<sup class="src"><a href="#s5">5</a></sup></span></li>
-    <li><span class="yr">2022</span><span><span class="rail">Namma Yatri</span><span class="tag beckn">beckn</span><span class="what">Open ride-hailing with no commission</span></span><span class="fig">150 million trips<sup class="src"><a href="#s6">6</a></sup></span></li>
+  <ol class="timeline" aria-label="India’s shared digital systems">
+    <li><span class="yr">2010</span><span><span class="rail">Aadhaar</span><span class="what">National digital ID</span></span><span class="fig">1.45 billion numbers issued<sup class="src"><a href="#s1">1</a></sup></span></li>
+    <li><span class="yr">2016</span><span><span class="rail">UPI</span><span class="what">Payments between any app and any bank</span></span><span class="fig">24 billion payments in Sept 2026; 741 banks connected<sup class="src"><a href="#s2">2</a>,<a href="#s3">3</a></sup></span></li>
+    <li><span class="yr">2021</span><span><span class="rail">Account Aggregator</span><span class="what">Sharing financial records with the customer’s permission</span></span><span class="fig">338 million accounts linked; 566 million permissions given<sup class="src"><a href="#s4">4</a></sup></span></li>
+    <li><span class="yr">2021</span><span><span class="rail">ABDM</span><span class="tag health">health</span><span class="what">Sharing health records between providers, with no central database</span></span><span class="fig">978 million health IDs; 1.2 billion records linked<sup class="src"><a href="#s7">7</a></sup></span></li>
+    <li><span class="yr">2021</span><span><span class="rail">ONDC</span><span class="tag beckn">beckn</span><span class="what">Online shopping: any shopping app can buy from any seller</span></span><span class="fig">500 million orders by July 2026<sup class="src"><a href="#s5">5</a></sup></span></li>
+    <li><span class="yr">2022</span><span><span class="rail">Namma Yatri</span><span class="tag beckn">beckn</span><span class="what">A ride-hailing app that charges drivers no commission</span></span><span class="fig">150 million trips<sup class="src"><a href="#s6">6</a></sup></span></li>
   </ol>
   <div class="recipe">
-    <div><b>Shared rails</b>The state provides the thin common layer: identity, registries, a protocol and the rules.</div>
-    <div><b>Market apps</b>Companies build the apps people actually use, and compete on them.</div>
-    <div><b>Mandatory interoperability</b>Every app works with every provider, so no app owns the users and no provider integrates twice.</div>
+    <div><b>The government provides the shared parts</b>A national ID, registers of who is who, a common set of rules for how systems talk to each other, and the rules everyone must follow.</div>
+    <div><b>Companies build the apps</b>People use apps made by companies, which compete to be the best.</div>
+    <div><b>Every app must work with every provider</b>So no app owns its users, and no provider has to connect to each app separately.</div>
   </div>
   <div class="col">
-    <p>The model has travelled. The G20 endorsed a framework for digital public infrastructure in 2023<sup class="src"><a href="#s8">8</a></sup>, and MOSIP, an open-source identity platform, is in national rollout in Uganda and eight other African countries<sup class="src"><a href="#s9">9</a></sup>.</p>
+    <p>Other countries are adopting the same approach. The G20 endorsed a framework for digital public infrastructure in 2023<sup class="src"><a href="#s8">8</a></sup>, and MOSIP, an open-source national ID system, is being rolled out in Uganda and eight other African countries<sup class="src"><a href="#s9">9</a></sup>.</p>
   </div>
 </section>
 
-<section id="beckn" class="page" data-title="Beckn in one diagram">
+<section id="beckn" class="page" data-title="How beckn works">
   <span class="num">03</span>
   <div class="col">
-    <h2>Beckn in one diagram</h2>
-    <p>Beckn is an open protocol that lets independent apps and providers find each other, agree on a service, and track it to completion. Any app on the network can transact with any provider without a bilateral integration and without a platform in the middle.</p>
+    <h2>How beckn works</h2>
+    <p>Beckn is an open set of rules (a protocol) that lets independent apps and providers find each other, agree on a service, and follow it through to the end. Any app on a beckn network can place an order with any provider on it, without the two having to build a connection to each other and without a company in the middle.</p>
   </div>
   <figure>
     <div class="diagram">
       <svg viewBox="0 0 680 350" role="img" aria-labelledby="roles-t roles-d">
         <title id="roles-t">The roles on a beckn health network</title>
-        <desc id="roles-d">The patient talks to HealthPass over WhatsApp. HealthPass searches a discovery service, which indexes signed provider catalogues. HealthPass and the provider exchange beckn messages for the transaction and FHIR requests for the data. A registry holds verified identities and keys.</desc>
+        <desc id="roles-d">The patient talks to HealthPass over WhatsApp. HealthPass searches a search service, which indexes the catalogues providers publish. HealthPass and the provider use beckn messages to agree the order, and FHIR to read and write health records. A registry lists everyone on the network and their digital keys.</desc>
         <defs>
           <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
         </defs>
@@ -497,54 +498,56 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
           <line class="ln-r" x1="520" y1="208" x2="410" y2="278" stroke-dasharray="4 4" marker-end="url(#ah)"/>
         </g>
         <g class="nd c-pu"><rect x="40" y="20" width="160" height="56" rx="8"/><text class="th" x="120" y="42" text-anchor="middle">Patient</text><text class="ts" x="120" y="60" text-anchor="middle">WhatsApp</text></g>
-        <g class="nd c-te"><rect x="260" y="20" width="160" height="56" rx="8"/><text class="th" x="340" y="42" text-anchor="middle">Discovery service</text><text class="ts" x="340" y="60" text-anchor="middle">Indexes signed catalogues</text></g>
-        <g class="nd c-pu"><rect x="40" y="150" width="160" height="56" rx="8"/><text class="th" x="120" y="172" text-anchor="middle">HealthPass</text><text class="ts" x="120" y="190" text-anchor="middle">Consumer node + FHIR vault</text></g>
+        <g class="nd c-te"><rect x="260" y="20" width="160" height="56" rx="8"/><text class="th" x="340" y="42" text-anchor="middle">Search service</text><text class="ts" x="340" y="60" text-anchor="middle">Indexes signed catalogues</text></g>
+        <g class="nd c-pu"><rect x="40" y="150" width="160" height="56" rx="8"/><text class="th" x="120" y="172" text-anchor="middle">HealthPass</text><text class="ts" x="120" y="190" text-anchor="middle">Consumer node + record</text></g>
         <g class="nd c-co"><rect x="480" y="150" width="160" height="56" rx="8"/><text class="th" x="560" y="172" text-anchor="middle">Provider</text><text class="ts" x="560" y="190" text-anchor="middle">Clinic, lab or pharmacy</text></g>
-        <g class="nd c-gr"><rect x="260" y="280" width="160" height="56" rx="8"/><text class="th" x="340" y="302" text-anchor="middle">Registry</text><text class="ts" x="340" y="320" text-anchor="middle">Verified identities + keys</text></g>
+        <g class="nd c-gr"><rect x="260" y="280" width="160" height="56" rx="8"/><text class="th" x="340" y="302" text-anchor="middle">Registry</text><text class="ts" x="340" y="320" text-anchor="middle">Who is on the network</text></g>
         <text class="lbl c" x="112" y="117" text-anchor="end">chat</text>
-        <text class="lbl b" x="236" y="128">discover</text>
+        <text class="lbl b" x="236" y="128">search</text>
         <text class="lbl b" x="456" y="108">publish catalogue</text>
-        <text class="lbl b" x="340" y="161" text-anchor="middle">beckn: select · init · confirm · status</text>
-        <text class="lbl f" x="340" y="204" text-anchor="middle">FHIR + SMART: read and write records</text>
-        <text class="lbl r" x="348" y="252">verify keys</text>
+        <text class="lbl b" x="340" y="161" text-anchor="middle">beckn: price, book, confirm, track</text>
+        <text class="lbl f" x="340" y="204" text-anchor="middle">FHIR: read and add records, with permission</text>
+        <text class="lbl r" x="348" y="252">check identity</text>
         <text class="lbl r" x="474" y="262">look up</text>
       </svg>
     </div>
-    <div class="legend" aria-hidden="true"><span><i class="sw b"></i>Beckn</span><span><i class="sw f"></i>FHIR / SMART</span><span><i class="sw c"></i>Chat</span><span><i class="sw r"></i>Registry</span></div>
+    <div class="legend" aria-hidden="true"><span><i class="sw b"></i>Beckn: orders and bookings</span><span><i class="sw f"></i>FHIR: health records</span><span><i class="sw c"></i>WhatsApp chat</span><span><i class="sw r"></i>Registry checks</span></div>
   </figure>
   <div class="col">
-    <p><strong>Beckn carries the transaction.</strong> Every message is signed by its sender, and the receiver answers with a counter-signed receipt, so both sides can prove who asked for what and when. <strong>FHIR and SMART on FHIR carry the clinical data.</strong> Patient data never travels inside a beckn message.</p>
-    <div class="lifecycle" aria-label="Beckn transaction lifecycle">
-      <div class="grp"><small>Discovery</small><div class="chips"><span class="chip">discover</span></div></div>
+    <p><strong>Beckn handles the order or booking.</strong> Every message is digitally signed, so the receiver can check who sent it and that it wasn’t changed, and the receiver sends back a signed receipt. Both sides can later prove who asked for what, and when. <strong>FHIR, the international standard for health records, handles the records themselves,</strong> and only with the patient’s permission. Health records never travel inside a beckn message.</p>
+    <p>Every service goes through the same stages:</p>
+    <div class="lifecycle" aria-label="The stages of every order or booking">
+      <div class="grp"><small>Find</small><div class="chips"><span class="chip">search</span></div></div>
       <span class="arrow" aria-hidden="true">→</span>
-      <div class="grp"><small>Contracting</small><div class="chips"><span class="chip">select</span><span class="chip">init</span><span class="chip">confirm</span></div></div>
+      <div class="grp"><small>Agree</small><div class="chips"><span class="chip">check price</span><span class="chip">give details</span><span class="chip">confirm</span></div></div>
       <span class="arrow" aria-hidden="true">→</span>
-      <div class="grp"><small>Fulfilment</small><div class="chips"><span class="chip">status</span><span class="chip">track</span><span class="chip">cancel</span></div></div>
+      <div class="grp"><small>Deliver</small><div class="chips"><span class="chip">updates</span><span class="chip">tracking</span><span class="chip">cancel</span></div></div>
       <span class="arrow" aria-hidden="true">→</span>
-      <div class="grp"><small>After</small><div class="chips"><span class="chip">rate</span><span class="chip">support</span></div></div>
+      <div class="grp"><small>Afterwards</small><div class="chips"><span class="chip">rate</span><span class="chip">support</span></div></div>
     </div>
-    <p class="muted" style="font-size:0.92rem">Each call is answered asynchronously by a matching callback, such as <code>on_select</code> or <code>on_confirm</code>. In beckn v2 (May 2026), providers host their own signed catalogues and discovery services crawl them, so no central gateway sits in the path<sup class="src"><a href="#s18">18</a></sup>.</p>
-    <h3>Wallet and app: HealthPass plays two roles</h3>
-    <p>HealthPass is two things that are easy to blur together. On the network they are separate roles, and they can be switched separately.</p>
+    <p class="muted" style="font-size:0.92rem">In the latest version of beckn (May 2026), each provider publishes its own signed catalogue and search services read those catalogues, so there is no central hub that every message has to pass through<sup class="src"><a href="#s18">18</a></sup>.</p>
+
+    <h3>HealthPass does two jobs: it stores the record, and it is the app patients use</h3>
+    <p>These two jobs are easy to mix up. On a beckn network they are separate, and a patient can swap either one.</p>
     <div class="roles">
-      <div><b>The wallet: where the record is kept</b>The patient's FHIR record and International Patient Summary. Providers read from it and write back to it with SMART tokens, scoped by a FHIR Consent the patient approved. In the diagrams this is the "vault".</div>
-      <div><b>The app: what the patient talks to</b>The WhatsApp interface and agent that searches, books, orders and shows the record. In beckn terms it is the consumer node.</div>
+      <div><b>Storing the record (the “wallet”)</b>The patient’s health record and summary. With her permission, providers read from it and add to it.</div>
+      <div><b>The app the patient uses</b>The WhatsApp chat and assistant that searches, books, orders and shows her the record. In beckn terms it is the consumer node.</div>
     </div>
-    <p>India's payments system works the same way. Your bank holds your money; that's the wallet. PhonePe or Google Pay is the app you pay with, and it holds no money. Because the two are separate, you can change apps and still pay the same shops the next day.</p>
-    <p>A patient on the network can switch in two ways:</p>
+    <p>India’s payments work the same way. Your bank holds your money; that’s the wallet. PhonePe or Google Pay is the app you pay with, and it holds no money. Because the two are separate, you can change apps and still pay the same shops the next day.</p>
+    <p>A patient can switch in two ways:</p>
     <ul class="plain">
-      <li><strong>Keep the wallet, change the app.</strong> Another app reads and writes the same HealthPass record through SMART on FHIR, with the patient's consent. The data doesn't move, much like using a different email program on the same mailbox.</li>
-      <li><strong>Move the wallet.</strong> The patient exports their full FHIR record and IPS to another wallet. Kenya's Digital Health Act already calls for "shareable and portable personal health records"<sup class="src"><a href="#s11">11</a></sup>.</li>
+      <li><strong>Keep the record, change the app.</strong> Another app reads and adds to the same HealthPass record, with the patient’s permission. Nothing moves, just as you can use a different email program on the same email account.</li>
+      <li><strong>Move the record.</strong> The patient moves her full record to another wallet. South Africa’s data protection law (POPIA) already gives patients the right to get their personal information, including health records, but not yet a right to move it between services<sup class="src"><a href="#s11">11</a></sup>. The network’s rules would need to require that.</li>
     </ul>
-    <p>Either way the patient keeps their identity, which comes from the national client registry rather than an app account. They also keep their providers, who join the network rather than any one app. HealthPass offers both roles, built so they can be separated. That is what makes "no lock-in" believable to governments and funders, and it lets other apps build on HealthPass wallets later.</p>
+    <p>Either way she keeps her ID, which is a national ID rather than an app account, and she keeps her providers, who join the network rather than any one app. HealthPass does both jobs but keeps them separate. That is what makes the promise of no lock-in believable to governments and funders, and it lets other apps work with records kept in HealthPass.</p>
   </div>
 </section>
 
-<section id="flows" class="page" data-title="Three flows, one protocol">
+<section id="flows" class="page" data-title="Lab test, prescription and appointment">
   <span class="num">04</span>
   <div class="col">
-    <h2>Three flows, one protocol</h2>
-    <p>The same protocol carries a lab test, a prescription and an appointment. Step through each one with the arrows, or pick a step from the dots.</p>
+    <h2>Ordering a lab test, filling a prescription and booking an appointment</h2>
+    <p>The same beckn rules handle all three.</p>
   </div>
   <div class="player" id="player">
     <div class="tabs" role="tablist" aria-label="Flows">
@@ -557,7 +560,7 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
       <svg class="flow-svg" viewBox="0 0 680 350" role="img" aria-labelledby="flow-t">
         <title id="flow-t">Flow diagram</title>
       </svg>
-      <div class="legend" aria-hidden="true"><span><i class="sw b"></i>Beckn</span><span><i class="sw f"></i>FHIR / SMART</span><span><i class="sw c"></i>Chat</span><span><i class="sw r"></i>Registry</span><span><i class="sw n"></i>Internal step</span></div>
+      <div class="legend" aria-hidden="true"><span><i class="sw b"></i>Beckn: orders and bookings</span><span><i class="sw f"></i>FHIR: health records</span><span><i class="sw c"></i>WhatsApp chat</span><span><i class="sw r"></i>Registry check</span><span><i class="sw n"></i>Done inside one system</span></div>
       <div class="controls">
         <button class="ctl prev" aria-label="Previous step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
         <button class="ctl replay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8.1 8.1 0 0 0-15.5-2M4 5v4h4M4 13a8.1 8.1 0 0 0 15.5 2M20 19v-4h-4"/></svg>Replay</button>
@@ -568,46 +571,46 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
       <ol class="log" aria-label="Messages in this step"></ol>
     </div>
   </div>
-  <p class="note">Tumaini Clinic, Afya Lab and Neema Pharmacy are fictional. Prices are illustrative.</p>
+  <p class="note">Thandi, Kopano Clinic, Thuso Lab and Imbali Pharmacy are made up for these examples. Prices are rough estimates.</p>
 
-  <h3>The same seven steps</h3>
+  <h3>Every service follows the same steps</h3>
   <div class="tbl">
     <table>
       <thead><tr><th>Step</th><th>Lab test</th><th>Prescription</th><th>Appointment</th></tr></thead>
       <tbody>
-        <tr><th>Anonymous search <code>discover</code></th><td>Labs offering HbA1c within 5 km</td><td>Pharmacies that deliver within 5 km</td><td>Antenatal clinics within 5 km</td></tr>
-        <tr><th>Live offer <code>select</code></th><td>Price, collection slots</td><td>Stock, price, generic option</td><td>Open slots</td></tr>
-        <tr><th>Minimal identity <code>init</code></th><td>Slot, address, order reference</td><td>Address, prescription reference</td><td>Name, phone, insurance</td></tr>
-        <tr><th>Contract and Consent <code>confirm</code></th><td>Access to this one order</td><td>Access to this one prescription</td><td>IPS summary for 7 days</td></tr>
-        <tr><th>SMART fetch</th><td>ServiceRequest</td><td>MedicationRequest, then registry check</td><td>IPS bundle</td></tr>
-        <tr><th>Updates <code>on_status</code></th><td>Collector arriving, sample in lab</td><td>Rider on the way, delivered</td><td>Reminder the day before</td></tr>
-        <tr><th>Write-back to the record</th><td>DiagnosticReport</td><td>MedicationDispense; prescription marked completed</td><td>Visit summary</td></tr>
+        <tr><th>Search, without saying who you are</th><td>Labs offering HbA1c within 5 km</td><td>Pharmacies that deliver within 5 km</td><td>Antenatal clinics within 5 km</td></tr>
+        <tr><th>Ask for today’s offer</th><td>Price, collection times</td><td>Stock, price, cheaper generic</td><td>Free appointment times</td></tr>
+        <tr><th>Give only the details needed</th><td>Time, address, which order</td><td>Address, which prescription</td><td>Name, phone, medical aid</td></tr>
+        <tr><th>Confirm, and give permission</th><td>The lab may see this one order</td><td>The pharmacy may see this one prescription</td><td>The clinic may see her summary for 7 days</td></tr>
+        <tr><th>Provider reads what it needs</th><td>The test order</td><td>The prescription, then checks the doctor’s licence</td><td>Her health summary</td></tr>
+        <tr><th>Updates</th><td>Collector arriving, sample at the lab</td><td>Rider on the way, delivered</td><td>Reminder the day before</td></tr>
+        <tr><th>Result added to her record</th><td>Lab result</td><td>What medicine was given; prescription marked as filled</td><td>Visit summary</td></tr>
       </tbody>
     </table>
   </div>
-  <div class="col"><p>A provider that implements these steps once can serve every patient app on the network, for every service it offers.</p></div>
+  <div class="col"><p>A provider that sets up these steps once can serve every patient app on the network, for every service it offers.</p></div>
 </section>
 
-<section id="india" class="page" data-title="How India did it">
+<section id="india" class="page" data-title="How India shares health records">
   <span class="num">05</span>
   <div class="col">
-    <h2>How India did it: ABDM</h2>
-    <p>India's Ayushman Bharat Digital Mission (ABDM), launched in September 2021, is the largest working example of shared health records built as public infrastructure. It has no central record store. Records stay with the hospital, clinic or lab that created them, and move only when the patient approves<sup class="src"><a href="#s14">14</a></sup>.</p>
+    <h2>How India shares health records</h2>
+    <p>India’s Ayushman Bharat Digital Mission (ABDM), launched in September 2021, is the largest working example of a national system for sharing health records. There is no central database of records. Records stay with the hospital, clinic or lab that created them, and are shared only when the patient approves<sup class="src"><a href="#s14">14</a></sup>.</p>
   </div>
   <div class="blocks">
-    <div><b>ABHA number</b>A 14-digit health ID. People create it by verifying with an Aadhaar or mobile one-time code, and it's voluntary. It holds no health data; records from different providers are linked to it<sup class="src"><a href="#s24">24</a></sup>.<span class="fig">978 million created, Sept 2026<sup class="src"><a href="#s7">7</a></sup></span></div>
-    <div><b>ABHA address</b>A readable handle such as <code>priya@abdm</code>. Patients use it to sign in to health-record apps and to approve requests for their records<sup class="src"><a href="#s24">24</a></sup>.</div>
-    <div><b>Registries</b>A Health Facility Registry and a Healthcare Professionals Registry, so every party on the network can check who it is dealing with.<span class="fig">533,000 facilities · 985,000 professionals, July 2026<sup class="src"><a href="#s22">22</a></sup></span></div>
-    <div><b>Consent manager</b>Passes requests between providers and records what the patient approved. It never sees the clinical data<sup class="src"><a href="#s21">21</a>,<a href="#s28">28</a></sup>.</div>
+    <div><b>ABHA number</b>A 14-digit health ID. It’s voluntary. People get one by confirming who they are with a one-time code, sent through Aadhaar (India’s national ID) or to their phone. It holds no health information; records from different providers are linked to it<sup class="src"><a href="#s24">24</a></sup>.<span class="fig">978 million created, Sept 2026<sup class="src"><a href="#s7">7</a></sup></span></div>
+    <div><b>ABHA address</b>An easy-to-read name such as <code>priya@abdm</code>. Patients use it to sign in to health-record apps and to approve requests for their records<sup class="src"><a href="#s24">24</a></sup>.</div>
+    <div><b>Registries</b>National lists of health facilities and of health professionals, so everyone can check who they are dealing with.<span class="fig">533,000 facilities · 985,000 professionals, July 2026<sup class="src"><a href="#s22">22</a></sup></span></div>
+    <div><b>Consent manager</b>A service that passes requests between providers and keeps track of what the patient approved. It never sees the health records themselves<sup class="src"><a href="#s21">21</a>,<a href="#s28">28</a></sup>.</div>
   </div>
 
   <div class="player" id="abdm-player">
-    <div role="tabpanel" aria-label="ABDM record sharing walkthrough" style="padding-top:14px">
+    <div role="tabpanel" aria-label="How India shares a health record, step by step" style="padding-top:14px">
       <p class="flow-intro"></p>
       <svg class="flow-svg" viewBox="0 0 680 350" role="img" aria-labelledby="abdm-t">
-        <title id="abdm-t">ABDM record sharing</title>
+        <title id="abdm-t">How India shares a health record</title>
       </svg>
-      <div class="legend" aria-hidden="true"><span><i class="sw r"></i>Consent and routing</span><span><i class="sw f"></i>FHIR data</span><span><i class="sw c"></i>Patient app</span><span><i class="sw n"></i>Internal step</span></div>
+      <div class="legend" aria-hidden="true"><span><i class="sw r"></i>Requests and permissions</span><span><i class="sw f"></i>Health records (FHIR)</span><span><i class="sw c"></i>Patient’s app</span><span><i class="sw n"></i>Done inside one system</span></div>
       <div class="controls">
         <button class="ctl prev" aria-label="Previous step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
         <button class="ctl replay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8.1 8.1 0 0 0-15.5-2M4 5v4h4M4 13a8.1 8.1 0 0 0 15.5 2M20 19v-4h-4"/></svg>Replay</button>
@@ -620,77 +623,77 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
   </div>
 
   <div class="col">
-    <h3>Where the data lives</h3>
-    <p>Every hospital, clinic and lab keeps its own records in its own software. To join, that software must be certified for ABDM, so it can link visits to an ABHA and answer requests for records. Nothing is copied to a national database. The network only knows <em>where</em> records are, not <em>what</em> they say.</p>
+    <h3>Where the records are kept</h3>
+    <p>Every hospital, clinic and lab keeps its own records in its own software. To take part, that software must be certified for ABDM, so it can link visits to an ABHA and answer requests for records. Nothing is copied to a national database. The system knows <em>where</em> records are, not <em>what</em> they say.</p>
   </div>
   <div class="tbl">
     <table>
-      <thead><tr><th>Party</th><th>What it holds</th><th>What it never holds</th></tr></thead>
+      <thead><tr><th>Who</th><th>What it keeps</th><th>What it never sees</th></tr></thead>
       <tbody>
-        <tr><th>Hospital, clinic or lab</th><td>The clinical records, in its own system</td><td></td></tr>
-        <tr><th>Consent manager</th><td>An index of which providers hold records for each ABHA address, and every consent the patient has given</td><td>Clinical data</td></tr>
-        <tr><th>ABDM gateway</th><td>Nothing lasting. It routes messages and checks that senders are registered.</td><td>Clinical data</td></tr>
-        <tr><th>Requesting provider</th><td>A copy of what the patient approved, until the consent expires</td><td>Anything outside the consent</td></tr>
-        <tr><th>Patient's app</th><td>Their ABHA address, their consents, and optionally their own copy of their records</td><td></td></tr>
+        <tr><th>Hospital, clinic or lab</th><td>The health records, in its own system</td><td></td></tr>
+        <tr><th>Consent manager</th><td>A list of which providers hold records for each ABHA address, and every approval the patient has given</td><td>Health records</td></tr>
+        <tr><th>ABDM gateway</th><td>Nothing lasting. It passes messages on and checks that senders are registered.</td><td>Health records</td></tr>
+        <tr><th>Provider asking for records</th><td>A copy of what the patient approved, until the permission ends</td><td>Anything she didn’t approve</td></tr>
+        <tr><th>Patient’s app</th><td>Her ABHA address, her approvals, and if she chooses, her own copy of her records</td><td></td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="col">
-    <h3>How one exchange works</h3>
+    <h3>How a record is shared</h3>
     <ol class="steps">
-      <li><b>Records get linked to the ABHA.</b>This happens in one of two ways. The hospital links a visit when it happens, often after the patient scans a QR code at the registration desk<sup class="src"><a href="#s23">23</a></sup>. Or the patient finds older records from their app: they pick the hospital, the hospital matches them by name, age and phone number, and they confirm with a one-time code<sup class="src"><a href="#s29">29</a></sup>. Either way, the consent manager learns that this hospital has records for this ABHA address. It doesn't learn what they say.</li>
-      <li><b>A provider asks.</b>The requesting clinic sends a consent request to the consent manager with the patient's ABHA address. It states the purpose, the record types (prescriptions, lab reports, discharge summaries and so on), the date range, and how long it wants to keep the data.</li>
-      <li><b>The patient approves.</b>In their app, the patient sees the request and can narrow it to particular hospitals, visits or record types. The consent manager then issues a signed consent artefact for each hospital involved. It lists exactly what may be shared and when the permission ends<sup class="src"><a href="#s26">26</a></sup>.</li>
-      <li><b>The requester asks the hospital for the data.</b>The request quotes the consent artefact. It also carries a fresh one-time encryption key and an address where the hospital should send the data<sup class="src"><a href="#s26">26</a></sup>.</li>
-      <li><b>The hospital checks and sends.</b>It verifies the consent's signature, scope and expiry, and pulls the approved records from its own system. It converts them into FHIR bundles using India's national profiles<sup class="src"><a href="#s25">25</a></sup>, encrypts them with the requester's one-time key, and pushes them straight to the requester. It then tells the consent manager the transfer happened, for the audit trail. The gateway and the consent manager never see the content.</li>
-      <li><b>The requester uses the data, then deletes it.</b>It decrypts the records and shows them to the clinician. Each consent carries an expiry date, after which the requester must delete or anonymise the data<sup class="src"><a href="#s27">27</a></sup>.</li>
+      <li><b>Records are linked to the ABHA.</b>This happens in one of two ways. The hospital links a visit when it happens, often after the patient scans a QR code at the registration desk<sup class="src"><a href="#s23">23</a></sup>. Or the patient finds older records from her app: she chooses the hospital, the hospital matches her by name, age and phone number, and she confirms with a one-time code<sup class="src"><a href="#s29">29</a></sup>. Either way, the consent manager learns that this hospital has records for this person. It doesn’t learn what they say.</li>
+      <li><b>A provider asks.</b>The clinic that wants the records sends a request to the consent manager with the patient’s ABHA address. It says why it wants them, which kinds of record (prescriptions, lab reports, discharge summaries and so on), from which dates, and how long it will keep them.</li>
+      <li><b>The patient approves.</b>She sees the request in her app and can narrow it to particular hospitals, visits or kinds of record. The consent manager then issues a signed consent artefact for each hospital involved, listing exactly what may be shared and when the permission ends<sup class="src"><a href="#s26">26</a></sup>.</li>
+      <li><b>The clinic asks the hospital for the records.</b>The request includes the consent artefact, a one-time encryption key, and the address the hospital should send the records to<sup class="src"><a href="#s26">26</a></sup>.</li>
+      <li><b>The hospital checks and sends.</b>It checks that the consent artefact is genuine, covers this request and hasn’t expired, then takes the approved records from its own system. It converts them into the FHIR format using India’s national standards<sup class="src"><a href="#s25">25</a></sup>, encrypts them with the clinic’s one-time key, and sends them straight to the clinic. It then tells the consent manager the transfer happened, so there is a record of it. The gateway and the consent manager never see the contents.</li>
+      <li><b>The clinic uses the records, then deletes them.</b>It decrypts the records and shows them to the doctor. Every permission has an end date, after which the clinic must delete the records or remove anything that identifies the patient<sup class="src"><a href="#s27">27</a></sup>.</li>
     </ol>
   </div>
   <div class="pair">
-    <div><b>What this design gets right</b><ul><li>No central database to breach or to own</li><li>Providers keep control of their own records</li><li>The patient approves every share, and every share is logged</li></ul></div>
-    <div class="cost"><b>What it costs</b><ul><li>The hospital's system has to be online and certified when a request arrives</li><li>Every request waits on the patient, and most patients don't act</li><li>No one holds a complete history unless someone keeps a copy</li></ul></div>
+    <div><b>Strengths</b><ul><li>No central database to be hacked or controlled</li><li>Providers stay in charge of their own records</li><li>The patient approves every share, and every share is logged</li></ul></div>
+    <div class="cost"><b>Weaknesses</b><ul><li>The hospital’s software has to be online and certified when a request comes in</li><li>Every request waits for the patient, and most patients don’t respond</li><li>No one has the complete history unless someone keeps a copy</li></ul></div>
   </div>
 
   <div class="col">
-    <h3>Three milestones</h3>
-    <p>India tracks adoption in three stages. The first two are at scale. The third, where a patient has to approve a request, is the weak point<sup class="src"><a href="#s16">16</a></sup>.</p>
+    <h3>How far adoption has got</h3>
+    <p>India measures adoption in three stages. The first two have reached very large numbers. The third, which needs the patient to approve a request, is where it is stuck<sup class="src"><a href="#s16">16</a></sup>.</p>
   </div>
   <div class="tbl">
     <table>
-      <thead><tr><th>Milestone</th><th>What it covers</th><th>Where it stands</th></tr></thead>
+      <thead><tr><th>Stage</th><th>What it covers</th><th>Where it stands</th></tr></thead>
       <tbody>
-        <tr><th>M1</th><td>Creating and verifying ABHA IDs</td><td>978 million IDs (Sept 2026)<sup class="src"><a href="#s7">7</a></sup></td></tr>
-        <tr><th>M2</th><td>Providers linking records to ABHA and sharing them</td><td>1.2 billion records linked (Sept 2026)<sup class="src"><a href="#s7">7</a></sup></td></tr>
-        <tr><th>M3</th><td>Providers requesting and receiving records with consent</td><td>"Extremely low" use (July 2026)<sup class="src"><a href="#s16">16</a></sup></td></tr>
+        <tr><th>1</th><td>Creating ABHA IDs</td><td>978 million IDs (Sept 2026)<sup class="src"><a href="#s7">7</a></sup></td></tr>
+        <tr><th>2</th><td>Providers linking records to ABHA IDs</td><td>1.2 billion records linked (Sept 2026)<sup class="src"><a href="#s7">7</a></sup></td></tr>
+        <tr><th>3</th><td>Providers requesting and receiving records with the patient’s approval</td><td>“Extremely low” use (July 2026)<sup class="src"><a href="#s16">16</a></sup></td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="col">
-    <h3>Two layers, the same split as this proposal</h3>
-    <p>ABDM moves records with consent, using FHIR. A separate network, UHI, is built on beckn and handles finding and booking services: doctors, ambulances, blood banks<sup class="src"><a href="#s14">14</a>,<a href="#s20">20</a></sup>. India kept records and services apart, which is the same split this page proposes for Kenya.</p>
+    <h3>India keeps records and services separate, as we propose</h3>
+    <p>ABDM shares records, using FHIR. A separate network called UHI uses beckn to find and book services such as doctors, ambulances and blood banks<sup class="src"><a href="#s14">14</a>,<a href="#s20">20</a></sup>. India kept the two apart, which is the same split we propose for South Africa.</p>
   </div>
   <div class="tbl">
     <table>
-      <thead><tr><th>Role</th><th>India</th><th>Kenya</th></tr></thead>
+      <thead><tr><th></th><th>India</th><th>South Africa</th></tr></thead>
       <tbody>
-        <tr><th>Patient ID</th><td>ABHA number and address</td><td>Client registry ID (national ID, SHA number and others)<sup class="src"><a href="#s12">12</a></sup></td></tr>
-        <tr><th>Provider registries</th><td>Facility and professional registries (HFR, HPR)</td><td>Facility registry and health-worker registry</td></tr>
-        <tr><th>Where records live</th><td>With each provider; nothing central</td><td>Copied to a national Shared Health Record, in FHIR</td></tr>
-        <tr><th>Consent</th><td>Consent manager, per request</td><td>Consent token tied to a single visit</td></tr>
-        <tr><th>Patient's app</th><td>Government ABHA app or private health-record apps</td><td class="hl">HealthPass, on WhatsApp</td></tr>
-        <tr><th>Services layer</th><td>UHI, on beckn</td><td class="hl">The proposed network</td></tr>
+        <tr><th>Patient ID</th><td>ABHA number and address</td><td>Number from the Health Patient Registration System (HPRS), used in public facilities: 68.6 million registrations, 37.2 million verified<sup class="src"><a href="#s12">12</a></sup></td></tr>
+        <tr><th>Registers of facilities and staff</th><td>National facility and professional registries</td><td>Master Health Facility List (over 55,000 facilities)<sup class="src"><a href="#s12">12</a></sup>; registers of the Health Professions Council, Pharmacy Council and Nursing Council</td></tr>
+        <tr><th>Where records are kept</th><td>With each provider; nothing central</td><td>With each provider. An electronic record for public clinics is being rolled out from 2026<sup class="src"><a href="#s36">36</a></sup>, and a national exchange is being built<sup class="src"><a href="#s19">19</a>,<a href="#s35">35</a></sup></td></tr>
+        <tr><th>How patients give permission</th><td>A consent manager, for each request</td><td>No national system yet. POPIA allows health information to be shared only with consent or another legal basis<sup class="src"><a href="#s11">11</a></sup></td></tr>
+        <tr><th>Patient’s app</th><td>Government ABHA app or private health-record apps</td><td class="hl">Any wallet, including HealthPass on WhatsApp</td></tr>
+        <tr><th>Finding and booking services</th><td>UHI, which uses beckn</td><td class="hl">The proposed network</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="col">
-    <h3>What HealthPass takes from this</h3>
+    <h3>Lessons for HealthPass</h3>
     <ul class="plain">
-      <li><strong>Use the public rails; don't rebuild them.</strong> IDs and registries are public goods. In Kenya, HealthPass should use the client, facility and health-worker registries the Digital Health Agency already runs.</li>
-      <li><strong>The approval step needs an app people already open.</strong> ABDM's weakest milestone is the one where the patient has to act. HealthPass lives in WhatsApp.</li>
-      <li><strong>Keep the patient's own copy.</strong> In ABDM terms, HealthPass is a health-record app that stores the patient's copy as records are created. That gives the patient the complete history the federated model leaves out, and an IPS they can show at any clinic, including one that isn't connected to the exchange.</li>
+      <li><strong>Use the national systems that exist; don’t rebuild them.</strong> IDs and registries are public goods. In South Africa, HealthPass should use the Department of Health’s Health Patient Registration System and Master Health Facility List<sup class="src"><a href="#s12">12</a></sup>, and the public registers of the Health Professions Council and the Pharmacy Council.</li>
+      <li><strong>The approval step needs an app people already use.</strong> ABDM is weakest at the stage where the patient has to act. HealthPass is on WhatsApp, which people already open every day.</li>
+      <li><strong>Keep the patient’s own copy.</strong> In ABDM terms, HealthPass is a health-record app that keeps a copy of each record as it is created. That gives the patient the complete history the ABDM model leaves out, and a summary she can show at any clinic, including one that isn’t connected.</li>
     </ul>
   </div>
 </section>
@@ -703,7 +706,7 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
   </div>
   <div class="versus">
     <div class="panel today">
-      <h4>Today</h4>
+      <h4>Today: a photo of a prescription</h4>
       <svg viewBox="0 0 320 236" role="img" aria-labelledby="vt-t">
         <title id="vt-t">A photographed prescription is filled at two pharmacies</title>
         <defs><marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
@@ -711,8 +714,8 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
         <g fill="none" stroke-width="1.5" stroke-dasharray="4 4"><line class="ln-r" x1="120" y1="68" x2="80" y2="164" marker-end="url(#ah2)"/><line class="ln-r" x1="200" y1="68" x2="240" y2="164" marker-end="url(#ah2)"/></g>
         <text class="lbl r" x="92" y="118" text-anchor="end">copy 1</text>
         <text class="lbl r" x="228" y="118">copy 2</text>
-        <g class="nd c-co"><rect x="8" y="166" width="140" height="56" rx="8"/><text class="th" x="78" y="188" text-anchor="middle">Pharmacy A</text><text class="ts" x="78" y="206" text-anchor="middle">dispensed</text></g>
-        <g class="nd c-co"><rect x="172" y="166" width="140" height="56" rx="8"/><text class="th" x="242" y="188" text-anchor="middle">Pharmacy B</text><text class="ts" x="242" y="206" text-anchor="middle">dispensed again</text></g>
+        <g class="nd c-co"><rect x="8" y="166" width="140" height="56" rx="8"/><text class="th" x="78" y="188" text-anchor="middle">Pharmacy A</text><text class="ts" x="78" y="206" text-anchor="middle">filled it</text></g>
+        <g class="nd c-co"><rect x="172" y="166" width="140" height="56" rx="8"/><text class="th" x="242" y="188" text-anchor="middle">Pharmacy B</text><text class="ts" x="242" y="206" text-anchor="middle">filled it again</text></g>
       </svg>
       <ul>
         <li>A photo can be edited, and nothing shows who wrote it.</li>
@@ -721,108 +724,130 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
       </ul>
     </div>
     <div class="panel">
-      <h4>On the network</h4>
+      <h4>On a beckn network: a signed digital prescription</h4>
       <svg viewBox="0 0 320 236" role="img" aria-labelledby="vn-t">
-        <title id="vn-t">A signed prescription is verified and redeemed once</title>
+        <title id="vn-t">A signed prescription is checked and filled once</title>
         <defs><marker id="ah3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-        <g class="nd c-pu"><rect x="70" y="10" width="180" height="56" rx="8"/><text class="th" x="160" y="32" text-anchor="middle">HealthPass</text><text class="ts" x="160" y="50" text-anchor="middle">signed MedicationRequest</text></g>
+        <g class="nd c-pu"><rect x="70" y="10" width="180" height="56" rx="8"/><text class="th" x="160" y="32" text-anchor="middle">HealthPass</text><text class="ts" x="160" y="50" text-anchor="middle">signed prescription</text></g>
         <g fill="none" stroke-width="1.5"><line class="ln-f" x1="120" y1="68" x2="80" y2="164" marker-end="url(#ah3)"/><line class="ln-f" x1="200" y1="68" x2="240" y2="164" stroke-dasharray="4 4" marker-end="url(#ah3)"/></g>
-        <text class="lbl good" x="92" y="112" text-anchor="end">verified,</text>
-        <text class="lbl good" x="92" y="126" text-anchor="end">redeemed</text>
+        <text class="lbl good" x="92" y="112" text-anchor="end">checked,</text>
+        <text class="lbl good" x="92" y="126" text-anchor="end">filled</text>
         <text class="lbl bad" x="228" y="112">refused:</text>
         <text class="lbl bad" x="228" y="126">already used</text>
-        <g class="nd c-co"><rect x="8" y="166" width="140" height="56" rx="8"/><text class="th" x="78" y="188" text-anchor="middle">Pharmacy A</text><text class="ts" x="78" y="206" text-anchor="middle">MedicationDispense</text></g>
+        <g class="nd c-co"><rect x="8" y="166" width="140" height="56" rx="8"/><text class="th" x="78" y="188" text-anchor="middle">Pharmacy A</text><text class="ts" x="78" y="206" text-anchor="middle">records what it gave</text></g>
         <g class="nd c-co"><rect x="172" y="166" width="140" height="56" rx="8"/><text class="th" x="242" y="188" text-anchor="middle">Pharmacy B</text><text class="ts" x="242" y="206" text-anchor="middle">nothing to fill</text></g>
       </svg>
       <ul>
-        <li>The signature and the prescriber's licence are checked against the registry.</li>
-        <li>Dispensing marks the prescription completed, so it can't be filled twice.</li>
-        <li>The dispense record, including any generic substitute, goes back to the prescriber.</li>
+        <li>The doctor’s signature and licence are checked against the registry.</li>
+        <li>Once filled, the prescription is marked as used, so it can’t be filled twice.</li>
+        <li>A record of what was given, including any cheaper generic, goes back to the doctor.</li>
       </ul>
     </div>
   </div>
 
-  <div class="col"><h3>What beckn solves</h3></div>
+  <div class="col"><h3>Problems a beckn network solves</h3></div>
   <div class="problems">
-    <div class="row head" aria-hidden="true"><span>Problem</span><span>HealthPass today</span><span>On the network</span></div>
-    <div class="row"><b>Finding care without a gatekeeper</b><div class="today"><span class="lab">Today</span>HealthPass can only offer the providers it has integrated.</div><div class="net"><span class="lab">On the network</span>Providers publish signed catalogues, discovery services index them, and no one owns the listings.</div></div>
-    <div class="row"><b>Integrate once</b><div class="today"><span class="lab">Today</span>One integration per provider, per country.</div><div class="net"><span class="lab">On the network</span>A lab joins the network once and reaches every patient app.</div></div>
-    <div class="row"><b>Trust between strangers</b><div class="today"><span class="lab">Today</span>A one-time PIN from the patient and a short-lived access code for the provider. Neither shows that the provider is licensed.</div><div class="net"><span class="lab">On the network</span>Registry-listed keys and signed messages, with counter-signed receipts on both sides.</div></div>
-    <div class="row"><b>One lifecycle for every service</b><div class="today"><span class="lab">Today</span>Booking, lab orders and pharmacy are each built separately.</div><div class="net"><span class="lab">On the network</span>The same seven steps carry all three, and any new service.</div></div>
-    <div class="row"><b>Consent tied to a transaction</b><div class="today"><span class="lab">Today</span>The QR code and PIN open the whole record for the visit.</div><div class="net"><span class="lab">On the network</span>Access covers one order for a set time, through a FHIR Consent linked to the beckn contract.</div></div>
-    <div class="row"><b>Records build up as care happens</b><div class="today"><span class="lab">Today</span>Data arrives only where an integration exists.</div><div class="net"><span class="lab">On the network</span>Every completed transaction writes its result back to the patient's record.</div></div>
-    <div class="row"><b>A safe surface for AI agents</b><div class="today"><span class="lab">Today</span>An agent acting for a patient would have to scrape provider websites.</div><div class="net"><span class="lab">On the network</span>It acts on typed catalogues and signed contracts, and every step leaves an audit trail.</div></div>
+    <div class="row head" aria-hidden="true"><span>Problem</span><span>HealthPass on its own</span><span>On a beckn network</span></div>
+    <div class="row"><b>Finding care without one company in control</b><div class="today"><span class="lab">HealthPass on its own</span>HealthPass can only offer the providers it has connected to.</div><div class="net"><span class="lab">On a beckn network</span>Providers publish their own signed catalogues, search services index them, and no one owns the listings.</div></div>
+    <div class="row"><b>Connecting once</b><div class="today"><span class="lab">HealthPass on its own</span>One connection per provider, in each country.</div><div class="net"><span class="lab">On a beckn network</span>A lab joins the network once and can serve every patient app.</div></div>
+    <div class="row"><b>Trusting providers you have never dealt with</b><div class="today"><span class="lab">HealthPass on its own</span>A one-time PIN from the patient and a short-lived access code for the provider. Neither shows that the provider is licensed.</div><div class="net"><span class="lab">On a beckn network</span>Every organisation is listed in a registry with a digital key, every message is signed, and the receiver sends back a signed receipt.</div></div>
+    <div class="row"><b>The same steps for every service</b><div class="today"><span class="lab">HealthPass on its own</span>Booking, lab orders and pharmacy are each built separately.</div><div class="net"><span class="lab">On a beckn network</span>The same steps handle all three, and any new service.</div></div>
+    <div class="row"><b>Permission for one order, not the whole record</b><div class="today"><span class="lab">HealthPass on its own</span>The QR code and PIN open the whole record for the visit.</div><div class="net"><span class="lab">On a beckn network</span>The provider can see only what one order needs, for a set time, and the permission is tied to that order.</div></div>
+    <div class="row"><b>Records fill in as care happens</b><div class="today"><span class="lab">HealthPass on its own</span>Information arrives only where a connection exists.</div><div class="net"><span class="lab">On a beckn network</span>Every completed order adds its result to the patient’s record.</div></div>
+    <div class="row"><b>AI assistants can act safely for patients</b><div class="today"><span class="lab">HealthPass on its own</span>An assistant acting for a patient would have to work through provider websites.</div><div class="net"><span class="lab">On a beckn network</span>It works with structured catalogues and signed agreements, and every step is recorded.</div></div>
   </div>
 
-  <div class="col"><h3>Three ways to build it</h3></div>
+  <div class="col"><h3>Three ways to build a health record system</h3></div>
   <div class="tbl">
     <table>
-      <thead><tr><th></th><th>Government central record</th><th>Private platform</th><th>Open network</th></tr></thead>
+      <thead><tr><th></th><th>A central government record</th><th>One company’s platform</th><th>An open network</th></tr></thead>
       <tbody>
-        <tr><th>Who builds it</th><td>The state, usually through one vendor</td><td>One company</td><td class="hl">The state builds the rails; many companies build apps</td></tr>
-        <tr><th>Who controls the patient relationship</th><td>The state's system</td><td>The platform: account, history and providers all sit inside it</td><td class="hl">No single app. Patients keep their ID and record, and can change app or wallet without losing their providers</td></tr>
-        <tr><th>Adding a provider</th><td>A separate integration to the central system</td><td>On the platform's terms and fees</td><td class="hl">Join once</td></tr>
-        <tr><th>Booking, ordering, fulfilment</th><td>Usually not covered</td><td>Yes, inside the platform</td><td class="hl">Yes, across all participants</td></tr>
-        <tr><th>Typical failure</th><td>Slow, single vendor, single point of failure</td><td>Lock-in and rising fees</td><td class="hl">Needs governance, and an app patients already use</td></tr>
+        <tr><th>Who builds it</th><td>The government, usually through one supplier</td><td>One company</td><td class="hl">The government runs the shared parts; many companies build apps</td></tr>
+        <tr><th>Who the patient depends on</th><td>The government’s system</td><td>The company: her account, history and providers are all inside its platform</td><td class="hl">No single app. She keeps her ID and record, and can change app or wallet without losing her providers</td></tr>
+        <tr><th>Adding a provider</th><td>A separate connection to the central system</td><td>On the company’s terms and fees</td><td class="hl">Join once</td></tr>
+        <tr><th>Booking, ordering and delivery</th><td>Usually not included</td><td>Yes, inside the platform</td><td class="hl">Yes, between everyone on the network</td></tr>
+        <tr><th>What usually goes wrong</th><td>Slow, one supplier, one point of failure</td><td>Patients get stuck and fees rise</td><td class="hl">Someone has to set and enforce the rules, and patients need an app they already use</td></tr>
       </tbody>
     </table>
   </div>
   <div class="col">
-    <p class="muted" style="font-size:0.95rem">Being able to switch doesn't mean people will. On UPI, two apps handle about 79% of payments<sup class="src"><a href="#s10">10</a></sup>. Those apps win by being better, though, and they can't hold people's money or the shops hostage, so leaving stays cheap. The same holds for health only if network rules require every wallet to export the record in standard form. That rule is part of the government's job.</p>
+    <p class="muted" style="font-size:0.95rem">Being able to switch doesn’t mean people will. On UPI, two apps handle about 79% of payments<sup class="src"><a href="#s10">10</a></sup>. But those apps win by being better, and they can’t hold people’s money or shops hostage, so leaving stays easy. The same will be true for health only if the network’s rules require every wallet to hand over the record in a standard format. Setting that rule is the government’s job.</p>
   </div>
 </section>
 
-<section id="choice" class="page" data-title="Many wallets, one network">
+<section id="choice" class="page" data-title="Patients aren’t tied to HealthPass">
   <span class="num">07</span>
   <div class="col">
-    <h2>Many wallets, one network</h2>
-    <p>HealthPass is one place a patient can keep their record. It shouldn’t be the only one. On a beckn network any company, hospital or NGO can run a wallet, and every wallet reaches every clinic, lab and pharmacy on the same terms. A patient can change wallet and take their record with them, the way people in India change payment app without changing bank.</p>
+    <h2>Patients aren’t tied to HealthPass</h2>
+    <p>HealthPass is one place a patient can keep her record. We call such a place a wallet. HealthPass shouldn’t be the only one. On a beckn network any company, hospital or NGO can run a wallet, and every wallet reaches every clinic, lab and pharmacy on the same terms. A patient can change wallet and take their record with them, the way people in India change payment app without changing bank.</p>
   </div>
   <figure class="diagram">
     <svg viewBox="0 0 680 350" role="img" aria-labelledby="wl-t wl-d">
       <title id="wl-t">Many wallets on one health network</title>
-      <desc id="wl-d">Wanjiru uses HealthPass and can switch to another wallet. A patient registry holds her ID and which wallet holds her record. Every wallet connects to the same beckn health network, which reaches every clinic, lab and pharmacy.</desc>
-        <defs><marker id="ahw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-        <line class="wire" x1="280" y1="38" x2="380" y2="38"/>
-        <text class="lbl r" x="330" y="31" text-anchor="middle">her ID</text>
-        <line class="ln-c" x1="170" y1="66" x2="100" y2="110" fill="none" stroke-width="1.5"/>
-        <line class="ln-f" x1="182" y1="138" x2="258" y2="138" fill="none" stroke-width="1.5" marker-start="url(#ahw)" marker-end="url(#ahw)"/>
-        <text class="lbl f" x="220" y="129" text-anchor="middle">switch</text>
-        <line class="ln-r" x1="460" y1="66" x2="460" y2="210" fill="none" stroke-width="1.5"/>
-        <text class="lbl r" x="468" y="92">finds her wallet</text>
-        <line class="ln-b" x1="100" y1="166" x2="100" y2="210" fill="none" stroke-width="1.5"/>
-        <line class="ln-b" x1="340" y1="166" x2="340" y2="210" fill="none" stroke-width="1.5"/>
-        <line class="ln-b" x1="580" y1="166" x2="580" y2="210" fill="none" stroke-width="1.5"/>
-        <line class="ln-b" x1="100" y1="254" x2="100" y2="290" fill="none" stroke-width="1.5"/>
-        <line class="ln-b" x1="340" y1="254" x2="340" y2="290" fill="none" stroke-width="1.5"/>
-        <line class="ln-b" x1="580" y1="254" x2="580" y2="290" fill="none" stroke-width="1.5"/>
-        <g class="nd c-pu"><rect x="120" y="10" width="160" height="56" rx="8"/><text class="th" x="200" y="33" text-anchor="middle">Wanjiru</text><text class="ts" x="200" y="51" text-anchor="middle">picks her wallet</text></g>
-        <g class="nd c-gr"><rect x="380" y="10" width="160" height="56" rx="8"/><text class="th" x="460" y="33" text-anchor="middle">Patient registry</text><text class="ts" x="460" y="51" text-anchor="middle">ID + current wallet</text></g>
-        <g class="nd c-pu"><rect x="20" y="110" width="160" height="56" rx="8"/><text class="th" x="100" y="133" text-anchor="middle">HealthPass</text><text class="ts" x="100" y="151" text-anchor="middle">one wallet</text></g>
-        <g class="nd c-pu"><rect x="260" y="110" width="160" height="56" rx="8"/><text class="th" x="340" y="133" text-anchor="middle">Wallet B</text><text class="ts" x="340" y="151" text-anchor="middle">another company</text></g>
-        <g class="nd c-pu"><rect x="500" y="110" width="160" height="56" rx="8"/><text class="th" x="580" y="133" text-anchor="middle">Wallet C</text><text class="ts" x="580" y="151" text-anchor="middle">a hospital or NGO</text></g>
-        <g class="nd c-b"><rect x="20" y="210" width="640" height="44" rx="22"/><text class="th" x="340" y="228" text-anchor="middle">beckn health network</text><text class="ts" x="340" y="244" text-anchor="middle">a public good: open rules, shared registries</text></g>
-        <g class="nd c-co"><rect x="20" y="290" width="160" height="56" rx="8"/><text class="th" x="100" y="313" text-anchor="middle">Clinics</text><text class="ts" x="100" y="331" text-anchor="middle">serve every wallet</text></g>
-        <g class="nd c-co"><rect x="260" y="290" width="160" height="56" rx="8"/><text class="th" x="340" y="313" text-anchor="middle">Labs</text><text class="ts" x="340" y="331" text-anchor="middle">serve every wallet</text></g>
-        <g class="nd c-co"><rect x="500" y="290" width="160" height="56" rx="8"/><text class="th" x="580" y="313" text-anchor="middle">Pharmacies</text><text class="ts" x="580" y="331" text-anchor="middle">serve every wallet</text></g>
+      <desc id="wl-d">Thandi uses HealthPass and can switch to another wallet. When a wallet places an order, the provider sends the result back to that wallet. An optional patient registry, which she joins only if she chooses, tells a provider that has only her ID which wallet to send to. Every wallet connects to the same beckn health network, which reaches every clinic, lab and pharmacy.</desc>
+      <defs><marker id="ahw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+      <line class="wire" x1="280" y1="38" x2="380" y2="38"/>
+      <text class="lbl r" x="330" y="31" text-anchor="middle">if she opts in</text>
+      <line class="ln-c" x1="170" y1="66" x2="100" y2="110" fill="none" stroke-width="1.5"/>
+      <line class="ln-f" x1="182" y1="138" x2="258" y2="138" fill="none" stroke-width="1.5" marker-start="url(#ahw)" marker-end="url(#ahw)"/>
+      <text class="lbl f" x="220" y="129" text-anchor="middle">switch</text>
+      <line class="ln-r" x1="460" y1="66" x2="460" y2="210" fill="none" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <text class="lbl r" x="468" y="84">optional: finds her wallet</text>
+      <text class="lbl r" x="468" y="98">when a provider has only her ID</text>
+      <line class="ln-b" x1="100" y1="168" x2="100" y2="208" fill="none" stroke-width="1.5" marker-start="url(#ahw)" marker-end="url(#ahw)"/>
+      <text class="lbl b" x="108" y="192">order out, result back</text>
+      <line class="ln-b" x1="340" y1="166" x2="340" y2="210" fill="none" stroke-width="1.5"/>
+      <line class="ln-b" x1="580" y1="166" x2="580" y2="210" fill="none" stroke-width="1.5"/>
+      <line class="ln-b" x1="100" y1="256" x2="100" y2="288" fill="none" stroke-width="1.5" marker-start="url(#ahw)" marker-end="url(#ahw)"/>
+      <line class="ln-b" x1="340" y1="254" x2="340" y2="290" fill="none" stroke-width="1.5"/>
+      <line class="ln-b" x1="580" y1="254" x2="580" y2="290" fill="none" stroke-width="1.5"/>
+      <g class="nd c-pu"><rect x="120" y="10" width="160" height="56" rx="8"/><text class="th" x="200" y="33" text-anchor="middle">Thandi</text><text class="ts" x="200" y="51" text-anchor="middle">picks her wallet</text></g>
+      <g class="nd c-gr opt"><rect x="380" y="10" width="160" height="56" rx="8"/><text class="th" x="460" y="33" text-anchor="middle">Patient registry</text><text class="ts" x="460" y="51" text-anchor="middle">optional · ID → wallet</text></g>
+      <g class="nd c-pu"><rect x="20" y="110" width="160" height="56" rx="8"/><text class="th" x="100" y="133" text-anchor="middle">HealthPass</text><text class="ts" x="100" y="151" text-anchor="middle">one wallet</text></g>
+      <g class="nd c-pu"><rect x="260" y="110" width="160" height="56" rx="8"/><text class="th" x="340" y="133" text-anchor="middle">Wallet B</text><text class="ts" x="340" y="151" text-anchor="middle">another company</text></g>
+      <g class="nd c-pu"><rect x="500" y="110" width="160" height="56" rx="8"/><text class="th" x="580" y="133" text-anchor="middle">Wallet C</text><text class="ts" x="580" y="151" text-anchor="middle">a hospital or NGO</text></g>
+      <g class="nd c-b"><rect x="20" y="210" width="640" height="44" rx="22"/><text class="th" x="340" y="228" text-anchor="middle">beckn health network</text><text class="ts" x="340" y="244" text-anchor="middle">a public good: open rules, shared registries</text></g>
+      <g class="nd c-co"><rect x="20" y="290" width="160" height="56" rx="8"/><text class="th" x="100" y="313" text-anchor="middle">Clinics</text><text class="ts" x="100" y="331" text-anchor="middle">serve every wallet</text></g>
+      <g class="nd c-co"><rect x="260" y="290" width="160" height="56" rx="8"/><text class="th" x="340" y="313" text-anchor="middle">Labs</text><text class="ts" x="340" y="331" text-anchor="middle">serve every wallet</text></g>
+      <g class="nd c-co"><rect x="500" y="290" width="160" height="56" rx="8"/><text class="th" x="580" y="313" text-anchor="middle">Pharmacies</text><text class="ts" x="580" y="331" text-anchor="middle">serve every wallet</text></g>
     </svg>
-    <figcaption>Wallets compete for patients the way payment apps do. The patient registry knows which wallet holds Wanjiru’s record, so results reach her wherever she keeps it. The registry holds no health data.</figcaption>
+    <figcaption>When a wallet places an order, the provider sends the result back to that wallet, because every beckn message carries its sender’s address. The patient registry is optional: it is only needed when a provider has nothing but the patient’s ID, and it holds no health data.</figcaption>
   </figure>
   <div class="col">
-    <h3>A patient registry makes switching work</h3>
-    <p>India’s ABDM shows the pattern (see <a href="#india">How India did it</a>). Each person gets an ABHA number from a national registry, and a consent manager keeps track of which hospitals hold their records. Neither one sees what the records say.</p>
-    <p>A health network on beckn needs the same piece: a patient registry that holds each person’s ID, name and contact details, and which wallet currently holds their record. It holds no health data. When Wanjiru moves from HealthPass to another wallet:</p>
-    <ol class="steps">
-      <li><b>She asks the new wallet to take over.</b>It checks her identity against the patient registry, with a one-time PIN sent to her phone.</li>
-      <li><b>HealthPass hands over her full record.</b>It sends it to the new wallet in the standard format: FHIR, with her International Patient Summary.</li>
-      <li><b>The registry records her new wallet.</b>Only the pointer changes. Her ID stays the same.</li>
-      <li><b>Her providers don’t notice.</b>Clinics, labs and pharmacies keep sending results to her ID, and the network delivers them to the new wallet.</li>
-    </ol>
-    <p>Kenya’s Digital Health Agency already runs a national client registry<sup class="src"><a href="#s12">12</a></sup>. The network would add only the pointer to each patient’s wallet, building on the government registry rather than duplicating it. Where there is no national registry, one can be built as part of the network, as a public good.</p>
+    <h3>How a wallet joins</h3>
+    <p>A wallet joins the network once, the same way a lab does. It registers in the network registry, which lists every organisation on the network and its digital keys, and it is approved under the network’s rules, including the rule that it must hand records over when asked. From then on it can search, order and receive results for all of its patients. Patients don’t join one by one; their wallet acts for them. There are three ways to run a wallet:</p>
+    <ul class="plain">
+      <li><strong>Run your own node,</strong> as HealthPass does.</li>
+      <li><strong>Use a hosted node</strong> run by someone else. This suits a hospital or NGO that wants its own wallet without running servers.</li>
+      <li><strong>Build an app with no storage of its own,</strong> working on top of a wallet that someone else runs.</li>
+    </ul>
 
-    <h3>What stops lock-in</h3>
+    <h3>Finding a patient’s wallet</h3>
+    <p>Usually no lookup is needed, because the wallet starts nearly every order or booking. When HealthPass orders a lab test, the order carries HealthPass’s network address, so the lab sends the result straight back to it. Any other wallet works the same way.</p>
+    <p>A lookup only matters when the provider starts the contact and has nothing but the patient’s ID. For example, she walks into a clinic without booking through her wallet, or a doctor sends a prescription a week after the visit. There are two ways to handle that:</p>
+    <div class="roles">
+      <div><b>She shares her wallet address</b>She shows a QR code at the clinic, or gives an address such as thandi@healthpass. Like an email address, it says which wallet to send to, and nothing central is involved.</div>
+      <div><b>The provider asks the patient registry</b>An optional registry answers one question: which wallet holds this person’s record? It holds her ID, name, contact details and the name of her wallet, and no health data. Patients choose whether to be listed.</div>
+    </div>
+    <p>These are two registries with two jobs. The network registry lists organisations, and every beckn network needs one. The patient registry lists people, and it is optional. A central list of who uses which health wallet is sensitive, so if one exists it should be opt-in and held by the government. India’s ABHA works this way (see <a href="#india">How India did it</a>): the ID is voluntary and issued by a national registry, and a consent manager tracks which hospitals hold each person’s records without seeing what they say.</p>
+    <p>South Africa’s Department of Health already runs a national patient register, the Health Patient Registration System. It is used in 3,265 public facilities and holds 37.2 million verified registrations<sup class="src"><a href="#s12">12</a></sup>. The network could add an optional note of each patient’s wallet to that register rather than building a new one. Where a country has no national register, one can be built as part of the network, as a public good.</p>
+
+    <h3>Switching wallets</h3>
+    <ol class="steps">
+      <li><b>She asks the new wallet to take over.</b>It confirms her identity with a one-time PIN sent to her phone.</li>
+      <li><b>HealthPass hands over her full record.</b>It sends it to the new wallet in the standard format: FHIR, with her International Patient Summary.</li>
+      <li><b>Results find the new wallet.</b>If she is listed in the patient registry, the registry records her new wallet, and providers find it from her ID. If she isn’t, HealthPass forwards anything sent to her old address for a set period, and she gives providers her new address at her next visit.</li>
+    </ol>
+
+    <h3>Using more than one app or wallet</h3>
+    <div class="roles">
+      <div><b>Several apps, one wallet</b>The simplest choice, and the one we recommend. Her record lives in one wallet, and any number of apps read and add to it with her permission, using the standard method for secure access to health records: a pregnancy app, a pharmacy app, or an app a family member uses to help with her care. It’s like using two payment apps on the same bank account.</div>
+      <div><b>Two wallets</b>Possible, but it splits the record again, which is the problem we started with. It works if she picks one as her main wallet, where providers send results by default, and the other keeps a copy that stays in sync with her permission.</div>
+    </div>
+
+    <h3>What keeps patients free to switch</h3>
     <ul class="limits fixes">
-      <li><strong>The patient’s ID belongs to the patient.</strong> It comes from the patient registry, not from an account with any wallet.</li>
+      <li><strong>The patient’s ID belongs to the patient.</strong> It is a national ID, not an account with any wallet.</li>
       <li><strong>The record is in a standard format.</strong> Every wallet stores FHIR and must hand the record over when the patient asks. That is a network rule, not a promise from any one company, including us.</li>
       <li><strong>Providers join the network, not a wallet.</strong> A lab connects once and serves patients from every wallet.</li>
       <li><strong>The rules are open.</strong> The health domain pack and the adapters we build are published for anyone to use, including competing wallets.</li>
@@ -830,36 +855,38 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
   </div>
 </section>
 
-<section id="opportunity" class="page" data-title="The opportunity">
+<section id="opportunity" class="page" data-title="Our role and business model">
   <span class="num">08</span>
   <div class="col">
-    <h2>The opportunity</h2>
-    <h3>Kenya already has the public rails</h3>
-    <p>The Digital Health Act 2023 calls for "shareable and portable personal health records" (s.6(d))<sup class="src"><a href="#s11">11</a></sup>. The Digital Health Agency runs client, health-worker and facility registries and a FHIR-based Shared Health Record<sup class="src"><a href="#s12">12</a></sup>. Kenya's FHIR guides already cover e-prescriptions, with each dispense recorded against its prescription, as well as lab orders and patient summaries<sup class="src"><a href="#s13">13</a>,<a href="#s19">19</a></sup>.</p>
-    <p>What's missing is the services layer on top: a common way for patient apps, clinics, labs and pharmacies to transact. A beckn network adds that layer, and HealthPass is one of the wallets on it. HealthPass works alongside the national health information exchange rather than replacing it.</p>
+    <h2>Our role and business model</h2>
+    <h3>What South Africa already has</h3>
+    <p>The Department of Health already runs much of what a network needs. Its Health Patient Registration System has 68.6 million registrations, 37.2 million of them verified, across 3,265 public facilities, and its Master Health Facility List covers more than 55,000 public and private facilities<sup class="src"><a href="#s12">12</a></sup>. Both are being made available through a national exchange that uses FHIR<sup class="src"><a href="#s19">19</a></sup>. Doctors can already sign prescriptions electronically, as long as they use an advanced electronic signature<sup class="src"><a href="#s13">13</a></sup>.</p>
+    <p>People already use health services on WhatsApp at national scale. MomConnect, the Department of Health’s service for pregnant women and new mothers, has 5.2 million users<sup class="src"><a href="#s31">31</a></sup>, and the department describes WhatsApp as a “game-changer” for it<sup class="src"><a href="#s12">12</a></sup>.</p>
+    <p>The government has also committed to shared digital systems. Its Digital Transformation Roadmap, launched in May 2025, covers digital ID, data sharing between systems and payments, and names health for its second phase, from mid-2027<sup class="src"><a href="#s30">30</a></sup>. PayShap, the instant payment system launched in 2023, passed one billion payments in June 2026<sup class="src"><a href="#s32">32</a></sup>.</p>
+    <p>What’s missing is a shared way for patient apps, clinics, labs and pharmacies to find each other, place orders and send results. A beckn network adds that, and HealthPass is one of the wallets on it. It would work alongside the national exchange rather than replace it. It also has to serve public clinics as well as private providers: 15.5% of South Africans belong to a medical aid<sup class="src"><a href="#s33">33</a></sup>.</p>
 
     <h3>Who does what</h3>
   </div>
   <div class="who">
-    <div><b>Government and donors</b><ul><li>Fund and govern the network as a public good</li><li>Registries for patients, facilities and health workers</li><li>Network rules and certification</li><li>The health information exchange and data governance</li></ul></div>
-    <div><b>Other organisations</b><ul><li>Other wallets and patient apps</li><li>Clinics, labs, pharmacies and insurers</li><li>Discovery services</li></ul></div>
-    <div class="us"><b>HealthPass team</b><ul><li>Build the network with government and donors: the open health domain pack, aligned with FHIR and Kenya's guides, and open FHIR-to-beckn adapters</li><li>Help organisations get onto the network</li><li>Run HealthPass as one wallet on it</li></ul></div>
+    <div><b>Government and donors</b><ul><li>Pay for and oversee the network as a public good</li><li>Registers of patients, facilities and health workers</li><li>The network’s rules, and approving who can join</li><li>National record sharing and data protection</li></ul></div>
+    <div><b>Other organisations</b><ul><li>Other wallets and patient apps</li><li>Clinics, labs, pharmacies and medical aids</li><li>Search services</li></ul></div>
+    <div class="us"><b>HealthPass team</b><ul><li>Build the network with government and donors: the open beckn health domain pack (the health-specific rules for the network), based on FHIR and South Africa’s national health data standards, and open FHIR-to-beckn adapters for existing health software</li><li>Help organisations join the network</li><li>Run HealthPass as one wallet on it</li></ul></div>
   </div>
   <div class="col">
-    <h3>How the business works</h3>
+    <h3>How we make money</h3>
     <ul class="plain">
       <li><strong>The network is not the business.</strong> We build it with government and donors as a public good, and no one owns it, including us. That is what lets a government adopt it and other companies build on it.</li>
-      <li><strong>Helping organisations join.</strong> Clinics, labs, pharmacies, insurers and health software vendors need help to get on the network: connecting their systems through the adapters, getting certified, running a network node for those who don’t want to host one, and support afterwards. We charge for this work.</li>
-      <li><strong>Services through HealthPass.</strong> HealthPass competes as one wallet among several. Because every provider on the network is reachable without a separate integration, it can offer services on top of the record, such as booking, lab orders and medicine delivery, and earn from them by being the easiest to use, not by holding patients’ data.</li>
-      <li><strong>Blended funding.</strong> Government and donors pay for the public parts: the domain pack, open adapters, registry integration and pilots. Commercial revenue comes from onboarding and from HealthPass services.</li>
-      <li><strong>Precedent.</strong> Moving Tech built Namma Yatri, a commercial app on an open beckn network, to 150 million trips<sup class="src"><a href="#s6">6</a></sup>. On UPI, two apps handle about 79% of all payments<sup class="src"><a href="#s10">10</a></sup>. Open networks still leave room for successful businesses.</li>
+      <li><strong>Helping organisations join.</strong> Clinics, labs, pharmacies, medical aids and health software companies need help to get on the network: connecting their software, getting approved to join, running a hosted node for those who don’t want to run their own, and support afterwards. We charge for this work.</li>
+      <li><strong>Services through HealthPass.</strong> HealthPass competes as one wallet among several. Because every provider on the network can be reached without building a separate connection, HealthPass can offer services on top of the record, such as booking, lab tests and medicine delivery. It earns from these by being the easiest to use, not by holding patients’ data.</li>
+      <li><strong>Who pays for what.</strong> Government and donors pay for the shared parts: the domain pack, the open adapters, links to national registers, and pilots. Our income comes from helping organisations join and from HealthPass services.</li>
+      <li><strong>Examples from India.</strong> Moving Tech built Namma Yatri, a commercial app on an open beckn network, to 150 million trips<sup class="src"><a href="#s6">6</a></sup>. On UPI, two apps handle about 79% of all payments<sup class="src"><a href="#s10">10</a></sup>. Open networks still leave room for successful businesses.</li>
     </ul>
     <h3>What gets built first</h3>
     <ol class="plain">
       <li>A draft health domain pack covering lab orders, prescriptions and appointments.</li>
-      <li>FHIR-to-beckn adapters, so providers on existing FHIR systems can join without rebuilding.</li>
-      <li>A link from the network to Kenya’s client registry, so any wallet can be found from a patient’s ID.</li>
-      <li>A Kenya pilot with one clinic network, one lab and a few pharmacies.</li>
+      <li>FHIR-to-beckn adapters, so clinics, labs and pharmacies with modern (FHIR-based) software can join without rebuilding it.</li>
+      <li>An optional link from the network to the Health Patient Registration System, so a patient who chooses to can be found from her ID.</li>
+      <li>A pilot in South Africa with one group of clinics, one lab and a few pharmacies.</li>
     </ol>
   </div>
 </section>
@@ -869,12 +896,12 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
   <div class="col">
     <h2>Risks</h2>
     <ul class="risks">
-      <li><strong>Health networks have been slow.</strong> India's health network on beckn, UHI, was first proposed in 2021 and formally launched in June 2026, with five services live<sup class="src"><a href="#s14">14</a>,<a href="#s20">20</a></sup>. It routes through a central government gateway and has published no usage figures. Beckn v2 removes the need for a central gateway.</li>
-      <li><strong>Subsidies don't create demand.</strong> ONDC retail orders fell from 6.5 million to 4.6 million a month after incentives were cut, while mobility, where a zero-commission app served real demand, grew to 56% of transactions<sup class="src"><a href="#s15">15</a></sup>.</li>
-      <li><strong>Patient approval is the hard step.</strong> In India's ABDM, consent-based sharing of records between facilities remains very low because the patient-approval loop is hard to close<sup class="src"><a href="#s16">16</a></sup>. An app patients already use, on WhatsApp, is the part that's missing. That's where HealthPass fits.</li>
-      <li><strong>Other wallets can join the same network.</strong> That is intended. HealthPass has to win on WhatsApp reach, the patient agent and being first, and the onboarding business doesn’t depend on HealthPass winning.</li>
-      <li><strong>The domain pack doesn't exist yet.</strong> We found no published mapping between beckn and FHIR for health. Writing one is real work.</li>
-      <li><strong>Regulation.</strong> Kenya's Digital Health Agency is custodian of health data under s.22 of the Act, so HealthPass operates under its rules. The Act itself is under appeal; the Court of Appeal stayed the High Court ruling against it in September 2024<sup class="src"><a href="#s17">17</a></sup>.</li>
+      <li><strong>Health networks have been slow to start.</strong> India’s health network on beckn, UHI, was first proposed in 2021 and formally launched in June 2026, with five services live<sup class="src"><a href="#s14">14</a>,<a href="#s20">20</a></sup>. It sends every message through a central government hub and has published no usage figures. The latest version of beckn doesn’t need a central hub.</li>
+      <li><strong>Subsidies don’t create demand.</strong> On ONDC, shopping orders fell from 6.5 million to 4.6 million a month after incentives were cut. Ride-hailing, where a commission-free app met real demand, grew to 56% of all orders<sup class="src"><a href="#s15">15</a></sup>.</li>
+      <li><strong>Getting patients to approve requests is the hard part.</strong> In India’s ABDM, providers still rarely share records with the patient’s approval, because patients don’t complete the approval step<sup class="src"><a href="#s16">16</a></sup>. An app patients already use, on WhatsApp, is the missing piece. That’s where HealthPass fits.</li>
+      <li><strong>Other wallets can join the same network.</strong> That is intended. HealthPass has to win on WhatsApp’s reach, its assistant and being first, and the business of helping organisations join doesn’t depend on HealthPass winning.</li>
+      <li><strong>The health domain pack doesn’t exist yet.</strong> We found no published guide to using beckn and FHIR together for health. Writing one is real work.</li>
+      <li><strong>The rules are still changing.</strong> POPIA treats health information as specially protected, and new rules for health information took effect in March 2026<sup class="src"><a href="#s34">34</a></sup>. Because HealthPass reaches patients through WhatsApp, it has to show how it meets POPIA when messages pass through Meta’s service. The National Health Insurance Act, signed in May 2024, is before the Constitutional Court, which reserved judgment in May 2026, and none of its sections is in force<sup class="src"><a href="#s17">17</a></sup>. The network has to work whatever the outcome. The national digital health strategy expired in 2024 and its replacement has not been published<sup class="src"><a href="#s35">35</a></sup>.</li>
     </ul>
   </div>
 </section>
@@ -894,15 +921,15 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
     <li id="s8">G20 Framework for Systems of Digital Public Infrastructure, 2023. <a href="https://www.g20.utoronto.ca/2023/G20_Digital_Economy_Outcome_Document%20_and_Chair's_Summary_19082023.pdf">g20.utoronto.ca</a></li>
     <li id="s9">MOSIP Rewind 2025: national rollouts incl. Uganda, Ethiopia, Nigeria and others. <a href="https://www.mosip.io/pdf/MOSIP-Rewind-2025.pdf">mosip.io</a></li>
     <li id="s10">PhonePe and Google Pay hold about 79% of UPI volume, May 2026. ThePrint, 30 Sep 2026. <a href="https://theprint.in/opinion/upi-is-ruled-by-2-foreign-owned-apps-the-fix-has-been-on-hold-for-6-years/3057456/">theprint.in</a></li>
-    <li id="s11">Kenya Digital Health Act No. 15 of 2023. <a href="https://www.pck.go.ke/sites/default/files/PCK/Resouces/The%20Digital%20Health%20Act%2C%202023.pdf">pck.go.ke</a></li>
-    <li id="s12">Kenya Digital Health Agency HIE documentation: Shared Health Record and registries, Sep 2026. <a href="https://hie-docs.dha.go.ke/docs/sharedHealthRecord/gettingStarted/intro">hie-docs.dha.go.ke</a></li>
-    <li id="s13">Kenya ePrescription FHIR Implementation Guide v0.1.0, Sep 2026. <a href="https://build.fhir.org/ig/IntelliSOFT-Consulting/Kenya-ePrescription-IG/background.html">build.fhir.org</a></li>
+    <li id="s11">Protection of Personal Information Act 4 of 2013 (POPIA): health information is special personal information (s26–27), right of access (s23), no data-portability right. Advisera, comparison with the GDPR. <a href="https://advisera.com/articles/how-similar-is-the-south-african-popia-to-the-eu-gdpr/">advisera.com</a></li>
+    <li id="s12">National Department of Health, Annual Report 2024/25, Sep 2025: HPRS, Master Health Facility List, MomConnect. <a href="https://www.health.gov.za/wp-content/uploads/2025/11/NDoH-2024-25-Annual-Report-_-19-September-2025.pdf">health.gov.za</a></li>
+    <li id="s13">Medicines and Related Substances Act, General Regulation 33 (GN R859 of 2017): prescriptions signed with an advanced electronic signature. <a href="https://www.acts.co.za/medicines-/n859_33__particulars_which_mus">acts.co.za</a></li>
     <li id="s14">PIB backgrounder on UHI and ABDM, 6 Jul 2026. <a href="https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/jul/doc202676912801.pdf">pib.gov.in</a></li>
     <li id="s15">"Has the ONDC experiment failed?" Finshots, 5 May 2025. <a href="https://finshots.in/archive/has-the-ondc-experiment-failed-nrai-rapido-t-koshy-swiggy-zomato-food-delivery/">finshots.in</a></li>
     <li id="s16">Kommuru and Agarwal, "From infrastructure to impact", HMPI, 9 Jul 2026. <a href="https://hmpi.org/2026/07/09/from-infrastructure-to-impact-operationalizing-indias-ayushman-bharat-digital-mission/">hmpi.org</a></li>
-    <li id="s17">Court of Appeal stays High Court ruling on Kenya's health Acts, Sep 2024. Mondaq. <a href="https://www.mondaq.com/trials-appeals-compensation/1599800/court-of-appeal-greenlights-operationalisation-of-shif">mondaq.com</a></li>
+    <li id="s17">National Health Insurance Act litigation: Presidency statement, 24 Feb 2026, <a href="https://www.gov.za/news/media-statements/presidency-national-health-insurance-act-litigation-24-feb-2026">gov.za</a>; Constitutional Court reserves judgment, EWN, 7 May 2026, <a href="https://www.ewn.co.za/2026/05/07/concourt-reserves-judgment-in-nhi-challenge">ewn.co.za</a></li>
     <li id="s18">Beckn Protocol v2, Networks for Humanity documentation. <a href="https://docs.nfh.global/nfh-fabric/open-standards/beckn-protocol">docs.nfh.global</a></li>
-    <li id="s19">Kenya Core FHIR Implementation Guide and domain guides (lab orders, patient summary, referral), Sep 2026. <a href="https://build.fhir.org/ig/IntelliSOFT-Consulting/Kenya-core-FHIR-IG/">build.fhir.org</a></li>
+    <li id="s19">National Department of Health, National Health Information Exchange portal: HPRS and facility list services on FHIR R4, accessed Oct 2026. <a href="https://hie.meraka.csir.co.za/">hie.meraka.csir.co.za</a></li>
     <li id="s20">UHI core specification, "an adaptation of Beckn core version 0.9.3". NHA on GitHub. <a href="https://github.com/NHA-ABDM/UHI/blob/main/specification/core.yml">github.com</a></li>
     <li id="s21">ABDM, Health Information Exchange and Consent Manager (HIE-CM). <a href="https://abdm.gov.in:8081/uploads/ABDM_HIE_CM_ea5d4c0559.pdf">abdm.gov.in</a></li>
     <li id="s22">ABDM 3rd Mission Steering Group: 5.33 lakh facilities on HFR, 9.85 lakh professionals on HPR, 10 Jul 2026. Daily Pioneer. <a href="https://www.dailypioneer.com/news/ayushman-bharat-digital-mission-now-one-of-worlds-largest-health-ecosystems">dailypioneer.com</a></li>
@@ -913,6 +940,13 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
     <li id="s27">"dataEraseAt for HIU", ABDM developer forum. <a href="https://devforum.abdm.gov.in/t/dataeraseat-for-hiu/3453">devforum.abdm.gov.in</a></li>
     <li id="s28">"The ABDM's decentralized and patient-centric consent management architecture". SFLC.in, 18 Jan 2024. <a href="https://sflc.in/?p=8723">sflc.in</a></li>
     <li id="s29">"Building an ABDM HIP from scratch: M2 flow reference architecture". Nirmitee (implementer blog, secondary). <a href="https://nirmitee.io/blog/building-abdm-hip-from-scratch-m2-flow-reference-architecture/">nirmitee.io</a></li>
+    <li id="s30">Digital Transformation Roadmap launched, SAnews, May 2025, <a href="https://www.sanews.gov.za/node/74790">sanews.gov.za</a>; health named for Phase 2, Engineering News, 1 Aug 2025, <a href="https://www.engineeringnews.co.za/article/government-starts-work-on-ambitious-digitising-whole-of-government-services-2025-08-01">engineeringnews.co.za</a></li>
+    <li id="s31">MomConnect, WSIS Prizes 2026 entry, ITU. <a href="https://www.itu.int/net4/wsis/stocktaking/Prizes/2026/Details/17720121703313989">itu.int</a></li>
+    <li id="s32">PayShap passes one billion transactions, Jun 2026. <a href="https://mosaic.co.za/adviser/2026/06/payshap-passes-one-billion-transactions-now-topping-60-million-a-month-019ef8f7/">mosaic.co.za</a></li>
+    <li id="s33">Statistics South Africa, General Household Survey 2025, May 2026. <a href="https://www.statssa.gov.za/publications/P0318/GHS%202025%20Presentation.pdf">statssa.gov.za</a></li>
+    <li id="s34">New POPIA regulations on health information now in force, Moonstone, Mar 2026. <a href="https://www.moonstone.co.za/new-popia-regulations-on-health-information-now-in-force/">moonstone.co.za</a></li>
+    <li id="s35">Minister of Health, reply on the national health information exchange and digital health strategy, PMG, Nov 2025. <a href="https://pmg.org.za/committee-question/34165/">pmg.org.za</a></li>
+    <li id="s36">National Department of Health, invitation to bid for electronic medical record roll-out (NDoH04-2025/2026), Mar 2026. <a href="https://www.health.gov.za/wp-content/uploads/2026/03/NDoH04-20252026-Final-BSC-Invitation-to-Bid-EMR-implementation-03-03-2026.pdf">health.gov.za</a></li>
   </ol>
   <p class="note">Prepared October 2026. Figures carry the date of the source; Indian figures in crore are converted to millions and billions.</p>
 </footer>
@@ -921,93 +955,93 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
 (function () {
   const FLOWS = {
     lab: {
-      intro: 'A clinic orders an HbA1c test. The patient books a lab with home collection through HealthPass, and the result comes back to their record.',
+      intro: 'A clinic orders a blood sugar test (HbA1c). The patient books a lab with home collection through HealthPass, and the result comes back to her record.',
       nodes: {
         pt: { x: 40, y: 20, c: 'pu', t: 'Patient', s: 'WhatsApp' },
-        ds: { x: 260, y: 20, c: 'te', t: 'Discovery service', s: 'Indexes lab catalogues' },
-        hp: { x: 40, y: 150, c: 'pu', t: 'HealthPass', s: 'Consumer node + vault' },
-        pr: { x: 480, y: 150, c: 'co', t: 'Afya Lab', s: 'Provider node' },
-        cl: { x: 260, y: 280, c: 'gr', t: 'Tumaini Clinic', s: 'Ordering clinic' }
+        ds: { x: 260, y: 20, c: 'te', t: 'Search service', s: 'Lists labs' },
+        hp: { x: 40, y: 150, c: 'pu', t: 'HealthPass', s: 'Consumer node + record' },
+        pr: { x: 480, y: 150, c: 'co', t: 'Thuso Lab', s: 'Provider node' },
+        cl: { x: 260, y: 280, c: 'gr', t: 'Kopano Clinic', s: 'Ordered the test' }
       },
       lines: [[120,76,120,150],[190,150,270,76],[200,178,480,178],[160,206,275,280]],
       edges: { 'pt>hp':[[112,76],[112,150]], 'hp>pt':[[128,150],[128,76]], 'hp>ds':[[190,150],[270,76]], 'ds>hp':[[270,76],[190,150]], 'hp>pr':[[200,172],[480,172]], 'pr>hp':[[480,186],[200,186]], 'cl>hp':[[275,280],[160,206]], 'hp>cl':[[160,206],[275,280]] },
       steps: [
-        { t: '1. The order lives in the record.', d: 'The clinician writes a FHIR ServiceRequest for HbA1c into the patient’s HealthPass, using write access from the visit. It isn’t addressed to any particular lab.', h: [['cl>hp','FHIR write: ServiceRequest','f'], ['hp>pt','new lab order: HbA1c','c']] },
-        { t: '2. Find a lab.', d: 'HealthPass searches by test and location. Lab catalogues list tests offered, sites, home collection and insurance accepted. The search is anonymous.', h: [['pt>hp','where can I get this done?','c'], ['hp>ds','discover: HbA1c, 5 km, SHA','b'], ['ds>hp','on_discover: 4 labs','b'], ['hp>pt','options + home collection','c']] },
-        { t: '3. Price and collection slots (select).', d: 'Live prices and collector availability come straight from the lab, because they change too fast for the index.', h: [['hp>pr','select: HbA1c, home collection','b'], ['pr>hp','on_select: KES 1,800, slots','b']] },
-        { t: '4. Book, and share the order (init, confirm).', d: 'The patient approves the booking and the lab’s access to this order. The contract references the ServiceRequest, so the lab is fulfilling a real clinical order.', h: [['hp>pr','init: slot, address, order ref','b'], ['pr>hp','on_init: terms','b'], ['hp>pt','book + share order with lab?','c'], ['pt>hp','yes','c'], ['hp>pr','confirm','b'], ['pr>hp','on_confirm: contract','b']] },
-        { t: '5. The lab reads the order.', d: 'Using the Consent, the lab fetches the ServiceRequest over SMART, including any notes the clinician attached, such as fasting status.', h: [['pr>hp','SMART GET ServiceRequest','f'], ['hp>pr','order details','f']] },
-        { t: '6. Collection and processing.', d: 'Progress arrives as on_track and on_status callbacks, such as the collector on the way or the sample received. HealthPass passes the useful ones to the patient.', h: [['pr>hp','on_track: collector 15 min','b'], ['hp>pt','collector arriving','c'], ['pr>hp','on_status: sample in lab','b']] },
-        { t: '7. The result goes to the record, then the clinician.', d: 'The lab writes a DiagnosticReport and Observations into HealthPass. The ordering clinic, already authorised for this order, is notified and pulls the result. The patient sees it too.', h: [['pr>hp','FHIR write: DiagnosticReport','f'], ['pr>hp','on_status: completed','b'], ['hp>pt','result ready: HbA1c 7.9%','c'], ['hp>cl','notify ordering clinic','f'], ['cl>hp','SMART GET result','f']] }
+        { t: '1. The clinic adds the test order to her record.', d: 'The clinician writes an order for an HbA1c test into the patient’s HealthPass record, with permission she gave during the visit. The order isn’t sent to any particular lab.', h: [['cl>hp','add lab order: HbA1c','f'], ['hp>pt','new lab order: HbA1c','c']] },
+        { t: '2. Find a lab.', d: 'HealthPass searches for labs by test and distance. Each lab’s catalogue lists the tests it offers, its sites, whether it collects from home, and the medical aids it accepts. The search doesn’t reveal who the patient is.', h: [['pt>hp','where can I get this done?','c'], ['hp>ds','search: HbA1c, 5 km, medical aid','b'], ['ds>hp','4 labs found','b'], ['hp>pt','options + home collection','c']] },
+        { t: '3. Check price and times.', d: 'HealthPass asks the lab directly for today’s price and collection times, because these change too often to list in advance.', h: [['hp>pr','price + times for home collection?','b'], ['pr>hp','R350, times available','b']] },
+        { t: '4. Book, and let the lab see the order.', d: 'The patient approves the booking and gives the lab permission to see this one order. The booking points to the clinic’s order, so the lab knows a clinician asked for the test.', h: [['hp>pr','book: time, address, order','b'], ['pr>hp','terms','b'], ['hp>pt','book + share order with lab?','c'], ['pt>hp','yes','c'], ['hp>pr','confirm','b'], ['pr>hp','booking confirmed','b']] },
+        { t: '5. The lab reads the order.', d: 'With the patient’s permission, the lab reads the order from her record, including any notes from the clinician, such as whether she should fast.', h: [['pr>hp','read lab order','f'], ['hp>pr','order details','f']] },
+        { t: '6. Collection and testing.', d: 'The lab sends updates as it goes, such as the collector being on the way or the sample reaching the lab. HealthPass passes the useful ones on to the patient.', h: [['pr>hp','collector 15 min away','b'], ['hp>pt','collector arriving','c'], ['pr>hp','sample at the lab','b']] },
+        { t: '7. The result goes into her record, then to the clinic.', d: 'The lab adds the result to the patient’s HealthPass record. The clinic that ordered the test is told and reads the result. The patient sees it too.', h: [['pr>hp','add result: HbA1c','f'], ['pr>hp','test complete','b'], ['hp>pt','result ready: HbA1c 7.9%','c'], ['hp>cl','result is in','f'], ['cl>hp','read result','f']] }
       ]
     },
     rx: {
-      intro: 'A signed prescription is stored in HealthPass and filled at a pharmacy found on the network. Redemption is recorded so it can’t be filled twice.',
+      intro: 'A doctor’s signed prescription is saved to HealthPass and filled at a pharmacy found on the network. The pharmacy marks it as used, so it can’t be filled twice.',
       nodes: {
         pt: { x: 40, y: 20, c: 'pu', t: 'Patient', s: 'WhatsApp' },
-        ds: { x: 260, y: 20, c: 'te', t: 'Discovery service', s: 'Indexes pharmacies' },
-        hp: { x: 40, y: 150, c: 'pu', t: 'HealthPass', s: 'Consumer node + vault' },
-        pr: { x: 480, y: 150, c: 'co', t: 'Neema Pharmacy', s: 'Provider node' },
-        cl: { x: 260, y: 280, c: 'co', t: 'Prescriber', s: 'Doctor, Tumaini Clinic' },
+        ds: { x: 260, y: 20, c: 'te', t: 'Search service', s: 'Lists pharmacies' },
+        hp: { x: 40, y: 150, c: 'pu', t: 'HealthPass', s: 'Consumer node + record' },
+        pr: { x: 480, y: 150, c: 'co', t: 'Imbali Pharmacy', s: 'Provider node' },
+        cl: { x: 260, y: 280, c: 'co', t: 'Prescriber', s: 'Doctor, Kopano Clinic' },
         reg: { x: 480, y: 280, c: 'gr', t: 'Registry', s: 'Licensed prescribers' }
       },
       lines: [[120,76,120,150],[190,150,270,76],[200,178,480,178],[160,206,275,280],[560,206,560,280]],
       edges: { 'pt>hp':[[112,76],[112,150]], 'hp>pt':[[128,150],[128,76]], 'hp>ds':[[190,150],[270,76]], 'ds>hp':[[270,76],[190,150]], 'hp>pr':[[200,172],[480,172]], 'pr>hp':[[480,186],[200,186]], 'cl>hp':[[275,280],[160,206]], 'hp>cl':[[160,206],[275,280]], 'pr>reg':[[552,206],[552,280]], 'reg>pr':[[568,280],[568,206]] },
       steps: [
-        { t: '1. The prescriber writes and signs the prescription.', d: 'After the consultation, the doctor writes a MedicationRequest in the clinic’s system and signs it with their registry-listed key. It is saved to the patient’s HealthPass using write access from the visit, so anyone can later check that it came from a licensed prescriber and wasn’t altered.', h: [['cl','write + sign MedicationRequest'], ['cl>hp','FHIR write: signed MedicationRequest','f'], ['hp>pt','new prescription: amoxicillin','c']] },
-        { t: '2. Find a pharmacy.', d: 'Pharmacy catalogues carry locations, hours, delivery radius and insurance. Stock levels stay out of the catalogue because they change hourly.', h: [['pt>hp','fill this, delivery please','c'], ['hp>ds','discover: pharmacy, delivers, 5 km','b'], ['ds>hp','on_discover: 5 pharmacies','b']] },
-        { t: '3. Stock, price, substitutes (select).', d: 'HealthPass asks a few pharmacies in parallel. Each answers with live stock and price, and may offer a generic where substitution rules allow it.', h: [['hp>pr','select: amoxicillin 500mg x21','b'], ['pr>hp','on_select: generic, KES 450','b'], ['hp>pt','best: generic, delivered today','c']] },
-        { t: '4. Book and share (init, confirm).', d: 'The patient approves the order and the pharmacy’s access to this one prescription, not the whole record.', h: [['hp>pr','init: delivery address, Rx ref','b'], ['pr>hp','on_init: terms, payment','b'], ['pt>hp','approve','c'], ['hp>pr','confirm','b'], ['pr>hp','on_confirm: contract','b']] },
-        { t: '5. The pharmacy verifies the prescription.', d: 'It fetches the MedicationRequest, then checks the signature and the prescriber’s licence against the registry. A forged or edited prescription fails here.', h: [['pr>hp','SMART GET MedicationRequest','f'], ['hp>pr','signed prescription','f'], ['pr>reg','verify prescriber key + licence','r'], ['reg>pr','valid, licensed','r']] },
-        { t: '6. Redeem, so it can’t be filled twice.', d: 'Before dispensing, the pharmacy records a MedicationDispense and HealthPass marks the prescription completed in the same step. A second pharmacy trying to fill it would see it has already been used.', h: [['pr>hp','FHIR write: MedicationDispense','f'], ['hp','mark MedicationRequest completed'], ['hp>pr','redeemed, ok to dispense','f']] },
-        { t: '7. Delivery and follow-up.', d: 'Tracking arrives through on_track. The dispense record lets the prescriber see what was actually given, including any substitution.', h: [['pr>hp','on_track: rider 20 min','b'], ['hp>pt','delivery on the way','c'], ['pr>hp','on_status: delivered','b'], ['hp>cl','notify: dispensed (generic)','f']] }
+        { t: '1. The doctor writes and signs the prescription.', d: 'After the consultation, the doctor writes the prescription in the clinic’s software and signs it digitally. It is saved to the patient’s HealthPass record, with permission she gave during the visit. Anyone can later check that it came from a licensed prescriber and wasn’t changed.', h: [['cl','write + sign prescription'], ['cl>hp','add signed prescription','f'], ['hp>pt','new prescription: amoxicillin','c']] },
+        { t: '2. Find a pharmacy.', d: 'Each pharmacy’s catalogue lists its location, opening hours, delivery area and the medical aids it accepts. Stock isn’t in the catalogue, because it changes every hour.', h: [['pt>hp','fill this, delivery please','c'], ['hp>ds','search: pharmacy, delivers, 5 km','b'], ['ds>hp','5 pharmacies found','b']] },
+        { t: '3. Check stock and price.', d: 'HealthPass asks a few pharmacies at once. Each replies with what it has in stock and the price, and may offer a cheaper generic where the rules allow.', h: [['hp>pr','in stock? amoxicillin 500mg x21','b'], ['pr>hp','generic, R75','b'], ['hp>pt','best: generic, delivered today','c']] },
+        { t: '4. Order, and let the pharmacy see the prescription.', d: 'The patient approves the order and gives the pharmacy permission to see this one prescription, not her whole record.', h: [['hp>pr','order: address, prescription','b'], ['pr>hp','terms, payment','b'], ['pt>hp','approve','c'], ['hp>pr','confirm','b'], ['pr>hp','order confirmed','b']] },
+        { t: '5. The pharmacy checks the prescription.', d: 'It reads the prescription, then checks the doctor’s signature and licence against the registry. A forged or edited prescription fails here.', h: [['pr>hp','read prescription','f'], ['hp>pr','signed prescription','f'], ['pr>reg','check signature + licence','r'], ['reg>pr','valid, licensed','r']] },
+        { t: '6. Mark it as used, so it can’t be filled twice.', d: 'Before handing over the medicine, the pharmacy records what it is giving, and HealthPass marks the prescription as filled in the same step. A second pharmacy trying to fill it would see that it has already been used.', h: [['pr>hp','record: medicine given','f'], ['hp','mark prescription as filled'], ['hp>pr','ok to hand over','f']] },
+        { t: '7. Delivery and follow-up.', d: 'The pharmacy sends delivery updates. The doctor can see exactly what was given, including any cheaper generic.', h: [['pr>hp','rider 20 min away','b'], ['hp>pt','delivery on the way','c'], ['pr>hp','delivered','b'], ['hp>cl','given: generic version','f']] }
       ]
     },
     appt: {
-      intro: 'A patient books an antenatal visit through HealthPass and shares their patient summary with the clinic before the visit.',
+      intro: 'A patient books an antenatal visit through HealthPass and shares her health summary with the clinic before the visit.',
       nodes: {
         pt: { x: 40, y: 20, c: 'pu', t: 'Patient', s: 'WhatsApp' },
-        ds: { x: 260, y: 20, c: 'te', t: 'Discovery service', s: 'Run by the network' },
-        hp: { x: 40, y: 150, c: 'pu', t: 'HealthPass', s: 'Consumer node + vault' },
-        cl: { x: 480, y: 150, c: 'co', t: 'Tumaini Clinic', s: 'Provider node' },
-        reg: { x: 260, y: 280, c: 'gr', t: 'Registry', s: 'Verified facilities' }
+        ds: { x: 260, y: 20, c: 'te', t: 'Search service', s: 'Lists clinics' },
+        hp: { x: 40, y: 150, c: 'pu', t: 'HealthPass', s: 'Consumer node + record' },
+        cl: { x: 480, y: 150, c: 'co', t: 'Kopano Clinic', s: 'Provider node' },
+        reg: { x: 260, y: 280, c: 'gr', t: 'Registry', s: 'Approved facilities' }
       },
       lines: [[120,76,120,150],[190,150,270,76],[410,76,490,150],[200,178,480,178],[520,206,405,280],[340,76,340,280]],
       edges: { 'pt>hp':[[112,76],[112,150]], 'hp>pt':[[128,150],[128,76]], 'hp>ds':[[190,150],[270,76]], 'ds>hp':[[270,76],[190,150]], 'ds>cl':[[410,76],[490,150]], 'cl>ds':[[490,150],[410,76]], 'hp>cl':[[200,172],[480,172]], 'cl>hp':[[480,186],[200,186]], 'cl>reg':[[520,206],[405,280]], 'ds>reg':[[340,76],[340,280]], 'reg>ds':[[340,280],[340,76]] },
       steps: [
-        { t: '1. Clinics publish services, not slots.', d: 'The catalogue holds slow-changing facts: services, locations, hours, insurance accepted. Live availability changes too fast for a crawled index, so it comes later, at select.', h: [['cl','sign + host service catalogue'], ['ds>reg','resolve verified clinics','r'], ['ds>cl','crawl catalogue','b'], ['cl>ds','signed catalogue','b'], ['ds','verify + index']] },
-        { t: '2. The patient asks, anonymously.', d: 'The patient writes in plain language. HealthPass turns that into a location-filtered discover request. No patient identity leaves HealthPass at this stage.', h: [['pt>hp','antenatal visit near me tomorrow','c'], ['hp>ds','discover: antenatal, 5 km','b'], ['ds>hp','on_discover: 3 clinics','b'], ['hp>pt','pick a clinic','c']] },
-        { t: '3. Live slots (select).', d: 'HealthPass asks the chosen clinic directly. The clinic’s adapter queries its scheduling system (FHIR Slot) and returns what’s open now, still with no patient identity.', h: [['pt>hp','Tumaini Clinic','c'], ['hp>cl','select: antenatal, tomorrow','b'], ['cl','query FHIR Slots'], ['cl>hp','on_select: 9:00, 10:30, 14:00','b']] },
-        { t: '4. Terms and a records request (init).', d: 'Only now does HealthPass send minimal identity and coverage. The clinic replies with terms, its cancellation policy, and which records it would like before the visit.', h: [['hp>cl','init: 10:30, name, phone, SHA','b'], ['cl>hp','on_init: terms + wants IPS','b']] },
-        { t: '5. One approval covers both.', d: 'The patient confirms the booking and, separately, whether to share records, and can narrow what is shared. HealthPass writes a FHIR Consent tied to this appointment.', h: [['hp>pt','book 10:30? share summary?','c'], ['pt>hp','yes, but not mental health','c'], ['hp','write Consent (scoped, 7 days)']] },
-        { t: '6. The appointment is a contract (confirm).', d: 'The on_confirm contract maps to a FHIR Appointment at the clinic. It references the Consent, which tells the clinic it may now fetch records.', h: [['hp>cl','confirm (signed)','b'], ['cl>hp','ack + counter-signature','b'], ['cl','book FHIR Appointment'], ['cl>hp','on_confirm: contract + Consent','b']] },
-        { t: '7. Pre-visit preparation and reminders.', d: 'The clinic pulls the approved summary over SMART using its registry key. Reminders and check-in arrive as on_status callbacks, passed on to WhatsApp.', h: [['cl>hp','SMART token, then GET IPS','f'], ['hp>cl','IPS bundle (scoped)','f'], ['cl>hp','on_status: reminder, 10:30','b'], ['hp>pt','reminder: tomorrow 10:30','c']] },
-        { t: '8. After the visit, the record grows.', d: 'The clinic writes the visit summary back to HealthPass with write access the patient granted. The patient can rate the visit, and the record is richer for the next booking.', h: [['cl>hp','on_status: completed','b'], ['cl>hp','FHIR write: visit summary','f'], ['hp>pt','summary added, rate visit?','c'], ['hp>cl','rate: 5','b']] }
+        { t: '1. Clinics publish catalogues, not free times.', d: 'Each clinic publishes a catalogue of things that rarely change: services, locations, opening hours and medical aids accepted. Free appointment times change too quickly for that, so HealthPass asks for them later.', h: [['cl','sign + publish catalogue'], ['ds>reg','which clinics are approved?','r'], ['ds>cl','read catalogue','b'], ['cl>ds','signed catalogue','b'], ['ds','check + add to search']] },
+        { t: '2. The patient asks, without saying who she is.', d: 'The patient writes in everyday language. HealthPass turns that into a search by service and distance. Nothing that identifies her leaves HealthPass at this stage.', h: [['pt>hp','antenatal visit near me tomorrow','c'], ['hp>ds','search: antenatal, 5 km','b'], ['ds>hp','3 clinics found','b'], ['hp>pt','pick a clinic','c']] },
+        { t: '3. Free times.', d: 'HealthPass asks the chosen clinic directly. The clinic checks its booking system and replies with what is free now, still without knowing who is asking.', h: [['pt>hp','Kopano Clinic','c'], ['hp>cl','free times tomorrow?','b'], ['cl','check booking system'], ['cl>hp','9:00, 10:30, 14:00','b']] },
+        { t: '4. Terms, and a request for her records.', d: 'Only now does HealthPass send her name, phone number and medical aid. The clinic replies with its terms, its cancellation policy, and the records it would like to see before the visit.', h: [['hp>cl','hold 10:30: name, phone, medical aid','b'], ['cl>hp','terms + would like her summary','b']] },
+        { t: '5. One approval covers both.', d: 'The patient confirms the booking and, separately, whether to share her records, and she can leave things out. HealthPass saves her permission, tied to this appointment.', h: [['hp>pt','book 10:30? share summary?','c'], ['pt>hp','yes, but not mental health','c'], ['hp','save permission (7 days)']] },
+        { t: '6. The booking is confirmed.', d: 'The booking becomes an appointment in the clinic’s system. It carries her permission, which tells the clinic it may now read her records.', h: [['hp>cl','confirm (signed)','b'], ['cl>hp','signed receipt','b'], ['cl','add to appointment book'], ['cl>hp','booked + her permission','b']] },
+        { t: '7. Getting ready for the visit, and reminders.', d: 'The clinic reads the summary she approved, proving who it is with its registered identity. Reminders and check-in come as updates, passed on to WhatsApp.', h: [['cl>hp','read summary (with permission)','f'], ['hp>cl','summary: only what she approved','f'], ['cl>hp','reminder: 10:30','b'], ['hp>pt','reminder: tomorrow 10:30','c']] },
+        { t: '8. After the visit, her record grows.', d: 'The clinic adds a visit summary to her HealthPass record, with the permission she gave. She can rate the visit, and her record is more complete for next time.', h: [['cl>hp','visit complete','b'], ['cl>hp','add visit summary','f'], ['hp>pt','summary added, rate visit?','c'], ['hp>cl','rating: 5','b']] }
       ]
     }
   };
 
   const ABDM_FLOWS = {
     abdm: {
-      title: 'ABDM record sharing',
-      intro: 'Priya shares records from a district hospital with a specialist clinic. The records stay where they were created. The consent manager handles the request and her approval, and the data goes straight from one provider to the other.',
+      title: 'How India shares a health record',
+      intro: 'Priya shares records from a district hospital with a specialist clinic. The records stay where they were created. The consent manager passes on the request and her approval, and the records go straight from one provider to the other.',
       nodes: {
         pt: { x: 40, y: 20, c: 'pu', t: 'Patient', s: 'ABHA or health-record app' },
-        cm: { x: 260, y: 20, c: 'te', t: 'Consent manager', s: 'Sees requests, not data' },
-        gw: { x: 480, y: 20, c: 'gr', t: 'ABDM gateway', s: 'Routes messages' },
+        cm: { x: 260, y: 20, c: 'te', t: 'Consent manager', s: 'Sees requests, not records' },
+        gw: { x: 480, y: 20, c: 'gr', t: 'ABDM gateway', s: 'Passes messages on' },
         hip: { x: 40, y: 150, c: 'co', t: 'District hospital', s: 'Holds the record' },
         hiu: { x: 480, y: 150, c: 'co', t: 'Specialist clinic', s: 'Asks for the record' },
-        reg: { x: 260, y: 280, c: 'gr', t: 'Registries', s: 'ABHA · HFR · HPR' }
+        reg: { x: 260, y: 280, c: 'gr', t: 'Registries', s: 'People, facilities, staff' }
       },
       lines: [[120,76,120,150],[200,49,260,49],[420,49,480,49],[190,150,270,76],[520,76,520,150],[490,76,200,155],[200,178,480,178],[160,206,275,280],[520,206,405,280]],
       edges: { 'pt>hip':[[112,76],[112,150]], 'hip>pt':[[128,150],[128,76]], 'pt>cm':[[200,42],[260,42]], 'cm>pt':[[260,56],[200,56]], 'cm>gw':[[420,42],[480,42]], 'gw>cm':[[480,56],[420,56]], 'hip>cm':[[190,150],[270,76]], 'hiu>gw':[[512,150],[512,76]], 'gw>hiu':[[528,76],[528,150]], 'gw>hip':[[490,76],[200,155]], 'hip>hiu':[[200,178],[480,178]], 'hip>reg':[[160,206],[275,280]], 'reg>hip':[[275,280],[160,206]], 'hiu>reg':[[520,206],[405,280]], 'reg>hiu':[[405,280],[520,206]] },
       steps: [
-        { t: '1. Create an ABHA.', d: 'Priya verifies with an Aadhaar or mobile one-time code and gets a 14-digit ABHA number and an ABHA address, priya@abdm. The ID itself holds no health data.', h: [['pt','verify with Aadhaar or mobile OTP'], ['reg','issue ABHA number + address']] },
-        { t: '2. Register at the hospital.', d: 'At the registration desk she scans the hospital’s QR code and shares her ABHA, which gives her an outpatient token without filling in forms. India calls this Scan & Share.', h: [['pt>hip','scan & share: ABHA','c'], ['hip>reg','check ABHA','r'], ['reg>hip','valid','r']] },
-        { t: '3. The visit is linked, not copied.', d: 'After the visit the hospital keeps the record in its own system and links the visit (a “care context”) to her ABHA. Nothing goes to a central store.', h: [['hip','store record in hospital system'], ['hip>cm','link visit to ABHA','r'], ['cm>pt','new record linked','c']] },
-        { t: '4. Another provider asks.', d: 'A specialist clinic sends a consent request with her ABHA address, stating the purpose, the record types and the date range.', h: [['hiu>gw','consent request: purpose, types, dates','r'], ['gw>cm','forward request','r'], ['cm>pt','approve request?','c']] },
-        { t: '5. The patient approves, or narrows it.', d: 'Priya approves in her app and can limit what is shared. The consent manager issues a signed consent artefact, and the gateway tells both providers.', h: [['pt>cm','approve: prescriptions, 6 months','c'], ['cm>gw','signed consent artefact','r'], ['gw>hiu','consent granted','r'], ['gw>hip','consent + data request','r']] },
-        { t: '6. The data goes direct, encrypted.', d: 'The hospital sends the records straight to the clinic as encrypted FHIR bundles. The consent manager and the gateway never see the clinical data.', h: [['hip>hiu','encrypted FHIR bundles','f'], ['hiu','decrypt + show to doctor']] }
+        { t: '1. Get an ABHA ID.', d: 'Priya confirms who she is with a one-time code, sent through Aadhaar or to her phone, and gets a 14-digit ABHA number and an ABHA address, priya@abdm. The ID itself holds no health information.', h: [['pt','confirm with one-time code'], ['reg','issue ABHA number + address']] },
+        { t: '2. Register at the hospital.', d: 'At the registration desk she scans the hospital’s QR code to share her ABHA, and gets her queue number without filling in forms. India calls this Scan & Share.', h: [['pt>hip','scan & share: ABHA','c'], ['hip>reg','check ABHA','r'], ['reg>hip','valid','r']] },
+        { t: '3. The visit is linked, not copied.', d: 'After the visit the hospital keeps the record in its own system and links the visit to her ABHA. Nothing is sent to a central database.', h: [['hip','store record in hospital system'], ['hip>cm','link visit to ABHA','r'], ['cm>pt','new record linked','c']] },
+        { t: '4. Another provider asks.', d: 'A specialist clinic sends a request using her ABHA address, saying why it wants the records, which kinds, and from which dates.', h: [['hiu>gw','request: reason, record types, dates','r'], ['gw>cm','pass on request','r'], ['cm>pt','approve request?','c']] },
+        { t: '5. The patient approves, or narrows the request.', d: 'Priya approves in her app and can limit what is shared. The consent manager issues a signed consent artefact, and the gateway tells both providers.', h: [['pt>cm','approve: prescriptions, 6 months','c'], ['cm>gw','signed consent artefact','r'], ['gw>hiu','permission granted','r'], ['gw>hip','permission + request for records','r']] },
+        { t: '6. The records go direct, encrypted.', d: 'The hospital sends the records straight to the clinic, encrypted and in the FHIR format. The consent manager and the gateway never see them.', h: [['hip>hiu','encrypted records (FHIR)','f'], ['hiu','decrypt + show to doctor']] }
       ]
     }
   };

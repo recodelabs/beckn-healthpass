@@ -124,6 +124,7 @@ header.top h2 { margin-top: 40px; }
 .story svg { display: block; width: 100%; height: auto; }
 .story p { margin: 10px 0 0; font-size: 0.9rem; }
 @media (max-width: 760px) { .story { grid-template-columns: 1fr; } .story svg { max-width: 380px; margin-inline: auto; } }
+.nd.opt rect { stroke-dasharray: 4 3; }
 .c-b rect { fill: var(--b-fill); stroke: var(--b-stroke); } .c-b .th { fill: var(--b-text); } .c-b .ts { fill: var(--b-stroke); }
 
 /* timeline */
@@ -291,7 +292,7 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
 
   <div class="col">
     <h2>One patient, four places</h2>
-    <p>Take Wanjiru, a 34-year-old in Nairobi being treated for high blood pressure. Over a year she sees two clinics, has blood tests at a lab and collects medicine from a pharmacy. Her history ends up in four places that don’t talk to each other: one clinic’s computer system, the other clinic’s paper file, a lab result sent to her by SMS, and a photo of a prescription on her phone. Each new provider starts from nothing. Tests get repeated, and no one has the full list of what she takes.</p>
+    <p>Take Thandi, a 34-year-old in Soweto being treated for high blood pressure. Over a year she sees two clinics, has blood tests at a lab and collects medicine from a pharmacy. Her history ends up in four places that don’t talk to each other: one clinic’s computer system, the other clinic’s paper file, a lab result sent to her by SMS, and a photo of a prescription on her phone. Each new provider starts from nothing. Tests get repeated, and no one has the full list of what she takes.</p>
   </div>
 
   <div class="story">
@@ -303,13 +304,13 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
         <line class="wire" x1="195" y1="92" x2="238" y2="54"/>
         <line class="wire" x1="105" y1="140" x2="62" y2="178"/>
         <line class="wire" x1="195" y1="140" x2="238" y2="178"/>
-        <g class="nd c-pu"><rect x="75" y="92" width="150" height="48" rx="8"/><text class="th" x="150" y="112" text-anchor="middle">Wanjiru</text><text class="ts" x="150" y="129" text-anchor="middle">paper and phone photos</text></g>
+        <g class="nd c-pu"><rect x="75" y="92" width="150" height="48" rx="8"/><text class="th" x="150" y="112" text-anchor="middle">Thandi</text><text class="ts" x="150" y="129" text-anchor="middle">paper and phone photos</text></g>
         <g class="nd c-gr"><rect x="2" y="6" width="124" height="48" rx="8"/><text class="th" x="64" y="26" text-anchor="middle">Clinic A</text><text class="ts" x="64" y="43" text-anchor="middle">its own system</text></g>
         <g class="nd c-gr"><rect x="174" y="6" width="124" height="48" rx="8"/><text class="th" x="236" y="26" text-anchor="middle">Clinic B</text><text class="ts" x="236" y="43" text-anchor="middle">a paper file</text></g>
         <g class="nd c-gr"><rect x="2" y="178" width="124" height="48" rx="8"/><text class="th" x="64" y="198" text-anchor="middle">Lab</text><text class="ts" x="64" y="215" text-anchor="middle">result by SMS</text></g>
         <g class="nd c-gr"><rect x="174" y="178" width="124" height="48" rx="8"/><text class="th" x="236" y="198" text-anchor="middle">Pharmacy</text><text class="ts" x="236" y="215" text-anchor="middle">prescription photo</text></g>
       </svg>
-      <p>No shared record. Each provider keeps its own piece, and Wanjiru carries the rest on paper and on her phone.</p>
+      <p>No shared record. Each provider keeps its own piece, and Thandi carries the rest on paper and on her phone.</p>
     </div>
     <div class="panel">
       <h4>With HealthPass</h4>
@@ -325,7 +326,7 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
         <g class="nd c-gr"><rect x="2" y="178" width="124" height="48" rx="8"/><text class="th" x="64" y="198" text-anchor="middle">Lab</text><text class="ts" x="64" y="215" text-anchor="middle">not connected</text></g>
         <g class="nd c-gr"><rect x="174" y="178" width="124" height="48" rx="8"/><text class="th" x="236" y="198" text-anchor="middle">Pharmacy</text><text class="ts" x="236" y="215" text-anchor="middle">not connected</text></g>
       </svg>
-      <p>One record that Wanjiru owns, opened in WhatsApp. It fills in only where HealthPass has built a connection to that provider’s system.</p>
+      <p>One record that Thandi owns, opened in WhatsApp. It fills in only where HealthPass has built a connection to that provider’s system.</p>
     </div>
     <div class="panel">
       <h4>HealthPass on a beckn network</h4>
@@ -386,7 +387,7 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
 
     <h3>How a nurse sees the record today</h3>
     <ol class="steps">
-      <li><b>Wanjiru shows a QR code.</b>She opens HealthPass in WhatsApp and shows the nurse the QR code on her screen.</li>
+      <li><b>Thandi shows a QR code.</b>She opens HealthPass in WhatsApp and shows the nurse the QR code on her screen.</li>
       <li><b>She gives the nurse a one-time PIN.</b>She receives a short PIN in WhatsApp that works once. It shows she agreed to share her record for this visit.</li>
       <li><b>The nurse enters their own access code.</b>HealthPass sends each health worker an access code over WhatsApp. The code expires after a few hours, so an old one can’t be reused.</li>
       <li><b>The nurse reads the summary and adds the visit.</b>The access is written to the log.</li>
@@ -396,7 +397,7 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
     <ul class="limits">
       <li><strong>It can’t tell who is a real health worker.</strong> The access code proves that someone got a code from HealthPass. It doesn’t prove they are a licensed nurse at a real clinic, because HealthPass has no shared list of licensed providers to check against. Sending and typing codes also adds a step to every visit.</li>
       <li><strong>Every clinic, lab and pharmacy has to be connected one by one.</strong> For results to arrive by themselves, HealthPass has to build a link to each provider’s software. A country has hundreds of these systems, so this is slow and costly, and it starts again in every new country.</li>
-      <li><strong>So most care never reaches the record.</strong> When Wanjiru has a blood test at a lab HealthPass isn’t connected to, the result reaches her on paper or by SMS. Her record doesn’t change unless someone types it in.</li>
+      <li><strong>So most care never reaches the record.</strong> When Thandi has a blood test at a lab HealthPass isn’t connected to, the result reaches her on paper or by SMS. Her record doesn’t change unless someone types it in.</li>
     </ul>
 
     <h3>What beckn changes</h3>
@@ -528,7 +529,7 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
       <ol class="log" aria-label="Messages in this step"></ol>
     </div>
   </div>
-  <p class="note">Tumaini Clinic, Afya Lab and Neema Pharmacy are fictional. Prices are illustrative.</p>
+  <p class="note">Kopano Clinic, Thuso Lab and Imbali Pharmacy are fictional. Prices are illustrative.</p>
 
   <h3>The same seven steps</h3>
   <div class="tbl">
@@ -629,7 +630,7 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
 
   <div class="col">
     <h3>Two layers, the same split as this proposal</h3>
-    <p>ABDM moves records with consent, using FHIR. A separate network, UHI, is built on beckn and handles finding and booking services: doctors, ambulances, blood banks<sup class="src"><a href="#s14">14</a>,<a href="#s20">20</a></sup>. India kept records and services apart, which is the same split this page proposes for Kenya.</p>
+    <p>ABDM moves records with consent, using FHIR. A separate network, UHI, is built on beckn and handles finding and booking services: doctors, ambulances, blood banks<sup class="src"><a href="#s14">14</a>,<a href="#s20">20</a></sup>. India kept records and services apart, which is the same split this page proposes for South Africa.</p>
   </div>
   <div class="tbl">
     <table>
@@ -741,48 +742,70 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
   <figure class="diagram">
     <svg viewBox="0 0 680 350" role="img" aria-labelledby="wl-t wl-d">
       <title id="wl-t">Many wallets on one health network</title>
-      <desc id="wl-d">Wanjiru uses HealthPass and can switch to another wallet. A patient registry holds her ID and which wallet holds her record. Every wallet connects to the same beckn health network, which reaches every clinic, lab and pharmacy.</desc>
-        <defs><marker id="ahw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-        <line class="wire" x1="280" y1="38" x2="380" y2="38"/>
-        <text class="lbl r" x="330" y="31" text-anchor="middle">her ID</text>
-        <line class="ln-c" x1="170" y1="66" x2="100" y2="110" fill="none" stroke-width="1.5"/>
-        <line class="ln-f" x1="182" y1="138" x2="258" y2="138" fill="none" stroke-width="1.5" marker-start="url(#ahw)" marker-end="url(#ahw)"/>
-        <text class="lbl f" x="220" y="129" text-anchor="middle">switch</text>
-        <line class="ln-r" x1="460" y1="66" x2="460" y2="210" fill="none" stroke-width="1.5"/>
-        <text class="lbl r" x="468" y="92">finds her wallet</text>
-        <line class="ln-b" x1="100" y1="166" x2="100" y2="210" fill="none" stroke-width="1.5"/>
-        <line class="ln-b" x1="340" y1="166" x2="340" y2="210" fill="none" stroke-width="1.5"/>
-        <line class="ln-b" x1="580" y1="166" x2="580" y2="210" fill="none" stroke-width="1.5"/>
-        <line class="ln-b" x1="100" y1="254" x2="100" y2="290" fill="none" stroke-width="1.5"/>
-        <line class="ln-b" x1="340" y1="254" x2="340" y2="290" fill="none" stroke-width="1.5"/>
-        <line class="ln-b" x1="580" y1="254" x2="580" y2="290" fill="none" stroke-width="1.5"/>
-        <g class="nd c-pu"><rect x="120" y="10" width="160" height="56" rx="8"/><text class="th" x="200" y="33" text-anchor="middle">Wanjiru</text><text class="ts" x="200" y="51" text-anchor="middle">picks her wallet</text></g>
-        <g class="nd c-gr"><rect x="380" y="10" width="160" height="56" rx="8"/><text class="th" x="460" y="33" text-anchor="middle">Patient registry</text><text class="ts" x="460" y="51" text-anchor="middle">ID + current wallet</text></g>
-        <g class="nd c-pu"><rect x="20" y="110" width="160" height="56" rx="8"/><text class="th" x="100" y="133" text-anchor="middle">HealthPass</text><text class="ts" x="100" y="151" text-anchor="middle">one wallet</text></g>
-        <g class="nd c-pu"><rect x="260" y="110" width="160" height="56" rx="8"/><text class="th" x="340" y="133" text-anchor="middle">Wallet B</text><text class="ts" x="340" y="151" text-anchor="middle">another company</text></g>
-        <g class="nd c-pu"><rect x="500" y="110" width="160" height="56" rx="8"/><text class="th" x="580" y="133" text-anchor="middle">Wallet C</text><text class="ts" x="580" y="151" text-anchor="middle">a hospital or NGO</text></g>
-        <g class="nd c-b"><rect x="20" y="210" width="640" height="44" rx="22"/><text class="th" x="340" y="228" text-anchor="middle">beckn health network</text><text class="ts" x="340" y="244" text-anchor="middle">a public good: open rules, shared registries</text></g>
-        <g class="nd c-co"><rect x="20" y="290" width="160" height="56" rx="8"/><text class="th" x="100" y="313" text-anchor="middle">Clinics</text><text class="ts" x="100" y="331" text-anchor="middle">serve every wallet</text></g>
-        <g class="nd c-co"><rect x="260" y="290" width="160" height="56" rx="8"/><text class="th" x="340" y="313" text-anchor="middle">Labs</text><text class="ts" x="340" y="331" text-anchor="middle">serve every wallet</text></g>
-        <g class="nd c-co"><rect x="500" y="290" width="160" height="56" rx="8"/><text class="th" x="580" y="313" text-anchor="middle">Pharmacies</text><text class="ts" x="580" y="331" text-anchor="middle">serve every wallet</text></g>
+      <desc id="wl-d">Thandi uses HealthPass and can switch to another wallet. When a wallet places an order, the provider sends the result back to that wallet. An optional patient registry, which she joins only if she chooses, tells a provider that has only her ID which wallet to send to. Every wallet connects to the same beckn health network, which reaches every clinic, lab and pharmacy.</desc>
+      <defs><marker id="ahw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+      <line class="wire" x1="280" y1="38" x2="380" y2="38"/>
+      <text class="lbl r" x="330" y="31" text-anchor="middle">if she opts in</text>
+      <line class="ln-c" x1="170" y1="66" x2="100" y2="110" fill="none" stroke-width="1.5"/>
+      <line class="ln-f" x1="182" y1="138" x2="258" y2="138" fill="none" stroke-width="1.5" marker-start="url(#ahw)" marker-end="url(#ahw)"/>
+      <text class="lbl f" x="220" y="129" text-anchor="middle">switch</text>
+      <line class="ln-r" x1="460" y1="66" x2="460" y2="210" fill="none" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <text class="lbl r" x="468" y="84">optional: finds her wallet</text>
+      <text class="lbl r" x="468" y="98">when a provider has only her ID</text>
+      <line class="ln-b" x1="100" y1="168" x2="100" y2="208" fill="none" stroke-width="1.5" marker-start="url(#ahw)" marker-end="url(#ahw)"/>
+      <text class="lbl b" x="108" y="192">order out, result back</text>
+      <line class="ln-b" x1="340" y1="166" x2="340" y2="210" fill="none" stroke-width="1.5"/>
+      <line class="ln-b" x1="580" y1="166" x2="580" y2="210" fill="none" stroke-width="1.5"/>
+      <line class="ln-b" x1="100" y1="256" x2="100" y2="288" fill="none" stroke-width="1.5" marker-start="url(#ahw)" marker-end="url(#ahw)"/>
+      <line class="ln-b" x1="340" y1="254" x2="340" y2="290" fill="none" stroke-width="1.5"/>
+      <line class="ln-b" x1="580" y1="254" x2="580" y2="290" fill="none" stroke-width="1.5"/>
+      <g class="nd c-pu"><rect x="120" y="10" width="160" height="56" rx="8"/><text class="th" x="200" y="33" text-anchor="middle">Thandi</text><text class="ts" x="200" y="51" text-anchor="middle">picks her wallet</text></g>
+      <g class="nd c-gr opt"><rect x="380" y="10" width="160" height="56" rx="8"/><text class="th" x="460" y="33" text-anchor="middle">Patient registry</text><text class="ts" x="460" y="51" text-anchor="middle">optional · ID → wallet</text></g>
+      <g class="nd c-pu"><rect x="20" y="110" width="160" height="56" rx="8"/><text class="th" x="100" y="133" text-anchor="middle">HealthPass</text><text class="ts" x="100" y="151" text-anchor="middle">one wallet</text></g>
+      <g class="nd c-pu"><rect x="260" y="110" width="160" height="56" rx="8"/><text class="th" x="340" y="133" text-anchor="middle">Wallet B</text><text class="ts" x="340" y="151" text-anchor="middle">another company</text></g>
+      <g class="nd c-pu"><rect x="500" y="110" width="160" height="56" rx="8"/><text class="th" x="580" y="133" text-anchor="middle">Wallet C</text><text class="ts" x="580" y="151" text-anchor="middle">a hospital or NGO</text></g>
+      <g class="nd c-b"><rect x="20" y="210" width="640" height="44" rx="22"/><text class="th" x="340" y="228" text-anchor="middle">beckn health network</text><text class="ts" x="340" y="244" text-anchor="middle">a public good: open rules, shared registries</text></g>
+      <g class="nd c-co"><rect x="20" y="290" width="160" height="56" rx="8"/><text class="th" x="100" y="313" text-anchor="middle">Clinics</text><text class="ts" x="100" y="331" text-anchor="middle">serve every wallet</text></g>
+      <g class="nd c-co"><rect x="260" y="290" width="160" height="56" rx="8"/><text class="th" x="340" y="313" text-anchor="middle">Labs</text><text class="ts" x="340" y="331" text-anchor="middle">serve every wallet</text></g>
+      <g class="nd c-co"><rect x="500" y="290" width="160" height="56" rx="8"/><text class="th" x="580" y="313" text-anchor="middle">Pharmacies</text><text class="ts" x="580" y="331" text-anchor="middle">serve every wallet</text></g>
     </svg>
-    <figcaption>Wallets compete for patients the way payment apps do. The patient registry knows which wallet holds Wanjiru’s record, so results reach her wherever she keeps it. The registry holds no health data.</figcaption>
+    <figcaption>When a wallet places an order, the provider sends the result back to that wallet, because every beckn message carries its sender’s address. The patient registry is optional: it is only needed when a provider has nothing but the patient’s ID, and it holds no health data.</figcaption>
   </figure>
   <div class="col">
-    <h3>A patient registry makes switching work</h3>
-    <p>India’s ABDM shows the pattern (see <a href="#india">How India did it</a>). Each person gets an ABHA number from a national registry, and a consent manager keeps track of which hospitals hold their records. Neither one sees what the records say.</p>
-    <p>A health network on beckn needs the same piece: a patient registry that holds each person’s ID, name and contact details, and which wallet currently holds their record. It holds no health data. When Wanjiru moves from HealthPass to another wallet:</p>
-    <ol class="steps">
-      <li><b>She asks the new wallet to take over.</b>It checks her identity against the patient registry, with a one-time PIN sent to her phone.</li>
-      <li><b>HealthPass hands over her full record.</b>It sends it to the new wallet in the standard format: FHIR, with her International Patient Summary.</li>
-      <li><b>The registry records her new wallet.</b>Only the pointer changes. Her ID stays the same.</li>
-      <li><b>Her providers don’t notice.</b>Clinics, labs and pharmacies keep sending results to her ID, and the network delivers them to the new wallet.</li>
-    </ol>
+    <h3>How a wallet joins</h3>
+    <p>A wallet joins the network once, the same way a lab does. It registers in the network registry, which lists every organisation on the network and its digital keys, and it is certified against the network rules, including the rule that it must hand records over when asked. From then on it can search, order and receive results for all of its patients. Patients don’t join one by one; their wallet acts for them. There are three ways to run a wallet:</p>
+    <ul class="plain">
+      <li><strong>Run your own node,</strong> as HealthPass does.</li>
+      <li><strong>Use a hosted node</strong> run by someone else. This suits a hospital or NGO that wants its own wallet without running servers.</li>
+      <li><strong>Build an app with no storage of its own,</strong> working on top of a wallet that someone else runs.</li>
+    </ul>
+
+    <h3>Finding a patient’s wallet</h3>
+    <p>Usually no lookup is needed, because the wallet starts nearly every transaction. When HealthPass orders a lab test, the order carries HealthPass’s network address, so the lab sends the result straight back to it. Any other wallet works the same way.</p>
+    <p>A lookup only matters when the provider starts the contact and has nothing but the patient’s ID. For example, she walks into a clinic without booking through her wallet, or a doctor sends a prescription a week after the visit. There are two ways to handle that:</p>
+    <div class="roles">
+      <div><b>She shares her wallet address</b>She shows a QR code at the clinic, or gives an address such as thandi@healthpass. Like an email address, it says which wallet to send to, and nothing central is involved.</div>
+      <div><b>The provider asks the patient registry</b>An optional registry answers one question: which wallet holds this person’s record? It holds her ID, name, contact details and the name of her wallet, and no health data. Patients choose whether to be listed.</div>
+    </div>
+    <p>These are two registries with two jobs. The network registry lists organisations, and every beckn network needs one. The patient registry lists people, and it is optional. A central list of who uses which health wallet is sensitive, so if one exists it should be opt-in and held by the government. India’s ABHA works this way (see <a href="#india">How India did it</a>): the ID is voluntary and issued by a national registry, and a consent manager tracks which hospitals hold each person’s records without seeing what they say.</p>
     <p>Kenya’s Digital Health Agency already runs a national client registry<sup class="src"><a href="#s12">12</a></sup>. The network would add only the pointer to each patient’s wallet, building on the government registry rather than duplicating it. Where there is no national registry, one can be built as part of the network, as a public good.</p>
+
+    <h3>Switching wallets</h3>
+    <ol class="steps">
+      <li><b>She asks the new wallet to take over.</b>It confirms her identity with a one-time PIN sent to her phone.</li>
+      <li><b>HealthPass hands over her full record.</b>It sends it to the new wallet in the standard format: FHIR, with her International Patient Summary.</li>
+      <li><b>Results find the new wallet.</b>If she is listed in the patient registry, the registry updates its pointer and providers find the new wallet from her ID. If she isn’t, HealthPass forwards anything sent to her old address for a set period, and she gives providers her new address at her next visit.</li>
+    </ol>
+
+    <h3>Using more than one app or wallet</h3>
+    <div class="roles">
+      <div><b>Several apps, one wallet</b>The simplest choice, and the one we recommend. Her record lives in one wallet, and any number of apps read and write it with her permission through SMART on FHIR: a pregnancy app, a pharmacy app, or an app a family member uses to help with her care. It’s like using two payment apps on the same bank account.</div>
+      <div><b>Two wallets</b>Possible, but it splits the record again, which is the problem we started with. It works if she picks one as her main wallet, where providers send results by default, and the other keeps a copy that stays in sync with her permission.</div>
+    </div>
 
     <h3>What stops lock-in</h3>
     <ul class="limits fixes">
-      <li><strong>The patient’s ID belongs to the patient.</strong> It comes from the patient registry, not from an account with any wallet.</li>
+      <li><strong>The patient’s ID belongs to the patient.</strong> It is a national ID, not an account with any wallet.</li>
       <li><strong>The record is in a standard format.</strong> Every wallet stores FHIR and must hand the record over when the patient asks. That is a network rule, not a promise from any one company, including us.</li>
       <li><strong>Providers join the network, not a wallet.</strong> A lab connects once and serves patients from every wallet.</li>
       <li><strong>The rules are open.</strong> The health domain pack and the adapters we build are published for anyone to use, including competing wallets.</li>
@@ -886,14 +909,14 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
         pt: { x: 40, y: 20, c: 'pu', t: 'Patient', s: 'WhatsApp' },
         ds: { x: 260, y: 20, c: 'te', t: 'Discovery service', s: 'Indexes lab catalogues' },
         hp: { x: 40, y: 150, c: 'pu', t: 'HealthPass', s: 'Consumer node + vault' },
-        pr: { x: 480, y: 150, c: 'co', t: 'Afya Lab', s: 'Provider node' },
-        cl: { x: 260, y: 280, c: 'gr', t: 'Tumaini Clinic', s: 'Ordering clinic' }
+        pr: { x: 480, y: 150, c: 'co', t: 'Thuso Lab', s: 'Provider node' },
+        cl: { x: 260, y: 280, c: 'gr', t: 'Kopano Clinic', s: 'Ordering clinic' }
       },
       lines: [[120,76,120,150],[190,150,270,76],[200,178,480,178],[160,206,275,280]],
       edges: { 'pt>hp':[[112,76],[112,150]], 'hp>pt':[[128,150],[128,76]], 'hp>ds':[[190,150],[270,76]], 'ds>hp':[[270,76],[190,150]], 'hp>pr':[[200,172],[480,172]], 'pr>hp':[[480,186],[200,186]], 'cl>hp':[[275,280],[160,206]], 'hp>cl':[[160,206],[275,280]] },
       steps: [
         { t: '1. The order lives in the record.', d: 'The clinician writes a FHIR ServiceRequest for HbA1c into the patient’s HealthPass, using write access from the visit. It isn’t addressed to any particular lab.', h: [['cl>hp','FHIR write: ServiceRequest','f'], ['hp>pt','new lab order: HbA1c','c']] },
-        { t: '2. Find a lab.', d: 'HealthPass searches by test and location. Lab catalogues list tests offered, sites, home collection and insurance accepted. The search is anonymous.', h: [['pt>hp','where can I get this done?','c'], ['hp>ds','discover: HbA1c, 5 km, SHA','b'], ['ds>hp','on_discover: 4 labs','b'], ['hp>pt','options + home collection','c']] },
+        { t: '2. Find a lab.', d: 'HealthPass searches by test and location. Lab catalogues list tests offered, sites, home collection and insurance accepted. The search is anonymous.', h: [['pt>hp','where can I get this done?','c'], ['hp>ds','discover: HbA1c, 5 km, medical aid','b'], ['ds>hp','on_discover: 4 labs','b'], ['hp>pt','options + home collection','c']] },
         { t: '3. Price and collection slots (select).', d: 'Live prices and collector availability come straight from the lab, because they change too fast for the index.', h: [['hp>pr','select: HbA1c, home collection','b'], ['pr>hp','on_select: KES 1,800, slots','b']] },
         { t: '4. Book, and share the order (init, confirm).', d: 'The patient approves the booking and the lab’s access to this order. The contract references the ServiceRequest, so the lab is fulfilling a real clinical order.', h: [['hp>pr','init: slot, address, order ref','b'], ['pr>hp','on_init: terms','b'], ['hp>pt','book + share order with lab?','c'], ['pt>hp','yes','c'], ['hp>pr','confirm','b'], ['pr>hp','on_confirm: contract','b']] },
         { t: '5. The lab reads the order.', d: 'Using the Consent, the lab fetches the ServiceRequest over SMART, including any notes the clinician attached, such as fasting status.', h: [['pr>hp','SMART GET ServiceRequest','f'], ['hp>pr','order details','f']] },
@@ -907,8 +930,8 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
         pt: { x: 40, y: 20, c: 'pu', t: 'Patient', s: 'WhatsApp' },
         ds: { x: 260, y: 20, c: 'te', t: 'Discovery service', s: 'Indexes pharmacies' },
         hp: { x: 40, y: 150, c: 'pu', t: 'HealthPass', s: 'Consumer node + vault' },
-        pr: { x: 480, y: 150, c: 'co', t: 'Neema Pharmacy', s: 'Provider node' },
-        cl: { x: 260, y: 280, c: 'co', t: 'Prescriber', s: 'Doctor, Tumaini Clinic' },
+        pr: { x: 480, y: 150, c: 'co', t: 'Imbali Pharmacy', s: 'Provider node' },
+        cl: { x: 260, y: 280, c: 'co', t: 'Prescriber', s: 'Doctor, Kopano Clinic' },
         reg: { x: 480, y: 280, c: 'gr', t: 'Registry', s: 'Licensed prescribers' }
       },
       lines: [[120,76,120,150],[190,150,270,76],[200,178,480,178],[160,206,275,280],[560,206,560,280]],
@@ -929,7 +952,7 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
         pt: { x: 40, y: 20, c: 'pu', t: 'Patient', s: 'WhatsApp' },
         ds: { x: 260, y: 20, c: 'te', t: 'Discovery service', s: 'Run by the network' },
         hp: { x: 40, y: 150, c: 'pu', t: 'HealthPass', s: 'Consumer node + vault' },
-        cl: { x: 480, y: 150, c: 'co', t: 'Tumaini Clinic', s: 'Provider node' },
+        cl: { x: 480, y: 150, c: 'co', t: 'Kopano Clinic', s: 'Provider node' },
         reg: { x: 260, y: 280, c: 'gr', t: 'Registry', s: 'Verified facilities' }
       },
       lines: [[120,76,120,150],[190,150,270,76],[410,76,490,150],[200,178,480,178],[520,206,405,280],[340,76,340,280]],
@@ -937,8 +960,8 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
       steps: [
         { t: '1. Clinics publish services, not slots.', d: 'The catalogue holds slow-changing facts: services, locations, hours, insurance accepted. Live availability changes too fast for a crawled index, so it comes later, at select.', h: [['cl','sign + host service catalogue'], ['ds>reg','resolve verified clinics','r'], ['ds>cl','crawl catalogue','b'], ['cl>ds','signed catalogue','b'], ['ds','verify + index']] },
         { t: '2. The patient asks, anonymously.', d: 'The patient writes in plain language. HealthPass turns that into a location-filtered discover request. No patient identity leaves HealthPass at this stage.', h: [['pt>hp','antenatal visit near me tomorrow','c'], ['hp>ds','discover: antenatal, 5 km','b'], ['ds>hp','on_discover: 3 clinics','b'], ['hp>pt','pick a clinic','c']] },
-        { t: '3. Live slots (select).', d: 'HealthPass asks the chosen clinic directly. The clinic’s adapter queries its scheduling system (FHIR Slot) and returns what’s open now, still with no patient identity.', h: [['pt>hp','Tumaini Clinic','c'], ['hp>cl','select: antenatal, tomorrow','b'], ['cl','query FHIR Slots'], ['cl>hp','on_select: 9:00, 10:30, 14:00','b']] },
-        { t: '4. Terms and a records request (init).', d: 'Only now does HealthPass send minimal identity and coverage. The clinic replies with terms, its cancellation policy, and which records it would like before the visit.', h: [['hp>cl','init: 10:30, name, phone, SHA','b'], ['cl>hp','on_init: terms + wants IPS','b']] },
+        { t: '3. Live slots (select).', d: 'HealthPass asks the chosen clinic directly. The clinic’s adapter queries its scheduling system (FHIR Slot) and returns what’s open now, still with no patient identity.', h: [['pt>hp','Kopano Clinic','c'], ['hp>cl','select: antenatal, tomorrow','b'], ['cl','query FHIR Slots'], ['cl>hp','on_select: 9:00, 10:30, 14:00','b']] },
+        { t: '4. Terms and a records request (init).', d: 'Only now does HealthPass send minimal identity and coverage. The clinic replies with terms, its cancellation policy, and which records it would like before the visit.', h: [['hp>cl','init: 10:30, name, phone, medical aid','b'], ['cl>hp','on_init: terms + wants IPS','b']] },
         { t: '5. One approval covers both.', d: 'The patient confirms the booking and, separately, whether to share records, and can narrow what is shared. HealthPass writes a FHIR Consent tied to this appointment.', h: [['hp>pt','book 10:30? share summary?','c'], ['pt>hp','yes, but not mental health','c'], ['hp','write Consent (scoped, 7 days)']] },
         { t: '6. The appointment is a contract (confirm).', d: 'The on_confirm contract maps to a FHIR Appointment at the clinic. It references the Consent, which tells the clinic it may now fetch records.', h: [['hp>cl','confirm (signed)','b'], ['cl>hp','ack + counter-signature','b'], ['cl','book FHIR Appointment'], ['cl>hp','on_confirm: contract + Consent','b']] },
         { t: '7. Pre-visit preparation and reminders.', d: 'The clinic pulls the approved summary over SMART using its registry key. Reminders and check-in arrive as on_status callbacks, passed on to WhatsApp.', h: [['cl>hp','SMART token, then GET IPS','f'], ['hp>cl','IPS bundle (scoped)','f'], ['cl>hp','on_status: reminder, 10:30','b'], ['hp>pt','reminder: tomorrow 10:30','c']] },
