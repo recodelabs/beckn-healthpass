@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>HealthPass on Beckn</title>
-<meta name="description" content="Why HealthPass, a patient-owned health record in WhatsApp, is stronger on an open beckn health network. Worked examples: a lab test and a prescription.">
-<meta property="og:title" content="HealthPass on Beckn">
-<meta property="og:description" content="Why HealthPass, a patient-owned health record in WhatsApp, is stronger on an open beckn health network. Worked examples: a lab test and a prescription.">
+<title>Beckn for Health</title>
+<meta name="description" content="How an open beckn network could let any patient app in South Africa find, book, pay and get results from any clinic, lab or pharmacy, and where HealthPass fits. Worked examples: a lab test, a prescription and an appointment.">
+<meta property="og:title" content="Beckn for Health">
+<meta property="og:description" content="How an open beckn network could let any patient app in South Africa find, book, pay and get results from any clinic, lab or pharmacy, and where HealthPass fits. Worked examples: a lab test, a prescription and an appointment.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
@@ -308,15 +308,15 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
 
 <nav class="sitenav" aria-label="Sections">
   <div class="inner">
-    <a class="brand" href="#overview">HealthPass on Beckn</a>
+    <a class="brand" href="#overview">Beckn for Health</a>
     <ul>
       <li><a class="tab" href="#overview">Overview</a></li>
-      <li><a class="tab" href="#today">HealthPass today</a></li>
+      <li><a class="tab" href="#today">HealthPass</a></li>
       <li><a class="tab" href="#pattern">India’s systems</a></li>
       <li><a class="tab" href="#beckn">How beckn works</a></li>
       <li><a class="tab" href="#flows">Examples</a></li>
       <li><a class="tab" href="#india">India’s health records</a></li>
-      <li><a class="tab" href="#why">Why a network</a></li>
+      <li><a class="tab" href="#why">Why an open network</a></li>
       <li><a class="tab" href="#choice">No lock-in</a></li>
       <li><a class="tab" href="#opportunity">Business model</a></li>
       <li><a class="tab" href="#risks">Risks</a></li>
@@ -326,13 +326,13 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
 </nav>
 
 <header class="top page" id="overview" data-title="Overview">
-  <div class="eyebrow">HealthPass · beckn protocol · October 2026</div>
-  <h1>HealthPass gives every patient a record. Beckn connects that record to every clinic, lab and pharmacy.</h1>
-  <p class="lede">HealthPass is a health record that belongs to the patient and opens inside WhatsApp. Beckn is an open, free-to-use set of rules (a protocol) that lets clinics, labs, pharmacies and patient apps find each other, agree on a service and send each other results, with no single company or ministry in the middle. On a beckn network, HealthPass can work with any clinic, lab or pharmacy on the network, not only the ones it has connected to one at a time.</p>
+  <div class="eyebrow">Beckn protocol · open health network · South Africa · October 2026</div>
+  <h1>Beckn lets any patient app work with any clinic, lab or pharmacy on an open network, with no company or ministry in the middle.</h1>
+  <p class="lede">Beckn is an open, free-to-use set of rules (a protocol) for building open networks, where apps and providers find each other, agree on a service, pay and exchange results directly. No single company or ministry owns or controls an open network. India uses beckn at national scale for online shopping and ride-hailing. An open beckn network for health in South Africa would let a patient use one app with any clinic, lab or pharmacy, and let each provider connect once to reach every app. HealthPass would be a consumer node on it: the app side of the network, which a patient uses in WhatsApp to find, book and order care.</p>
 
   <div class="col">
-    <h2>Today a patient’s records are split across the places she visits</h2>
-    <p>Take Thandi, a 34-year-old in Soweto being treated for high blood pressure. Over a year she sees a public clinic and a private doctor, has blood tests at a lab and collects medicine from a pharmacy. Her history ends up in four places that don’t talk to each other: the clinic’s paper file, the doctor’s computer system, a lab result sent to her by SMS, and a photo of a prescription on her phone. Each new provider starts from nothing. Tests get repeated, and no one has the full list of what she takes.</p>
+    <h2>Today a patient’s records and bookings are split across the places she visits</h2>
+    <p>Take Thandi, a 34-year-old in Soweto being treated for high blood pressure. Over a year she sees a public clinic and a private doctor, has blood tests at a lab and collects medicine from a pharmacy. Her history ends up in four places that don’t talk to each other: the clinic’s paper file, the doctor’s computer system, a lab result sent to her by SMS, and a photo of a prescription on her phone. Each new provider starts from nothing. Tests get repeated, and no one has the full list of what she takes. Booking a visit, getting a test or filling a prescription means a different phone call, app or queue each time.</p>
   </div>
 
   <div class="story">
@@ -353,49 +353,50 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
       <p>No shared record. Each provider keeps its own piece, and Thandi carries the rest on paper and on her phone.</p>
     </div>
     <div class="panel">
-      <h4>HealthPass on its own</h4>
+      <h4>One app on its own</h4>
       <svg viewBox="0 0 300 232" role="img" aria-labelledby="st2-t">
-        <title id="st2-t">HealthPass holds one record but is connected to only one provider</title>
+        <title id="st2-t">A patient app holds one record but is connected to only one provider</title>
         <line class="ln-f" x1="105" y1="92" x2="62" y2="54" fill="none" stroke-width="1.5"/>
         <line class="wire" x1="195" y1="92" x2="238" y2="54"/>
         <line class="wire" x1="105" y1="140" x2="62" y2="178"/>
         <line class="wire" x1="195" y1="140" x2="238" y2="178"/>
-        <g class="nd c-pu"><rect x="75" y="92" width="150" height="48" rx="8"/><text class="th" x="150" y="112" text-anchor="middle">HealthPass</text><text class="ts" x="150" y="129" text-anchor="middle">her record in WhatsApp</text></g>
+        <g class="nd c-pu"><rect x="75" y="92" width="150" height="48" rx="8"/><text class="th" x="150" y="112" text-anchor="middle">Patient app</text><text class="ts" x="150" y="129" text-anchor="middle">connects one by one</text></g>
         <g class="nd c-co"><rect x="2" y="6" width="124" height="48" rx="8"/><text class="th" x="64" y="26" text-anchor="middle">Clinic</text><text class="ts" x="64" y="43" text-anchor="middle">connected</text></g>
         <g class="nd c-gr"><rect x="174" y="6" width="124" height="48" rx="8"/><text class="th" x="236" y="26" text-anchor="middle">Doctor</text><text class="ts" x="236" y="43" text-anchor="middle">not connected</text></g>
         <g class="nd c-gr"><rect x="2" y="178" width="124" height="48" rx="8"/><text class="th" x="64" y="198" text-anchor="middle">Lab</text><text class="ts" x="64" y="215" text-anchor="middle">not connected</text></g>
         <g class="nd c-gr"><rect x="174" y="178" width="124" height="48" rx="8"/><text class="th" x="236" y="198" text-anchor="middle">Pharmacy</text><text class="ts" x="236" y="215" text-anchor="middle">not connected</text></g>
       </svg>
-      <p>One record that Thandi owns, opened in WhatsApp. It fills in only where HealthPass has built a connection to that provider’s system.</p>
+      <p>An app can give Thandi one record and one place to book, but only with the providers it has built a connection to.</p>
     </div>
     <div class="panel">
-      <h4>HealthPass on a beckn network</h4>
+      <h4>On an open beckn network</h4>
       <svg viewBox="0 0 300 232" role="img" aria-labelledby="st3-t">
-        <title id="st3-t">HealthPass, other wallets and every provider connect through one network</title>
+        <title id="st3-t">HealthPass, other patient apps and every provider connect through one open network</title>
         <line class="ln-b" x1="77" y1="54" x2="77" y2="92" fill="none" stroke-width="1.5"/>
         <line class="ln-b" x1="232" y1="54" x2="232" y2="92" fill="none" stroke-width="1.5"/>
         <line class="ln-b" x1="49" y1="140" x2="49" y2="178" fill="none" stroke-width="1.5"/>
         <line class="ln-b" x1="150" y1="140" x2="150" y2="178" fill="none" stroke-width="1.5"/>
         <line class="ln-b" x1="251" y1="140" x2="251" y2="178" fill="none" stroke-width="1.5"/>
-        <g class="nd c-pu"><rect x="2" y="6" width="150" height="48" rx="8"/><text class="th" x="77" y="26" text-anchor="middle">HealthPass</text><text class="ts" x="77" y="43" text-anchor="middle">one wallet</text></g>
-        <g class="nd c-pu"><rect x="166" y="6" width="132" height="48" rx="8"/><text class="th" x="232" y="26" text-anchor="middle">Other wallets</text><text class="ts" x="232" y="43" text-anchor="middle">her choice</text></g>
-        <g class="nd c-b"><rect x="2" y="92" width="296" height="48" rx="24"/><text class="th" x="150" y="112" text-anchor="middle">beckn network</text><text class="ts" x="150" y="129" text-anchor="middle">shared registries, signed messages</text></g>
+        <g class="nd c-pu"><rect x="2" y="6" width="150" height="48" rx="8"/><text class="th" x="77" y="26" text-anchor="middle">HealthPass</text><text class="ts" x="77" y="43" text-anchor="middle">consumer node</text></g>
+        <g class="nd c-pu"><rect x="166" y="6" width="132" height="48" rx="8"/><text class="th" x="232" y="26" text-anchor="middle">Other apps</text><text class="ts" x="232" y="43" text-anchor="middle">consumer nodes too</text></g>
+        <g class="nd c-b"><rect x="2" y="92" width="296" height="48" rx="24"/><text class="th" x="150" y="112" text-anchor="middle">open beckn network</text><text class="ts" x="150" y="129" text-anchor="middle">shared registries, signed messages</text></g>
         <g class="nd c-co"><rect x="2" y="178" width="94" height="48" rx="8"/><text class="th" x="49" y="198" text-anchor="middle">Clinic</text><text class="ts" x="49" y="215" text-anchor="middle">any clinic</text></g>
         <g class="nd c-co"><rect x="103" y="178" width="94" height="48" rx="8"/><text class="th" x="150" y="198" text-anchor="middle">Lab</text><text class="ts" x="150" y="215" text-anchor="middle">any lab</text></g>
         <g class="nd c-co"><rect x="204" y="178" width="94" height="48" rx="8"/><text class="th" x="251" y="198" text-anchor="middle">Pharmacy</text><text class="ts" x="251" y="215" text-anchor="middle">any pharmacy</text></g>
       </svg>
-      <p>Each provider connects once, to the network. Results and prescriptions reach her record from any of them, in whichever wallet she chooses.</p>
+      <p>Each provider connects once, to the open network. HealthPass or any other app on it can find, book and pay any of them, and results reach her record in whichever app she uses.</p>
     </div>
   </div>
 
   <div class="col">
     <h2>Key points</h2>
     <ul class="limits points">
-      <li><strong>HealthPass gives the patient her own record.</strong> It holds her health summary in the international standard format, opens in an app she already uses, and logs everyone who looks at it.</li>
-      <li><strong>On its own, it has to connect to providers one at a time.</strong> Each clinic, lab and pharmacy system needs its own link, and HealthPass has no way to check that a provider is licensed.</li>
-      <li><strong>A beckn network replaces those one-by-one connections.</strong> A provider joins the network once, is listed in a shared register, and digitally signs every message. Any patient app can then find it, order from it and trust its results.</li>
+      <li><strong>Beckn is an open protocol, and no one owns or controls an open network built on it.</strong> It does for orders and bookings what HTTP, the web’s set of rules, does for web pages: any browser can open any website, and any beckn app can order from any beckn provider. Apps and providers send messages straight to each other, so no central body sees every order or holds everyone’s data.</li>
+      <li><strong>On an open network, a provider connects once and can be found in every app.</strong> It joins once, is listed in a shared register, and digitally signs every message. Any patient app can then find it, order from it, pay it and trust its results. A small pharmacy or a single GP is listed next to the large chains, without building its own app or paying a platform to list it.</li>
+      <li><strong>Every service follows the same steps.</strong> Lab tests, prescriptions and appointments all go through the same stages: find, agree, deliver and follow up, so a new service needs no new connections. Health records stay in FHIR, the international standard for health data, and move only with the patient’s permission.</li>
       <li><strong>This approach already works at national scale.</strong> India runs payments (UPI) and online shopping (ONDC, which uses beckn) this way: a public body runs the shared systems, and many companies compete to build the apps people use.</li>
-      <li><strong>Patients aren’t tied to HealthPass.</strong> We want to build the network as a public good, with government and donors. Patients can use HealthPass or any other wallet and take their record with them. Our business is helping clinics, labs and pharmacies get onto the network, and offering services through HealthPass.</li>
+      <li><strong>Patients aren’t tied to any one app.</strong> We want to build the open network as a public good, with government and donors. Any company, hospital or NGO can run a patient app on it, and patients can change app and take their record with them.</li>
+      <li><strong>HealthPass is a consumer node on the open network.</strong> A consumer node is the app side of a beckn network: it searches, books, orders and pays on the patient’s behalf. HealthPass does this in WhatsApp, where its assistant finds, books and orders services for her. It also gathers her records from every clinic, lab and pharmacy into one place she controls, without anyone having to build and own a central server. Our business is helping clinics, labs and pharmacies join the open network, and offering services through HealthPass.</li>
     </ul>
   </div>
 
@@ -405,7 +406,7 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
     <a href="#beckn"><span>03</span>How beckn works</a>
     <a href="#flows"><span>04</span>Lab test, prescription and appointment</a>
     <a href="#india"><span>05</span>How India shares health records</a>
-    <a href="#why"><span>06</span>Why a network</a>
+    <a href="#why"><span>06</span>Why an open network</a>
     <a href="#choice"><span>07</span>Patients aren’t tied to HealthPass</a>
     <a href="#opportunity"><span>08</span>Our role and business model</a>
     <a href="#risks"><span>09</span>Risks</a>
@@ -418,11 +419,12 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
   <span class="num">01</span>
   <div class="col">
     <h2>HealthPass today</h2>
-    <p>HealthPass gives each patient a personal health record that they control. It has three parts.</p>
+    <p>HealthPass brings a patient’s records together in one place that she controls, without anyone having to build and own a central server for everyone’s records. On an open beckn network it is a consumer node: the app side, which searches, books and orders for the patient. It has four parts.</p>
     <ul class="limits points">
       <li><strong>The record.</strong> A private, secure store for one patient’s health data. It uses FHIR, the international standard that modern clinic, lab and pharmacy systems already use to exchange health data. At its core is the International Patient Summary (IPS), a standard short summary of the patient: allergies, conditions, medicines, vaccinations and recent results.</li>
       <li><strong>WhatsApp as the way in.</strong> The patient opens the record from a link in WhatsApp, as a secure page inside the chat. There is no app to download, and it works on the phones people already have.</li>
       <li><strong>An access log.</strong> Every time someone opens the record, HealthPass logs who it was and when.</li>
+      <li><strong>An assistant.</strong> In the same chat, an assistant finds providers, compares prices and times, books and orders for her, and passes on updates. It asks her before it books, pays or shares her records.</li>
     </ul>
 
     <h3>How a nurse sees the record today</h3>
@@ -443,7 +445,7 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
     <h3>What joining a beckn network fixes</h3>
     <ul class="limits fixes">
       <li><strong>A shared register of who is licensed.</strong> Clinics, labs, pharmacies and health workers are listed in a registry with a digital key, and every message they send is signed with that key. HealthPass checks the signature instead of handing out codes.</li>
-      <li><strong>Connect once.</strong> A lab connects its system to the network once. From then on, any patient app on the network can order tests from it, HealthPass included.</li>
+      <li><strong>Connect once, be found in every app.</strong> A lab connects its system to the network once. From then on, any patient app on the network can find it and order tests from it, HealthPass included. The lab doesn’t need its own app or website.</li>
       <li><strong>Records fill in as care happens.</strong> When a lab or pharmacy completes an order placed over the network, the result goes back to the patient’s record as part of the same exchange.</li>
     </ul>
     <p>FHIR is the format of the record. Beckn is the set of rules for how independent organisations find each other, agree on a service and trust each other’s messages.</p>
@@ -470,6 +472,7 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
     <div><b>Every app must work with every provider</b>So no app owns its users, and no provider has to connect to each app separately.</div>
   </div>
   <div class="col">
+    <p>Beckn isn’t tied to one sector. The same rules work for ride-hailing, shopping, food delivery, couriers, public transport, travel and health. Each network adds a description of its own sector, called a domain pack, and its own rules. Networks built on beckn include ONDC, which the Indian government backs so that small shops can sell online on the same terms as large marketplaces, and an open mobility network in Kochi<sup class="src"><a href="#s5">5</a>,<a href="#s37">37</a></sup>.</p>
     <p>Other countries are adopting the same approach. The G20 endorsed a framework for digital public infrastructure in 2023<sup class="src"><a href="#s8">8</a></sup>, and MOSIP, an open-source national ID system, is being rolled out in Uganda and eight other African countries<sup class="src"><a href="#s9">9</a></sup>.</p>
   </div>
 </section>
@@ -478,7 +481,7 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
   <span class="num">03</span>
   <div class="col">
     <h2>How beckn works</h2>
-    <p>Beckn is an open set of rules (a protocol) that lets independent apps and providers find each other, agree on a service, and follow it through to the end. Any app on a beckn network can place an order with any provider on it, without the two having to build a connection to each other and without a company in the middle.</p>
+    <p>Beckn is an open, decentralised protocol: a set of rules that lets independent apps and providers find each other, agree on a service, pay, and follow it through to the end. No single organisation owns or controls it. Providers publish what they offer, apps search it, and the two complete the order by sending messages straight to each other (peer to peer). Any app on a beckn network can place an order with any provider on it, without the two having to build a connection to each other and without a company in the middle.</p>
   </div>
   <figure>
     <div class="diagram">
@@ -513,19 +516,55 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
     </div>
     <div class="legend" aria-hidden="true"><span><i class="sw b"></i>Beckn: orders and bookings</span><span><i class="sw f"></i>FHIR: health records</span><span><i class="sw c"></i>WhatsApp chat</span><span><i class="sw r"></i>Registry checks</span></div>
   </figure>
+  <div class="blocks">
+    <div><b>Consumer node</b>The app side. It searches, orders and pays on the patient’s behalf. HealthPass is one. The beckn specification calls it a BAP (beckn application platform).</div>
+    <div><b>Provider node</b>The provider side: a clinic, lab or pharmacy, or a software company acting for many of them. It publishes a catalogue of what it offers and fulfils orders. The specification calls it a BPP (beckn provider platform).</div>
+    <div><b>Search service</b>Reads providers’ catalogues so that apps can find them. A network can have more than one. Earlier versions of beckn called this a gateway and sent every search through it.</div>
+    <div><b>Registry</b>Lists every organisation on the network with its address and digital key, so anyone can check who sent a message. Registries can be linked in layers, from local to national and above, which is how separate networks could connect<sup class="src"><a href="#s37">37</a></sup>.</div>
+  </div>
   <div class="col">
-    <p><strong>Beckn handles the order or booking.</strong> Every message is digitally signed, so the receiver can check who sent it and that it wasn’t changed, and the receiver sends back a signed receipt. Both sides can later prove who asked for what, and when. <strong>FHIR, the international standard for health records, handles the records themselves,</strong> and only with the patient’s permission. Health records never travel inside a beckn message.</p>
+    <p><strong>Beckn handles the order or booking.</strong> Each message has two parts: a context, which says who sent it, where to send the reply and which order it belongs to, and the message itself. Every message is digitally signed, so the receiver can check who sent it and that it wasn’t changed, and the receiver sends back a signed receipt. Both sides can later prove who asked for what, and when. <strong>FHIR, the international standard for health records, handles the records themselves,</strong> and only with the patient’s permission. Health records never travel inside a beckn message.</p>
     <p>Every service goes through the same stages:</p>
     <div class="lifecycle" aria-label="The stages of every order or booking">
       <div class="grp"><small>Find</small><div class="chips"><span class="chip">search</span></div></div>
       <span class="arrow" aria-hidden="true">→</span>
-      <div class="grp"><small>Agree</small><div class="chips"><span class="chip">check price</span><span class="chip">give details</span><span class="chip">confirm</span></div></div>
+      <div class="grp"><small>Agree</small><div class="chips"><span class="chip">check price</span><span class="chip">give details</span><span class="chip">agree payment</span><span class="chip">confirm</span></div></div>
       <span class="arrow" aria-hidden="true">→</span>
-      <div class="grp"><small>Deliver</small><div class="chips"><span class="chip">updates</span><span class="chip">tracking</span><span class="chip">cancel</span></div></div>
+      <div class="grp"><small>Deliver</small><div class="chips"><span class="chip">updates</span><span class="chip">tracking</span><span class="chip">change</span><span class="chip">cancel</span></div></div>
       <span class="arrow" aria-hidden="true">→</span>
       <div class="grp"><small>Afterwards</small><div class="chips"><span class="chip">rate</span><span class="chip">support</span></div></div>
     </div>
-    <p class="muted" style="font-size:0.92rem">In the latest version of beckn (May 2026), each provider publishes its own signed catalogue and search services read those catalogues, so there is no central hub that every message has to pass through<sup class="src"><a href="#s18">18</a></sup>.</p>
+    <p>Payment is agreed in the same messages: how much, who collects it and how. The money itself moves through ordinary payment systems, such as a card, PayShap or a medical aid claim.</p>
+    <p class="muted" style="font-size:0.92rem">In the latest version of beckn (May 2026), each provider publishes its own signed catalogue and search services read those catalogues, so there is no central hub that every message has to pass through<sup class="src"><a href="#s18">18</a></sup>. No central body sees every order or holds everyone’s data.</p>
+
+    <h3>Beckn does for orders and bookings what HTTP does for web pages</h3>
+    <p>Any web browser can open any website because both follow the same rules, HTTP. HTTP doesn’t cover buying and selling, so beckn adds what is missing: a fixed set of steps, standard formats for catalogues and orders, a registry of who is who, and signed messages<sup class="src"><a href="#s37">37</a></sup>.</p>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th></th><th>The web (HTTP)</th><th>Beckn</th></tr></thead>
+      <tbody>
+        <tr><th>Who can deal with whom</th><td>Any browser, any website</td><td class="hl">Any app, any provider on the network</td></tr>
+        <tr><th>Actions</th><td><code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code> and others</td><td class="hl"><code>search</code>, <code>select</code>, <code>init</code>, <code>confirm</code>, <code>status</code>, <code>update</code>, <code>track</code>, <code>cancel</code>, <code>rating</code>, <code>support</code>: the stages above</td></tr>
+        <tr><th>Each message</th><td>Headers and a body</td><td class="hl">A context (sender, reply address, sector, which order) and a message</td></tr>
+        <tr><th>Standard formats</th><td>None; each site makes its own</td><td class="hl">Search request, catalogue, order</td></tr>
+        <tr><th>Finding an address</th><td>Domain name system (DNS)</td><td class="hl">Registry</td></tr>
+        <tr><th>Passing searches on</th><td>Internet routers</td><td class="hl">Gateways in earlier versions; search services that read catalogues in the latest</td></tr>
+        <tr><th>Trust</th><td>Certificates from certificate authorities</td><td class="hl">Each organisation’s digital key in the registry, and certification before it joins</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col">
+    <p><strong>The patient can use any kind of app.</strong> The network deals with the consumer node, not the screen in front of the patient. HealthPass uses a WhatsApp chat. Another wallet could use a phone app, a website, a USSD menu for basic phones, a voice assistant, or a computer at a clinic’s front desk, and reach the same providers.</p>
+
+    <h3>What beckn provides and what each network adds</h3>
+    <p>Beckn’s specification is published openly, along with documentation, test tools and ready-made software for running a node, such as Beckn-ONIX<sup class="src"><a href="#s37">37</a>,<a href="#s38">38</a></sup>. Each network then adds three things of its own:</p>
+    <ul class="plain">
+      <li><strong>A domain pack:</strong> what can be ordered in its sector and how it is described. For health, that means lab tests, prescriptions and appointments, described with FHIR.</li>
+      <li><strong>Rules:</strong> who may join, what each participant must do, and how complaints and disputes are handled.</li>
+      <li><strong>Certification:</strong> a check that an organisation’s software follows the specification and the rules before it is allowed to join.</li>
+    </ul>
+    <p>An organisation joins in five steps: it builds its software to the specification, gets it certified, registers, starts taking or placing orders, and builds the app or service people see on top<sup class="src"><a href="#s37">37</a></sup>. For a South African health network, the domain pack, the rules and the certification process don’t exist yet. Building them is the public-good work described under <a href="#opportunity">Our role and business model</a>.</p>
 
     <h3>HealthPass does two jobs: it stores the record, and it is the app patients use</h3>
     <p>These two jobs are easy to mix up. On a beckn network they are separate, and a patient can swap either one.</p>
@@ -588,7 +627,7 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
       </tbody>
     </table>
   </div>
-  <div class="col"><p>A provider that sets up these steps once can serve every patient app on the network, for every service it offers.</p></div>
+  <div class="col"><p>A provider that sets up these steps once can serve every patient app on the network, for every service it offers. Patients compare providers by distance, specialty, free times, price and the medical aids they accept, all in one app, instead of using a different app, website or phone number for each. Services around care can join the same way: a courier company can join once and deliver medicines or collect lab samples for every pharmacy and lab on the network.</p></div>
 </section>
 
 <section id="india" class="page" data-title="How India shares health records">
@@ -698,10 +737,10 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
   </div>
 </section>
 
-<section id="why" class="page" data-title="Why a network">
+<section id="why" class="page" data-title="Why an open network">
   <span class="num">06</span>
   <div class="col">
-    <h2>Why a network</h2>
+    <h2>Why an open network</h2>
     <p>The prescription shows the difference most clearly.</p>
   </div>
   <div class="versus">
@@ -750,6 +789,8 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
     <div class="row head" aria-hidden="true"><span>Problem</span><span>HealthPass on its own</span><span>On a beckn network</span></div>
     <div class="row"><b>Finding care without one company in control</b><div class="today"><span class="lab">HealthPass on its own</span>HealthPass can only offer the providers it has connected to.</div><div class="net"><span class="lab">On a beckn network</span>Providers publish their own signed catalogues, search services index them, and no one owns the listings.</div></div>
     <div class="row"><b>Connecting once</b><div class="today"><span class="lab">HealthPass on its own</span>One connection per provider, in each country.</div><div class="net"><span class="lab">On a beckn network</span>A lab joins the network once and can serve every patient app.</div></div>
+    <div class="row"><b>Small providers can compete with large ones</b><div class="today"><span class="lab">HealthPass on its own</span>Small pharmacies and single GPs are the last to get a connection built. Their only other option is their own app or paying a platform to list them.</div><div class="net"><span class="lab">On a beckn network</span>A single GP publishes a catalogue once and appears in every app, next to the large chains.</div></div>
+    <div class="row"><b>One app for every provider</b><div class="today"><span class="lab">HealthPass on its own</span>For providers HealthPass isn’t connected to, the patient still needs their app, website or phone line.</div><div class="net"><span class="lab">On a beckn network</span>From one app she can compare and book any clinic, lab or pharmacy on the network, public or private.</div></div>
     <div class="row"><b>Trusting providers you have never dealt with</b><div class="today"><span class="lab">HealthPass on its own</span>A one-time PIN from the patient and a short-lived access code for the provider. Neither shows that the provider is licensed.</div><div class="net"><span class="lab">On a beckn network</span>Every organisation is listed in a registry with a digital key, every message is signed, and the receiver sends back a signed receipt.</div></div>
     <div class="row"><b>The same steps for every service</b><div class="today"><span class="lab">HealthPass on its own</span>Booking, lab orders and pharmacy are each built separately.</div><div class="net"><span class="lab">On a beckn network</span>The same steps handle all three, and any new service.</div></div>
     <div class="row"><b>Permission for one order, not the whole record</b><div class="today"><span class="lab">HealthPass on its own</span>The QR code and PIN open the whole record for the visit.</div><div class="net"><span class="lab">On a beckn network</span>The provider can see only what one order needs, for a set time, and the permission is tied to that order.</div></div>
@@ -766,6 +807,7 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
         <tr><th>Who the patient depends on</th><td>The government’s system</td><td>The company: her account, history and providers are all inside its platform</td><td class="hl">No single app. She keeps her ID and record, and can change app or wallet without losing her providers</td></tr>
         <tr><th>Adding a provider</th><td>A separate connection to the central system</td><td>On the company’s terms and fees</td><td class="hl">Join once</td></tr>
         <tr><th>Booking, ordering and delivery</th><td>Usually not included</td><td>Yes, inside the platform</td><td class="hl">Yes, between everyone on the network</td></tr>
+        <tr><th>Who can compete</th><td>No one; one supplier builds it</td><td>Only inside the platform, on its terms</td><td class="hl">Any company can build an app, and small providers are listed next to large ones</td></tr>
         <tr><th>What usually goes wrong</th><td>Slow, one supplier, one point of failure</td><td>Patients get stuck and fees rise</td><td class="hl">Someone has to set and enforce the rules, and patients need an app they already use</td></tr>
       </tbody>
     </table>
@@ -815,7 +857,7 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
   </figure>
   <div class="col">
     <h3>How a wallet joins</h3>
-    <p>A wallet joins the network once, the same way a lab does. It registers in the network registry, which lists every organisation on the network and its digital keys, and it is approved under the network’s rules, including the rule that it must hand records over when asked. From then on it can search, order and receive results for all of its patients. Patients don’t join one by one; their wallet acts for them. There are three ways to run a wallet:</p>
+    <p>A wallet joins the network once, the same way a lab does. It builds its software to the beckn specification and the health domain pack, and gets it certified. It then registers in the network registry, which lists every organisation on the network and its digital keys, and is approved under the network’s rules, including the rule that it must hand records over when asked. From then on it can search, order and receive results for all of its patients. Patients don’t join one by one; their wallet acts for them. There are three ways to run a wallet:</p>
     <ul class="plain">
       <li><strong>Run your own node,</strong> as HealthPass does.</li>
       <li><strong>Use a hosted node</strong> run by someone else. This suits a hospital or NGO that wants its own wallet without running servers.</li>
@@ -868,7 +910,7 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
     <h3>Who does what</h3>
   </div>
   <div class="who">
-    <div><b>Government and donors</b><ul><li>Pay for and oversee the network as a public good</li><li>Registers of patients, facilities and health workers</li><li>The network’s rules, and approving who can join</li><li>National record sharing and data protection</li></ul></div>
+    <div><b>Government and donors</b><ul><li>Pay for and oversee the network as a public good</li><li>Registers of patients, facilities and health workers</li><li>The network’s rules, approving who can join, and certifying their software or approving who does</li><li>National record sharing and data protection</li></ul></div>
     <div><b>Other organisations</b><ul><li>Other wallets and patient apps</li><li>Clinics, labs, pharmacies and medical aids</li><li>Search services</li></ul></div>
     <div class="us"><b>HealthPass team</b><ul><li>Build the network with government and donors: the open beckn health domain pack (the health-specific rules for the network), based on FHIR and South Africa’s national health data standards, and open FHIR-to-beckn adapters for existing health software</li><li>Help organisations join the network</li><li>Run HealthPass as one wallet on it</li></ul></div>
   </div>
@@ -876,14 +918,15 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
     <h3>How we make money</h3>
     <ul class="plain">
       <li><strong>The network is not the business.</strong> We build it with government and donors as a public good, and no one owns it, including us. That is what lets a government adopt it and other companies build on it.</li>
-      <li><strong>Helping organisations join.</strong> Clinics, labs, pharmacies, medical aids and health software companies need help to get on the network: connecting their software, getting approved to join, running a hosted node for those who don’t want to run their own, and support afterwards. We charge for this work.</li>
+      <li><strong>Helping organisations join.</strong> Clinics, labs, pharmacies, medical aids and health software companies need help with each step of joining: building their software to the specification, getting it certified, registering, running a hosted node for those who don’t want to run their own, and support afterwards. We charge for this work.</li>
       <li><strong>Services through HealthPass.</strong> HealthPass competes as one wallet among several. Because every provider on the network can be reached without building a separate connection, HealthPass can offer services on top of the record, such as booking, lab tests and medicine delivery. It earns from these by being the easiest to use, not by holding patients’ data.</li>
+      <li><strong>Open networks make room for new businesses.</strong> No platform can keep providers or patients to itself, so companies compete on service, and new services become possible: an app for one condition, a medicine delivery service, or a medical aid’s own app, each reaching every provider on the network from day one.</li>
       <li><strong>Who pays for what.</strong> Government and donors pay for the shared parts: the domain pack, the open adapters, links to national registers, and pilots. Our income comes from helping organisations join and from HealthPass services.</li>
       <li><strong>Examples from India.</strong> Moving Tech built Namma Yatri, a commercial app on an open beckn network, to 150 million trips<sup class="src"><a href="#s6">6</a></sup>. On UPI, two apps handle about 79% of all payments<sup class="src"><a href="#s10">10</a></sup>. Open networks still leave room for successful businesses.</li>
     </ul>
     <h3>What gets built first</h3>
     <ol class="plain">
-      <li>A draft health domain pack covering lab orders, prescriptions and appointments.</li>
+      <li>A draft health domain pack covering lab orders, prescriptions and appointments, with tests that certify software against it.</li>
       <li>FHIR-to-beckn adapters, so clinics, labs and pharmacies with modern (FHIR-based) software can join without rebuilding it.</li>
       <li>An optional link from the network to the Health Patient Registration System, so a patient who chooses to can be found from her ID.</li>
       <li>A pilot in South Africa with one group of clinics, one lab and a few pharmacies.</li>
@@ -900,7 +943,7 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
       <li><strong>Subsidies don’t create demand.</strong> On ONDC, shopping orders fell from 6.5 million to 4.6 million a month after incentives were cut. Ride-hailing, where a commission-free app met real demand, grew to 56% of all orders<sup class="src"><a href="#s15">15</a></sup>.</li>
       <li><strong>Getting patients to approve requests is the hard part.</strong> In India’s ABDM, providers still rarely share records with the patient’s approval, because patients don’t complete the approval step<sup class="src"><a href="#s16">16</a></sup>. An app patients already use, on WhatsApp, is the missing piece. That’s where HealthPass fits.</li>
       <li><strong>Other wallets can join the same network.</strong> That is intended. HealthPass has to win on WhatsApp’s reach, its assistant and being first, and the business of helping organisations join doesn’t depend on HealthPass winning.</li>
-      <li><strong>The health domain pack doesn’t exist yet.</strong> We found no published guide to using beckn and FHIR together for health. Writing one is real work.</li>
+      <li><strong>The health domain pack, rules and certification don’t exist yet.</strong> We found no published guide to using beckn and FHIR together for health, and South Africa has no rules or certification process for a health network. Writing them is real work.</li>
       <li><strong>The rules are still changing.</strong> POPIA treats health information as specially protected, and new rules for health information took effect in March 2026<sup class="src"><a href="#s34">34</a></sup>. Because HealthPass reaches patients through WhatsApp, it has to show how it meets POPIA when messages pass through Meta’s service. The National Health Insurance Act, signed in May 2024, is before the Constitutional Court, which reserved judgment in May 2026, and none of its sections is in force<sup class="src"><a href="#s17">17</a></sup>. The network has to work whatever the outcome. The national digital health strategy expired in 2024 and its replacement has not been published<sup class="src"><a href="#s35">35</a></sup>.</li>
     </ul>
   </div>
@@ -947,6 +990,8 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
     <li id="s34">New POPIA regulations on health information now in force, Moonstone, Mar 2026. <a href="https://www.moonstone.co.za/new-popia-regulations-on-health-information-now-in-force/">moonstone.co.za</a></li>
     <li id="s35">Minister of Health, reply on the national health information exchange and digital health strategy, PMG, Nov 2025. <a href="https://pmg.org.za/committee-question/34165/">pmg.org.za</a></li>
     <li id="s36">National Department of Health, invitation to bid for electronic medical record roll-out (NDoH04-2025/2026), Mar 2026. <a href="https://www.health.gov.za/wp-content/uploads/2026/03/NDoH04-20252026-Final-BSC-Invitation-to-Bid-EMR-implementation-03-03-2026.pdf">health.gov.za</a></li>
+    <li id="s37">Kaustubh Yerkade, “Understanding Beckn Protocol: Revolutionizing Open Networks in E-commerce”, DEV Community, 4 Oct 2024: comparison with HTTP, architecture layers, components and use cases. <a href="https://dev.to/kaustubhyerkade/beckn-protocol-6bd">dev.to</a></li>
+    <li id="s38">Beckn-ONIX, “a production-ready, plugin-based middleware adapter for the Beckn Protocol”. Beckn on GitHub. <a href="https://github.com/beckn/beckn-onix">github.com</a></li>
   </ol>
   <p class="note">Prepared October 2026. Figures carry the date of the source; Indian figures in crore are converted to millions and billions.</p>
 </footer>
@@ -969,7 +1014,7 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
         { t: '1. The clinic adds the test order to her record.', d: 'The clinician writes an order for an HbA1c test into the patient’s HealthPass record, with permission she gave during the visit. The order isn’t sent to any particular lab.', h: [['cl>hp','add lab order: HbA1c','f'], ['hp>pt','new lab order: HbA1c','c']] },
         { t: '2. Find a lab.', d: 'HealthPass searches for labs by test and distance. Each lab’s catalogue lists the tests it offers, its sites, whether it collects from home, and the medical aids it accepts. The search doesn’t reveal who the patient is.', h: [['pt>hp','where can I get this done?','c'], ['hp>ds','search: HbA1c, 5 km, medical aid','b'], ['ds>hp','4 labs found','b'], ['hp>pt','options + home collection','c']] },
         { t: '3. Check price and times.', d: 'HealthPass asks the lab directly for today’s price and collection times, because these change too often to list in advance.', h: [['hp>pr','price + times for home collection?','b'], ['pr>hp','R350, times available','b']] },
-        { t: '4. Book, and let the lab see the order.', d: 'The patient approves the booking and gives the lab permission to see this one order. The booking points to the clinic’s order, so the lab knows a clinician asked for the test.', h: [['hp>pr','book: time, address, order','b'], ['pr>hp','terms','b'], ['hp>pt','book + share order with lab?','c'], ['pt>hp','yes','c'], ['hp>pr','confirm','b'], ['pr>hp','booking confirmed','b']] },
+        { t: '4. Book, and let the lab see the order.', d: 'The patient approves the booking and how she’ll pay, and gives the lab permission to see this one order. The booking points to the clinic’s order, so the lab knows a clinician asked for the test.', h: [['hp>pr','book: time, address, order','b'], ['pr>hp','terms, payment','b'], ['hp>pt','book + share order with lab?','c'], ['pt>hp','yes','c'], ['hp>pr','confirm','b'], ['pr>hp','booking confirmed','b']] },
         { t: '5. The lab reads the order.', d: 'With the patient’s permission, the lab reads the order from her record, including any notes from the clinician, such as whether she should fast.', h: [['pr>hp','read lab order','f'], ['hp>pr','order details','f']] },
         { t: '6. Collection and testing.', d: 'The lab sends updates as it goes, such as the collector being on the way or the sample reaching the lab. HealthPass passes the useful ones on to the patient.', h: [['pr>hp','collector 15 min away','b'], ['hp>pt','collector arriving','c'], ['pr>hp','sample at the lab','b']] },
         { t: '7. The result goes into her record, then to the clinic.', d: 'The lab adds the result to the patient’s HealthPass record. The clinic that ordered the test is told and reads the result. The patient sees it too.', h: [['pr>hp','add result: HbA1c','f'], ['pr>hp','test complete','b'], ['hp>pt','result ready: HbA1c 7.9%','c'], ['hp>cl','result is in','f'], ['cl>hp','read result','f']] }
@@ -991,7 +1036,7 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
         { t: '1. The doctor writes and signs the prescription.', d: 'After the consultation, the doctor writes the prescription in the clinic’s software and signs it digitally. It is saved to the patient’s HealthPass record, with permission she gave during the visit. Anyone can later check that it came from a licensed prescriber and wasn’t changed.', h: [['cl','write + sign prescription'], ['cl>hp','add signed prescription','f'], ['hp>pt','new prescription: amoxicillin','c']] },
         { t: '2. Find a pharmacy.', d: 'Each pharmacy’s catalogue lists its location, opening hours, delivery area and the medical aids it accepts. Stock isn’t in the catalogue, because it changes every hour.', h: [['pt>hp','fill this, delivery please','c'], ['hp>ds','search: pharmacy, delivers, 5 km','b'], ['ds>hp','5 pharmacies found','b']] },
         { t: '3. Check stock and price.', d: 'HealthPass asks a few pharmacies at once. Each replies with what it has in stock and the price, and may offer a cheaper generic where the rules allow.', h: [['hp>pr','in stock? amoxicillin 500mg x21','b'], ['pr>hp','generic, R75','b'], ['hp>pt','best: generic, delivered today','c']] },
-        { t: '4. Order, and let the pharmacy see the prescription.', d: 'The patient approves the order and gives the pharmacy permission to see this one prescription, not her whole record.', h: [['hp>pr','order: address, prescription','b'], ['pr>hp','terms, payment','b'], ['pt>hp','approve','c'], ['hp>pr','confirm','b'], ['pr>hp','order confirmed','b']] },
+        { t: '4. Order, and let the pharmacy see the prescription.', d: 'The patient approves the order and the payment, and gives the pharmacy permission to see this one prescription, not her whole record.', h: [['hp>pr','order: address, prescription','b'], ['pr>hp','terms, payment','b'], ['pt>hp','approve','c'], ['hp>pr','confirm','b'], ['pr>hp','order confirmed','b']] },
         { t: '5. The pharmacy checks the prescription.', d: 'It reads the prescription, then checks the doctor’s signature and licence against the registry. A forged or edited prescription fails here.', h: [['pr>hp','read prescription','f'], ['hp>pr','signed prescription','f'], ['pr>reg','check signature + licence','r'], ['reg>pr','valid, licensed','r']] },
         { t: '6. Mark it as used, so it can’t be filled twice.', d: 'Before handing over the medicine, the pharmacy records what it is giving, and HealthPass marks the prescription as filled in the same step. A second pharmacy trying to fill it would see that it has already been used.', h: [['pr>hp','record: medicine given','f'], ['hp','mark prescription as filled'], ['hp>pr','ok to hand over','f']] },
         { t: '7. Delivery and follow-up.', d: 'The pharmacy sends delivery updates. The doctor can see exactly what was given, including any cheaper generic.', h: [['pr>hp','rider 20 min away','b'], ['hp>pt','delivery on the way','c'], ['pr>hp','delivered','b'], ['hp>cl','given: generic version','f']] }
@@ -1239,7 +1284,7 @@ footer.sources.page { border-top: 0; padding-top: 36px; }
       if (t.getAttribute('href') === '#' + id) { t.setAttribute('aria-current', 'page'); t.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
       else t.removeAttribute('aria-current');
     });
-    document.title = (id === 'overview' ? '' : pages[ids.indexOf(id)].dataset.title + ' \u00b7 ') + 'HealthPass on Beckn';
+    document.title = (id === 'overview' ? '' : pages[ids.indexOf(id)].dataset.title + ' \u00b7 ') + 'Beckn for Health';
     if (isSource) document.getElementById(hash).scrollIntoView({ block: 'center' });
     else window.scrollTo(0, 0);
   }
