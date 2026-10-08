@@ -330,30 +330,31 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
     <div class="panel">
       <h4>HealthPass on a beckn network</h4>
       <svg viewBox="0 0 300 232" role="img" aria-labelledby="st3-t">
-        <title id="st3-t">HealthPass, a registry and every provider connect through one network</title>
+        <title id="st3-t">HealthPass, other wallets and every provider connect through one network</title>
         <line class="ln-b" x1="77" y1="54" x2="77" y2="92" fill="none" stroke-width="1.5"/>
         <line class="ln-b" x1="232" y1="54" x2="232" y2="92" fill="none" stroke-width="1.5"/>
         <line class="ln-b" x1="49" y1="140" x2="49" y2="178" fill="none" stroke-width="1.5"/>
         <line class="ln-b" x1="150" y1="140" x2="150" y2="178" fill="none" stroke-width="1.5"/>
         <line class="ln-b" x1="251" y1="140" x2="251" y2="178" fill="none" stroke-width="1.5"/>
-        <g class="nd c-pu"><rect x="2" y="6" width="150" height="48" rx="8"/><text class="th" x="77" y="26" text-anchor="middle">HealthPass</text><text class="ts" x="77" y="43" text-anchor="middle">her record in WhatsApp</text></g>
-        <g class="nd c-gr"><rect x="166" y="6" width="132" height="48" rx="8"/><text class="th" x="232" y="26" text-anchor="middle">Registry</text><text class="ts" x="232" y="43" text-anchor="middle">who is licensed</text></g>
-        <g class="nd c-b"><rect x="2" y="92" width="296" height="48" rx="24"/><text class="th" x="150" y="112" text-anchor="middle">beckn network</text><text class="ts" x="150" y="129" text-anchor="middle">signed messages</text></g>
+        <g class="nd c-pu"><rect x="2" y="6" width="150" height="48" rx="8"/><text class="th" x="77" y="26" text-anchor="middle">HealthPass</text><text class="ts" x="77" y="43" text-anchor="middle">one wallet</text></g>
+        <g class="nd c-pu"><rect x="166" y="6" width="132" height="48" rx="8"/><text class="th" x="232" y="26" text-anchor="middle">Other wallets</text><text class="ts" x="232" y="43" text-anchor="middle">her choice</text></g>
+        <g class="nd c-b"><rect x="2" y="92" width="296" height="48" rx="24"/><text class="th" x="150" y="112" text-anchor="middle">beckn network</text><text class="ts" x="150" y="129" text-anchor="middle">shared registries, signed messages</text></g>
         <g class="nd c-co"><rect x="2" y="178" width="94" height="48" rx="8"/><text class="th" x="49" y="198" text-anchor="middle">Clinic</text><text class="ts" x="49" y="215" text-anchor="middle">any clinic</text></g>
         <g class="nd c-co"><rect x="103" y="178" width="94" height="48" rx="8"/><text class="th" x="150" y="198" text-anchor="middle">Lab</text><text class="ts" x="150" y="215" text-anchor="middle">any lab</text></g>
         <g class="nd c-co"><rect x="204" y="178" width="94" height="48" rx="8"/><text class="th" x="251" y="198" text-anchor="middle">Pharmacy</text><text class="ts" x="251" y="215" text-anchor="middle">any pharmacy</text></g>
       </svg>
-      <p>Each provider connects once, to the network, and is listed in a shared registry. Results and prescriptions come back to her record from any of them.</p>
+      <p>Each provider connects once, to the network. Results and prescriptions reach her record from any of them, in whichever wallet she chooses.</p>
     </div>
   </div>
 
   <div class="col">
-    <h2>The case in four points</h2>
+    <h2>The case in five points</h2>
     <ul class="limits points">
       <li><strong>HealthPass makes the record the patient’s.</strong> It holds her health summary in the international standard format, opens in an app she already uses, and logs everyone who looks at it.</li>
       <li><strong>On its own, it has to connect to providers one at a time.</strong> Each clinic, lab and pharmacy system needs its own link, and HealthPass has no way to check that a provider is licensed.</li>
       <li><strong>Beckn replaces those one-off links with a network.</strong> A provider joins once, is listed in a shared registry and signs every message, so any patient app can find it, order from it and trust its results.</li>
-      <li><strong>The model is proven at national scale.</strong> India runs payments (UPI) and online commerce (ONDC, which is built on beckn) this way: a public body runs the shared rails and many companies compete to build the apps people use. Our opportunity is to write the health rules for such a network and run HealthPass on it.</li>
+      <li><strong>The model is proven at national scale.</strong> India runs payments (UPI) and online commerce (ONDC, which is built on beckn) this way: a public body runs the shared rails and many companies compete to build the apps people use.</li>
+      <li><strong>No lock-in, including to us.</strong> We want to build the network as a public good, with government and donors. Patients can use HealthPass or any other wallet and take their record with them. Our business is helping clinics, labs and pharmacies get onto the network, and offering services through HealthPass.</li>
     </ul>
   </div>
 
@@ -364,8 +365,9 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
     <a href="#flows"><span>04</span>Three flows, one protocol</a>
     <a href="#india"><span>05</span>How India did it</a>
     <a href="#why"><span>06</span>Why a network</a>
-    <a href="#opportunity"><span>07</span>The opportunity</a>
-    <a href="#risks"><span>08</span>Risks</a>
+    <a href="#choice"><span>07</span>Many wallets, one network</a>
+    <a href="#opportunity"><span>08</span>The opportunity</a>
+    <a href="#risks"><span>09</span>Risks</a>
   </nav>
 </header>
 
@@ -730,48 +732,107 @@ footer.sources li:target { color: var(--ink); background: var(--pu-fill); }
   </div>
 </section>
 
-<section id="opportunity">
+<section id="choice">
   <span class="num">07</span>
+  <div class="col">
+    <h2>Many wallets, one network</h2>
+    <p>HealthPass is one place a patient can keep their record. It shouldn’t be the only one. On a beckn network any company, hospital or NGO can run a wallet, and every wallet reaches every clinic, lab and pharmacy on the same terms. A patient can change wallet and take their record with them, the way people in India change payment app without changing bank.</p>
+  </div>
+  <figure class="diagram">
+    <svg viewBox="0 0 680 350" role="img" aria-labelledby="wl-t wl-d">
+      <title id="wl-t">Many wallets on one health network</title>
+      <desc id="wl-d">Wanjiru uses HealthPass and can switch to another wallet. A patient registry holds her ID and which wallet holds her record. Every wallet connects to the same beckn health network, which reaches every clinic, lab and pharmacy.</desc>
+        <defs><marker id="ahw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <line class="wire" x1="280" y1="38" x2="380" y2="38"/>
+        <text class="lbl r" x="330" y="31" text-anchor="middle">her ID</text>
+        <line class="ln-c" x1="170" y1="66" x2="100" y2="110" fill="none" stroke-width="1.5"/>
+        <line class="ln-f" x1="182" y1="138" x2="258" y2="138" fill="none" stroke-width="1.5" marker-start="url(#ahw)" marker-end="url(#ahw)"/>
+        <text class="lbl f" x="220" y="129" text-anchor="middle">switch</text>
+        <line class="ln-r" x1="460" y1="66" x2="460" y2="210" fill="none" stroke-width="1.5"/>
+        <text class="lbl r" x="468" y="92">finds her wallet</text>
+        <line class="ln-b" x1="100" y1="166" x2="100" y2="210" fill="none" stroke-width="1.5"/>
+        <line class="ln-b" x1="340" y1="166" x2="340" y2="210" fill="none" stroke-width="1.5"/>
+        <line class="ln-b" x1="580" y1="166" x2="580" y2="210" fill="none" stroke-width="1.5"/>
+        <line class="ln-b" x1="100" y1="254" x2="100" y2="290" fill="none" stroke-width="1.5"/>
+        <line class="ln-b" x1="340" y1="254" x2="340" y2="290" fill="none" stroke-width="1.5"/>
+        <line class="ln-b" x1="580" y1="254" x2="580" y2="290" fill="none" stroke-width="1.5"/>
+        <g class="nd c-pu"><rect x="120" y="10" width="160" height="56" rx="8"/><text class="th" x="200" y="33" text-anchor="middle">Wanjiru</text><text class="ts" x="200" y="51" text-anchor="middle">picks her wallet</text></g>
+        <g class="nd c-gr"><rect x="380" y="10" width="160" height="56" rx="8"/><text class="th" x="460" y="33" text-anchor="middle">Patient registry</text><text class="ts" x="460" y="51" text-anchor="middle">ID + current wallet</text></g>
+        <g class="nd c-pu"><rect x="20" y="110" width="160" height="56" rx="8"/><text class="th" x="100" y="133" text-anchor="middle">HealthPass</text><text class="ts" x="100" y="151" text-anchor="middle">one wallet</text></g>
+        <g class="nd c-pu"><rect x="260" y="110" width="160" height="56" rx="8"/><text class="th" x="340" y="133" text-anchor="middle">Wallet B</text><text class="ts" x="340" y="151" text-anchor="middle">another company</text></g>
+        <g class="nd c-pu"><rect x="500" y="110" width="160" height="56" rx="8"/><text class="th" x="580" y="133" text-anchor="middle">Wallet C</text><text class="ts" x="580" y="151" text-anchor="middle">a hospital or NGO</text></g>
+        <g class="nd c-b"><rect x="20" y="210" width="640" height="44" rx="22"/><text class="th" x="340" y="228" text-anchor="middle">beckn health network</text><text class="ts" x="340" y="244" text-anchor="middle">a public good: open rules, shared registries</text></g>
+        <g class="nd c-co"><rect x="20" y="290" width="160" height="56" rx="8"/><text class="th" x="100" y="313" text-anchor="middle">Clinics</text><text class="ts" x="100" y="331" text-anchor="middle">serve every wallet</text></g>
+        <g class="nd c-co"><rect x="260" y="290" width="160" height="56" rx="8"/><text class="th" x="340" y="313" text-anchor="middle">Labs</text><text class="ts" x="340" y="331" text-anchor="middle">serve every wallet</text></g>
+        <g class="nd c-co"><rect x="500" y="290" width="160" height="56" rx="8"/><text class="th" x="580" y="313" text-anchor="middle">Pharmacies</text><text class="ts" x="580" y="331" text-anchor="middle">serve every wallet</text></g>
+    </svg>
+    <figcaption>Wallets compete for patients the way payment apps do. The patient registry knows which wallet holds Wanjiru’s record, so results reach her wherever she keeps it. The registry holds no health data.</figcaption>
+  </figure>
+  <div class="col">
+    <h3>A patient registry makes switching work</h3>
+    <p>India’s ABDM shows the pattern (see <a href="#india">How India did it</a>). Each person gets an ABHA number from a national registry, and a consent manager keeps track of which hospitals hold their records. Neither one sees what the records say.</p>
+    <p>A health network on beckn needs the same piece: a patient registry that holds each person’s ID, name and contact details, and which wallet currently holds their record. It holds no health data. When Wanjiru moves from HealthPass to another wallet:</p>
+    <ol class="steps">
+      <li><b>She asks the new wallet to take over.</b>It checks her identity against the patient registry, with a one-time PIN sent to her phone.</li>
+      <li><b>HealthPass hands over her full record.</b>It sends it to the new wallet in the standard format: FHIR, with her International Patient Summary.</li>
+      <li><b>The registry records her new wallet.</b>Only the pointer changes. Her ID stays the same.</li>
+      <li><b>Her providers don’t notice.</b>Clinics, labs and pharmacies keep sending results to her ID, and the network delivers them to the new wallet.</li>
+    </ol>
+    <p>Kenya’s Digital Health Agency already runs a national client registry<sup class="src"><a href="#s12">12</a></sup>. The network would add only the pointer to each patient’s wallet, building on the government registry rather than duplicating it. Where there is no national registry, one can be built as part of the network, as a public good.</p>
+
+    <h3>What stops lock-in</h3>
+    <ul class="limits fixes">
+      <li><strong>The patient’s ID belongs to the patient.</strong> It comes from the patient registry, not from an account with any wallet.</li>
+      <li><strong>The record is in a standard format.</strong> Every wallet stores FHIR and must hand the record over when the patient asks. That is a network rule, not a promise from any one company, including us.</li>
+      <li><strong>Providers join the network, not a wallet.</strong> A lab connects once and serves patients from every wallet.</li>
+      <li><strong>The rules are open.</strong> The health domain pack and the adapters we build are published for anyone to use, including competing wallets.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="opportunity">
+  <span class="num">08</span>
   <div class="col">
     <h2>The opportunity</h2>
     <h3>Kenya already has the public rails</h3>
     <p>The Digital Health Act 2023 calls for "shareable and portable personal health records" (s.6(d))<sup class="src"><a href="#s11">11</a></sup>. The Digital Health Agency runs client, health-worker and facility registries and a FHIR-based Shared Health Record<sup class="src"><a href="#s12">12</a></sup>. Kenya's FHIR guides already cover e-prescriptions, with each dispense recorded against its prescription, as well as lab orders and patient summaries<sup class="src"><a href="#s13">13</a>,<a href="#s19">19</a></sup>.</p>
-    <p>What's missing is the services layer on top: a common way for patient apps, clinics, labs and pharmacies to transact. A beckn network adds that layer, and HealthPass is a patient app on it. HealthPass works alongside the national health information exchange rather than replacing it.</p>
+    <p>What's missing is the services layer on top: a common way for patient apps, clinics, labs and pharmacies to transact. A beckn network adds that layer, and HealthPass is one of the wallets on it. HealthPass works alongside the national health information exchange rather than replacing it.</p>
 
     <h3>Who does what</h3>
   </div>
   <div class="who">
-    <div><b>Government</b><ul><li>Registries for patients, facilities and health workers</li><li>Network rules and certification</li><li>The health information exchange and data governance</li></ul></div>
-    <div><b>Private sector</b><ul><li>Patient apps</li><li>Clinics, labs and pharmacies</li><li>Discovery services</li></ul></div>
-    <div class="us"><b>HealthPass team</b><ul><li>The beckn health domain pack, aligned with FHIR and Kenya's guides</li><li>FHIR-to-beckn adapters for providers</li><li>HealthPass as the reference patient app</li><li>A pilot</li></ul></div>
+    <div><b>Government and donors</b><ul><li>Fund and govern the network as a public good</li><li>Registries for patients, facilities and health workers</li><li>Network rules and certification</li><li>The health information exchange and data governance</li></ul></div>
+    <div><b>Other organisations</b><ul><li>Other wallets and patient apps</li><li>Clinics, labs, pharmacies and insurers</li><li>Discovery services</li></ul></div>
+    <div class="us"><b>HealthPass team</b><ul><li>Build the network with government and donors: the open health domain pack, aligned with FHIR and Kenya's guides, and open FHIR-to-beckn adapters</li><li>Help organisations get onto the network</li><li>Run HealthPass as one wallet on it</li></ul></div>
   </div>
   <div class="col">
-    <h3>Why it is a business</h3>
+    <h3>How the business works</h3>
     <ul class="plain">
-      <li><strong>Distribution.</strong> Every provider on the network is reachable without a sales and integration project for each one.</li>
-      <li><strong>Revenue.</strong> Completed transactions (bookings, lab orders, filled prescriptions) can earn fees. A record on its own is hard to charge for.</li>
-      <li><strong>Position.</strong> The team that writes the health domain pack and runs the reference app shapes how the standard works.</li>
-      <li><strong>Precedent.</strong> Moving Tech built Namma Yatri, a commercial app on an open beckn network, to 150 million trips<sup class="src"><a href="#s6">6</a></sup>. On UPI, two apps handle about 79% of all payments<sup class="src"><a href="#s10">10</a></sup>. Open networks still produce large winners.</li>
-      <li><strong>Blended funding.</strong> DPI funders and governments can pay for the public parts (the domain pack, open adapters, registry integration) while HealthPass earns commercial revenue.</li>
+      <li><strong>The network is not the business.</strong> We build it with government and donors as a public good, and no one owns it, including us. That is what lets a government adopt it and other companies build on it.</li>
+      <li><strong>Helping organisations join.</strong> Clinics, labs, pharmacies, insurers and health software vendors need help to get on the network: connecting their systems through the adapters, getting certified, running a network node for those who don’t want to host one, and support afterwards. We charge for this work.</li>
+      <li><strong>Services through HealthPass.</strong> HealthPass competes as one wallet among several. Because every provider on the network is reachable without a separate integration, it can offer services on top of the record, such as booking, lab orders and medicine delivery, and earn from them by being the easiest to use, not by holding patients’ data.</li>
+      <li><strong>Blended funding.</strong> Government and donors pay for the public parts: the domain pack, open adapters, registry integration and pilots. Commercial revenue comes from onboarding and from HealthPass services.</li>
+      <li><strong>Precedent.</strong> Moving Tech built Namma Yatri, a commercial app on an open beckn network, to 150 million trips<sup class="src"><a href="#s6">6</a></sup>. On UPI, two apps handle about 79% of all payments<sup class="src"><a href="#s10">10</a></sup>. Open networks still leave room for successful businesses.</li>
     </ul>
     <h3>What gets built first</h3>
     <ol class="plain">
       <li>A draft health domain pack covering lab orders, prescriptions and appointments.</li>
       <li>FHIR-to-beckn adapters, so providers on existing FHIR systems can join without rebuilding.</li>
+      <li>A link from the network to Kenya’s client registry, so any wallet can be found from a patient’s ID.</li>
       <li>A Kenya pilot with one clinic network, one lab and a few pharmacies.</li>
     </ol>
   </div>
 </section>
 
 <section id="risks">
-  <span class="num">08</span>
+  <span class="num">09</span>
   <div class="col">
     <h2>Risks</h2>
     <ul class="risks">
       <li><strong>Health networks have been slow.</strong> India's health network on beckn, UHI, was first proposed in 2021 and formally launched in June 2026, with five services live<sup class="src"><a href="#s14">14</a>,<a href="#s20">20</a></sup>. It routes through a central government gateway and has published no usage figures. Beckn v2 removes the need for a central gateway.</li>
       <li><strong>Subsidies don't create demand.</strong> ONDC retail orders fell from 6.5 million to 4.6 million a month after incentives were cut, while mobility, where a zero-commission app served real demand, grew to 56% of transactions<sup class="src"><a href="#s15">15</a></sup>.</li>
       <li><strong>Patient approval is the hard step.</strong> In India's ABDM, consent-based sharing of records between facilities remains very low because the patient-approval loop is hard to close<sup class="src"><a href="#s16">16</a></sup>. An app patients already use, on WhatsApp, is the part that's missing. That's where HealthPass fits.</li>
-      <li><strong>Competitors can join the same network.</strong> The advantage has to come from WhatsApp reach, the patient agent, and being first.</li>
+      <li><strong>Other wallets can join the same network.</strong> That is intended. HealthPass has to win on WhatsApp reach, the patient agent and being first, and the onboarding business doesn’t depend on HealthPass winning.</li>
       <li><strong>The domain pack doesn't exist yet.</strong> We found no published mapping between beckn and FHIR for health. Writing one is real work.</li>
       <li><strong>Regulation.</strong> Kenya's Digital Health Agency is custodian of health data under s.22 of the Act, so HealthPass operates under its rules. The Act itself is under appeal; the Court of Appeal stayed the High Court ruling against it in September 2024<sup class="src"><a href="#s17">17</a></sup>.</li>
     </ul>
